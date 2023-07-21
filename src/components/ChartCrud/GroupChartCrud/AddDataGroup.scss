@@ -1,0 +1,16 @@
+.input-style {
+  border-radius: 0.5em;
+  border: 1px solid black !important;
+  width: 100px;
+}
+
+.input-style:focus {
+  border: none;
+  outline: 0;
+}
+
+.btn-sub {
+  background-color: #3c4b64;
+  border-radius: 0.5em;
+  color: white;
+}

@@ -1,0 +1,33 @@
+#petrollegend {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-color: #fc8d62;
+}
+
+#diesellegend {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-color: #66c2a5;
+}
+
+@media screen and (max-width: 230px) {
+  .label1 {
+    display: none;
+  }
+
+  .label2 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 180px) {
+  .color-box {
+    display: none;
+  }
+
+  .color-box2 {
+    display: none;
+  }
+}

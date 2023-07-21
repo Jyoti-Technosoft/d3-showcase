@@ -1,0 +1,44 @@
+.toast-container-design {
+  width: 15em;
+
+  .toast-design {
+    .toast-body-success {
+      background-color: rgba(60, 179, 113, 0.7) !important;
+      color: darkgreen !important;
+
+      .toast-div {
+        display: flex;
+        justify-content: space-around;
+      }
+      .toast-message {
+        margin: 0px 0px 6px 0px;
+      }
+    }
+
+    .toast-body-error {
+      background-color: rgba(226, 114, 114, 0.7) !important;
+      color: darkred !important;
+
+      .toast-div {
+        display: flex;
+        justify-content: space-around;
+      }
+      .toast-message {
+        margin: 0px 0px 6px 0px;
+      }
+    }
+
+    .toast-body-warning {
+      background-color: rgba(231, 229, 140, 0.7) !important;
+      color: #ffcc00 !important;
+
+      .toast-div {
+        display: flex;
+        justify-content: space-around;
+      }
+      .toast-message {
+        margin: 0px 0px 6px 0px;
+      }
+    }
+  }
+}

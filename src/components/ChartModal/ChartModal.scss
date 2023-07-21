@@ -1,0 +1,19 @@
+.my-modal {
+  width: 96vw;
+  max-width: 96vw;
+  height: 90vh;
+}
+
+.my-crud-modal {
+  padding: 5vh 5vw;
+  background: rgba(5, 5, 5, 0.501);
+}
+
+.modal-content {
+  border-radius: 10px !important;
+}
+
+.body-crud {
+  height: 88%;
+  overflow: auto;
+}

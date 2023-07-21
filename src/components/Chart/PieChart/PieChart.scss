@@ -1,0 +1,13 @@
+@media screen and (max-width: 550px) {
+  .pieChart {
+    width: 60vw !important;
+    height: 35vh !important;
+  }
+}
+
+@media screen and (max-width: 880px) and (min-width: 550px) {
+  .pieChart {
+    width: 80vw !important;
+    height: 80vh !important;
+  }
+}
