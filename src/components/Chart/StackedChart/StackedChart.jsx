@@ -12,76 +12,76 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow }) {
   const dataset = stackedObj;
 
   const janTotal =
-    parseInt(dataset[0].US) +
-    parseInt(dataset[0].Europe) +
-    parseInt(dataset[0].Asia) +
-    parseInt(dataset[0].SouthAmerica);
+    parseInt(dataset[0]?.US) +
+    parseInt(dataset[0]?.Europe) +
+    parseInt(dataset[0]?.Asia) +
+    parseInt(dataset[0]?.SouthAmerica);
 
   const febTotal =
-    parseInt(dataset[1].US) +
-    parseInt(dataset[1].Europe) +
-    parseInt(dataset[1].Asia) +
-    parseInt(dataset[1].SouthAmerica);
+    parseInt(dataset[1]?.US) +
+    parseInt(dataset[1]?.Europe) +
+    parseInt(dataset[1]?.Asia) +
+    parseInt(dataset[1]?.SouthAmerica);
 
   const marTotal =
-    parseInt(dataset[2].US) +
-    parseInt(dataset[2].Europe) +
-    parseInt(dataset[2].Asia) +
-    parseInt(dataset[2].SouthAmerica);
+    parseInt(dataset[2]?.US) +
+    parseInt(dataset[2]?.Europe) +
+    parseInt(dataset[2]?.Asia) +
+    parseInt(dataset[2]?.SouthAmerica);
 
   const aprTotal =
-    parseInt(dataset[3].US) +
-    parseInt(dataset[3].Europe) +
-    parseInt(dataset[3].Asia) +
-    parseInt(dataset[3].SouthAmerica);
+    parseInt(dataset[3]?.US) +
+    parseInt(dataset[3]?.Europe) +
+    parseInt(dataset[3]?.Asia) +
+    parseInt(dataset[3]?.SouthAmerica);
 
   const mayTotal =
-    parseInt(dataset[4].US) +
-    parseInt(dataset[4].Europe) +
-    parseInt(dataset[4].Asia) +
-    parseInt(dataset[4].SouthAmerica);
+    parseInt(dataset[4]?.US) +
+    parseInt(dataset[4]?.Europe) +
+    parseInt(dataset[4]?.Asia) +
+    parseInt(dataset[4]?.SouthAmerica);
 
   const juneTotal =
-    parseInt(dataset[5].US) +
-    parseInt(dataset[5].Europe) +
-    parseInt(dataset[5].Asia) +
-    parseInt(dataset[5].SouthAmerica);
+    parseInt(dataset[5]?.US) +
+    parseInt(dataset[5]?.Europe) +
+    parseInt(dataset[5]?.Asia) +
+    parseInt(dataset[5]?.SouthAmerica);
 
   const julyTotal =
-    parseInt(dataset[6].US) +
-    parseInt(dataset[6].Europe) +
-    parseInt(dataset[6].Asia) +
-    parseInt(dataset[6].SouthAmerica);
+    parseInt(dataset[6]?.US) +
+    parseInt(dataset[6]?.Europe) +
+    parseInt(dataset[6]?.Asia) +
+    parseInt(dataset[6]?.SouthAmerica);
 
   const augTotal =
-    parseInt(dataset[7].US) +
-    parseInt(dataset[7].Europe) +
-    parseInt(dataset[7].Asia) +
-    parseInt(dataset[7].SouthAmerica);
+    parseInt(dataset[7]?.US) +
+    parseInt(dataset[7]?.Europe) +
+    parseInt(dataset[7]?.Asia) +
+    parseInt(dataset[7]?.SouthAmerica);
 
   const sepTotal =
-    parseInt(dataset[8].US) +
-    parseInt(dataset[8].Europe) +
-    parseInt(dataset[8].Asia) +
-    parseInt(dataset[8].SouthAmerica);
+    parseInt(dataset[8]?.US) +
+    parseInt(dataset[8]?.Europe) +
+    parseInt(dataset[8]?.Asia) +
+    parseInt(dataset[8]?.SouthAmerica);
 
   const octTotal =
-    parseInt(dataset[9].US) +
-    parseInt(dataset[9].Europe) +
-    parseInt(dataset[9].Asia) +
-    parseInt(dataset[9].SouthAmerica);
+    parseInt(dataset[9]?.US) +
+    parseInt(dataset[9]?.Europe) +
+    parseInt(dataset[9]?.Asia) +
+    parseInt(dataset[9]?.SouthAmerica);
 
   const novTotal =
-    parseInt(dataset[10].US) +
-    parseInt(dataset[10].Europe) +
-    parseInt(dataset[10].Asia) +
-    parseInt(dataset[10].SouthAmerica);
+    parseInt(dataset[10]?.US) +
+    parseInt(dataset[10]?.Europe) +
+    parseInt(dataset[10]?.Asia) +
+    parseInt(dataset[10]?.SouthAmerica);
 
   const decTotal =
-    parseInt(dataset[11].US) +
-    parseInt(dataset[11].Europe) +
-    parseInt(dataset[11].Asia) +
-    parseInt(dataset[11].SouthAmerica);
+    parseInt(dataset[11]?.US) +
+    parseInt(dataset[11]?.Europe) +
+    parseInt(dataset[11]?.Asia) +
+    parseInt(dataset[11]?.SouthAmerica);
 
   useLayoutEffect(() => {
     createChart();
@@ -180,7 +180,7 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow }) {
 
     const y = d3
       .scaleLinear()
-      .domain([0, Math.max(janTotal, febTotal, marTotal, aprTotal, mayTotal)])
+      .domain([0, Math.max(janTotal, febTotal, marTotal, aprTotal, mayTotal, juneTotal, julyTotal, augTotal, sepTotal, octTotal, novTotal, decTotal)])
       .range([height, 0]);
     svg.append("g").attr("class", "y-axis").call(d3.axisLeft(y).ticks(8));
 

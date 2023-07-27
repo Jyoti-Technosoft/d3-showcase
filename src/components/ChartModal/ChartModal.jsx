@@ -1,22 +1,19 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-import PieChart from "../Chart/PieChart/PieChart";
-
-import MultiLevelDonutChart from "../Chart/DonutChart/MultiLevelDonutChart";
 import { useContext } from "react";
 import ViewDataGroup from "../ChartCrud/GroupChartCrud/ViewDataGroup";
 import { CustomContext } from "../CustomContext";
 import AddDataGroup from "../ChartCrud/GroupChartCrud/AddDataGroup";
 import ViewDataStacked from "../ChartCrud/StackedChartCrud/ViewDataStacked";
 import AddDataStacked from "../ChartCrud/StackedChartCrud/AddDataStacked";
-import MapChart from "../Chart/MapChart/MapChart";
 import AddDataPie from "../ChartCrud/PieChartCrud/AddDataPie";
 import ViewDataPie from "../ChartCrud/PieChartCrud/ViewDataPie";
 import ViewDataCandle from "../ChartCrud/CandleStickChartCrud/ViewDataCandle";
 import AddDataCandle from "../ChartCrud/CandleStickChartCrud/AddDataCandle";
 import "./ChartModal.scss";
-import IndiaMapChart from "../Chart/MapChart/IndiaMap/IndiaMapChart";
+import AddDataMap from "../ChartCrud/IndiaMapChartCrud/AddDataMap";
+import ViewDataMap from "../ChartCrud/IndiaMapChartCrud/ViewDataMap";
 
 export const OpenChartModal = ({
   show,
@@ -30,6 +27,7 @@ export const OpenChartModal = ({
     setOpenCandleCrudModal,
     setOpenStackedCrudModal,
     setOpenPieCrudModal,
+    stateMap, setStateMap
   } = useContext(CustomContext);
 
   const openCrud = () => {
@@ -46,6 +44,11 @@ export const OpenChartModal = ({
       case "pieChart":
         setOpenPieCrudModal(true);
         break;
+      case "mapChart":
+          setStateMap({
+            ...stateMap,
+            openMapCrudModal: true,
+          });
       default:
         null;
     }
@@ -92,7 +95,7 @@ export const OpenChartModal = ({
               </div>
             </div>
           </div>
-          <div className="d-flex align-items-center">{chartType}</div>
+          <div className="d-flex align-items-center b-1">{chartType}</div>
           <div>
             <Button className="mt-3" onClick={onHide}>
               Close
@@ -356,6 +359,65 @@ export function CrudCandleChartModal(props) {
   );
 }
 
+export function CrudMapChartModal(props) {
+  const {
+    addCandleCrudModal,
+    setAddCandleCrudModal,
+    setUpdateValue,
+    setIsEdit,
+  } = useContext(CustomContext);
+
+  const openAddGroup = () => {
+    setAddCandleCrudModal(true);
+    setUpdateValue("");
+    setIsEdit(false);
+  };
+
+  const backToView = () => {
+    setAddCandleCrudModal(false);
+  };
+
+  return (
+    <Modal
+      {...props}
+      dialogClassName="my-crud-modal"
+      fullscreen={true}
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Body
+        className="d-flex align-items-center flex-column"
+        style={{ height: "inherit" }}
+      >
+        <div className="header-crud w-100 d-flex justify-content-between">
+          <h4>Crud India Map</h4>
+          {addCandleCrudModal ? (
+            <div onClick={backToView}>
+              <span role="button" className="fs-4">
+                Back
+              </span>
+            </div>
+          ) : null}
+        </div>
+        <div className="w-100 body-crud my-2">
+          {addCandleCrudModal ? (
+            <AddDataMap />
+          ) : (
+            <ViewDataMap hide={props.onHide} />
+          )}
+        </div>
+        <Button
+          className="mt-3"
+          style={{ height: "7%" }}
+          onClick={props.onHide}
+        >
+          Close
+        </Button>
+      </Modal.Body>
+    </Modal>
+  );
+}
+
 export function CrudPieChartModal(props) {
   const { setUpdateValue, setIsEdit, addPieCrudModal, setAddPieCrudModal } =
     useContext(CustomContext);
@@ -413,89 +475,6 @@ export function CrudPieChartModal(props) {
           Close
         </Button>
       </Modal.Body>
-    </Modal>
-  );
-}
-
-export function DonutChartModal(props) {
-  return (
-    <Modal
-      {...props}
-      size="xl"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Indian Cities With Population (In Millions)
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body className="d-flex justify-content-center">
-        <MultiLevelDonutChart
-          chartId="donutchart2"
-          cardwidth="30vw"
-          tooltipShow={true}
-          zoomOn={true}
-          isModal={true}
-        />
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
-
-export function PieChartModal(props) {
-  return (
-    <Modal
-      {...props}
-      size="xl"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Countries With Population (in Millions)</Modal.Title>
-      </Modal.Header>
-      <Modal.Body className="d-flex justify-content-center">
-        <PieChart
-          className="d-flex justify-content-center pie-size"
-          chartId="pie2"
-          parentWidth="30vw"
-          parentHeight="30vw"
-          tooltipShow={true}
-          isModal={true}
-          onClickOpenInside={true}
-        />
-      </Modal.Body>
-      <Modal.Footer className="justify-content-between">
-        <p>Click on Country name to view more details</p>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
-
-export function MapChartModal(props) {
-  return (
-    <Modal
-      {...props}
-      size="xl"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          India Map with Population (In Millions)
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body className="d-flex justify-content-center">
-        {/* <MapChart chartId="map2" toolTipShow={true} parentWidth="50vw" /> */}
-        <IndiaMapChart chartId="indiamap2" toolTipShow={true} parentWidth="350" parentHeight="350" isModal={true} />
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
     </Modal>
   );
 }

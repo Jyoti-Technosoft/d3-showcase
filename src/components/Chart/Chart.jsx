@@ -10,6 +10,7 @@ import {
   CrudCandleChartModal,
   CrudDonutChartModal,
   CrudGroupChartModal,
+  CrudMapChartModal,
   CrudPieChartModal,
   CrudStackedChartModal,
   DonutChartModal,
@@ -42,6 +43,7 @@ function Chart() {
     setOpenDonutCrudModal,
     openCandleCrudModal,
     setOpenCandleCrudModal,
+    stateMap, setStateMap
   } = useContext(CustomContext);
 
   const openDonutModel = () => {
@@ -190,25 +192,69 @@ function Chart() {
             <CandleStickChart
               chartId="candle2"
               parentWidth="75vw"
-              parentHeight="70vh"
+              parentHeight="65vh"
             />
           }
         />
       ) : null}
 
       {pieModel ? (
-        <PieChartModal show={pieModel} onHide={() => setPieModel(false)} />
+        <OpenChartModal
+          show={pieModel}
+          onHide={() => setPieModel(false)}
+          chartTitle="Countries With Population (in Millions)"
+          chartText2="Click on Country name to view more details"
+          // crudModalType="pieChart"
+          chartType={
+            <PieChart
+              className="d-flex justify-content-center pie-size"
+              chartId="pie2"
+              parentWidth="30vw"
+              parentHeight="30vw"
+              tooltipShow={true}
+              isModal={true}
+              onClickOpenInside={true}
+            />
+          }
+        />
       ) : null}
 
       {donutModel ? (
-        <DonutChartModal
+        <OpenChartModal
           show={donutModel}
           onHide={() => setDonutModel(false)}
+          chartTitle="Indian Cities With Population (In Millions)"
+          chartText2=""
+          // crudModalType="donutChart"
+          chartType={
+            <MultiLevelDonutChart
+              chartId="donutchart2"
+              cardwidth="30vw"
+              tooltipShow={true}
+              zoomOn={true}
+              isModal={true}
+            />
+          }
         />
       ) : null}
 
       {mapModel ? (
-        <MapChartModal show={mapModel} onHide={() => setMapModel(false)} />
+        <OpenChartModal
+          show={mapModel}
+          onHide={() => setMapModel(false)}
+          chartTitle="India Map with Population (In Millions)"
+          chartText2=""
+          crudModalType="mapChart"
+          chartType={
+            <IndiaMapChart
+              chartId="indiamap2"
+              toolTipShow={true}
+              parentWidth="350"
+              parentHeight="350"
+              isModal={true}
+            />
+          }
+        />
       ) : null}
 
       {openGroupCrudModal ? (
@@ -243,6 +289,13 @@ function Chart() {
         <CrudCandleChartModal
           show={openCandleCrudModal}
           onHide={() => setOpenCandleCrudModal(false)}
+        />
+      ) : null}
+
+      {stateMap.openMapCrudModal ? (
+        <CrudMapChartModal
+          show={stateMap.openMapCrudModal}
+          onHide={() => setStateMap({ ...stateMap, openMapCrudModal: false, })}
         />
       ) : null}
 
