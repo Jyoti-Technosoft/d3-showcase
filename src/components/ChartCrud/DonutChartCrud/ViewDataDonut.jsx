@@ -4,7 +4,7 @@ import DeleteModalPie from "./DeleteModalDonut";
 
 import "./ViewDataDonut.scss";
 
-const ViewDataPie = () => {
+const ViewDataDonut = () => {
   const [show, setShow] = useState(false);
   const {
     crudData,
@@ -12,8 +12,8 @@ const ViewDataPie = () => {
     showToast,
     setUpdateValue,
     setIsEdit,
-    pieDataSet,
-    setAddPieCrudModal,
+    donutDataSet,
+    setAddDonutCrudModal,
   } = useContext(CustomContext);
 
   const elementRef = useRef();
@@ -24,7 +24,7 @@ const ViewDataPie = () => {
   const editData = (val) => {
     setUpdateValue(val);
     setIsEdit(true);
-    setAddPieCrudModal(true);
+    setAddDonutCrudModal(true);
   };
 
   const [arrowDisableLeft, setArrowDisableLeft] = useState(true);
@@ -91,7 +91,7 @@ const ViewDataPie = () => {
             <thead>
               <tr className="table-header">
                 <th className="p-2 text-center">No.</th>
-                <th className="p-2 text-center">Country</th>
+                <th className="p-2 text-center">Cities</th>
                 <th className="p-2 text-center">Value</th>
                 <th colSpan="2" className="p-2 text-center">
                   Action
@@ -99,31 +99,40 @@ const ViewDataPie = () => {
               </tr>
             </thead>
             <tbody>
-              {pieDataSet?.map((val, index) => {
-                return (
-                  <tr key={index}>
-                    <td className="p-2 text-center">{index + 1}</td>
-                    <td className="p-2 text-center">{val.country}</td>
-                    <td className="p-2 text-center">{val.value}</td>
-                    <td className="p-2 text-center text-info">
-                      <p role="button" onClick={() => editData(val)}>
-                        Edit
-                      </p>
-                    </td>
-                    <td className="p-2 text-center text-danger">
-                      <p
-                        role="button"
-                        onClick={() => {
-                          setDeleteId(val.id);
-                          handleShow();
-                        }}
-                      >
-                        Delete
-                      </p>
+              {donutDataSet?.map((locationData, locationIndex) => (
+                <React.Fragment key={`location-${locationIndex}`}>
+                  <tr>
+                    <td colSpan="5">
+                      <hr className="my-1" />
+                      <div className="text-center" style={{background: '#c0c3c7'}}>Layer {locationIndex + 1}</div>
+                      <hr className="my-1" />
                     </td>
                   </tr>
-                );
-              })}
+                  {locationData?.map((data, index) => (
+                    <tr key={`location-${locationIndex}-${index}`}>
+                      <td className="p-2 text-center">{index + 1}</td>
+                      <td className="p-2 text-center">{data.place}</td>
+                      <td className="p-2 text-center">{data.count}</td>
+                      <td className="p-2 text-center text-info">
+                        <p role="button" onClick={() => { editData(data)}}>
+                          Edit
+                        </p>
+                      </td>
+                      <td className="p-2 text-center text-danger">
+                        <p
+                          role="button"
+                          onClick={() => {
+                            setDeleteId(data.id);
+                            handleShow();
+                          }}
+                        >
+                          Delete
+                        </p>
+                      </td>
+                    </tr>
+                  ))}
+                </React.Fragment>
+              ))}
             </tbody>
           </table>
         </div>
@@ -158,4 +167,4 @@ const ViewDataPie = () => {
   );
 };
 
-export default ViewDataPie;
+export default ViewDataDonut;

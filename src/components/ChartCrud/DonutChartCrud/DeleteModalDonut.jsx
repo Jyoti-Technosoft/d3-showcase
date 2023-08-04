@@ -4,12 +4,12 @@ import Modal from "react-bootstrap/Modal";
 import { CustomContext } from "src/components/CustomContext";
 
 function DeleteModalPie({ show, setShow, handleClose }) {
-  const { deleteId, setShowToast, setPieDataSet, setUpdateDataPie } =
+  const { deleteId, setShowToast, setDonutDataSet, setUpdateDataDonut } =
     useContext(CustomContext);
 
   const deleteData = () => {
-    setPieDataSet((current) => current.filter((ele) => ele.id !== deleteId));
-    setUpdateDataPie(true);
+    setDonutDataSet((current) => current.map((val)=> val.filter((ele) => ele.id !== deleteId)));
+    setUpdateDataDonut(true);
     setShow(false);
     setShowToast({ show: true, msg: "Delete Successfully", type: "success" });
   };

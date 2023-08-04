@@ -113,34 +113,90 @@ export const groupData = [
 ];
 
 export const pieData = [
-  { id: "1", country: "US", value: "332.0" },
-  { id: "2", country: "China", value: "1425.7" },
-  { id: "3", country: "Japan", value: "127.7" },
-  { id: "4", country: "Germany", value: "83.2" },
-  { id: "5", country: "India", value: "1425.8" },
+  {
+    id: "1",
+    country: "US",
+    value: "332.0",
+    subState: [
+      { id: "101", country: "California", value: "39.5" },
+      { id: "102", country: "Texas", value: "29.1" },
+      { id: "103", country: "Florida", value: "21.5" },
+      { id: "104", country: "New York", value: "20.2" },
+      { id: "105", country: "Ohio", value: "11.7" },
+    ],
+  },
+  {
+    id: "2",
+    country: "China",
+    value: "1425.7",
+    subState: [
+      { id: "201", country: "Guangdong", value: "115" },
+      { id: "202", country: "Shandong", value: "110" },
+      { id: "203", country: "Henan", value: "95" },
+      { id: "204", country: "Sichuan", value: "83" },
+      { id: "205", country: "Jiangsu", value: "80" },
+    ],
+  },
+  {
+    id: "3",
+    country: "Indonesia",
+    value: "273.8",
+    subState: [
+      { id: "301", country: "Jawa Barat", value: "48" },
+      { id: "302", country: "Jawa Timur", value: "40" },
+      { id: "303", country: "Jawa Tengah", value: "34" },
+      { id: "304", country: "Sumatera", value: "14" },
+      { id: "305", country: "Banten", value: "12" },
+    ],
+  },
+  {
+    id: "4",
+    country: "Brazil",
+    value: "213.4",
+    subState: [
+      { id: "401", country: "São Paulo", value: "46" },
+      { id: "402", country: "Minas Gerais", value: "21" },
+      { id: "403", country: "Rio de Janeiro", value: "17" },
+      { id: "404", country: "Bahia", value: "15" },
+      { id: "405", country: "Paraná", value: "11" },
+    ],
+  },
+  {
+    id: "5",
+    country: "India",
+    value: "1425.8",
+    subState: [
+      { id: "501", country: "Gujarat", value: "63" },
+      { id: "502", country: "Rajasthan", value: "78" },
+      { id: "503", country: "Uttar Pradesh", value: "230" },
+      { id: "504", country: "Tamil Nadu", value: "78" },
+      { id: "505", country: "Maharastra", value: "120" },
+    ],
+  },
+  
 ];
 
 export const donutData = [
   [
-    { count: 6.5, place: "Surat" },
-    { count: 2.4, place: "Vadodara" },
-    { count: 1.2, place: "Valsad" },
-    { count: 7.2, place: "Ahmedabad" },
-    { count: 1.7, place: "Rajkot" },
+    { id: 1, count: 6.5, place: "Surat" },
+    { id: 2, count: 2.4, place: "Vadodara" },
+    { id: 3, count: 1.2, place: "Valsad" },
+    { id: 4, count: 7.2, place: "Ahmedabad" },
+    { id: 5, count: 1.7, place: "Rajkot" },
   ],
   [
-    { count: 25, place: "Lucknow" },
-    { count: 15, place: "Varanasi" },
-    { count: 25, place: "Nodai" },
-    { count: 15, place: "Ayodhya" },
-    { count: 45, place: "Prayagraj" },
+    { id: 6, count: 25, place: "Lucknow" },
+    { id: 7, count: 15, place: "Varanasi" },
+    { id: 8, count: 25, place: "Nodai" },
+    { id: 9, count: 15, place: "Ayodhya" },
+    { id: 10, count: 45, place: "Prayagraj" },
   ],
   [
-    { count: 15, place: "Delhi" },
-    { count: 25, place: "Mumbai" },
-    { count: 10, place: "Kolkata" },
-    { count: 35, place: "Chennai" },
-    { count: 15, place: "Pune" },
+    { id: 11, count: 15, place: "Delhi" },
+    { id: 12, count: 25, place: "Mumbai" },
+    { id: 13, count: 10, place: "Kolkata" },
+    { id: 14, count: 35, place: "Chennai" },
+    { id: 15, count: 15, place: "Pune" },
   ],
 ];
 

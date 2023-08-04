@@ -13,7 +13,7 @@ function MultiLevelDonutChart({
 }) {
   const eleRef = useRef();
 
-  const { donutDataSet } = useContext(CustomContext);
+  const { donutDataSet, updateDataDonut } = useContext(CustomContext);
 
   const dataset = donutDataSet;
 
@@ -29,6 +29,12 @@ function MultiLevelDonutChart({
     createChart();
     initZoom();
   }, []);
+
+  if (updateDataDonut) {
+    d3.select(`#${chartId} svg`).remove();
+    d3.select(`#${chartId} .tooltip`).remove();
+    createChart();
+  }
 
   function createChart() {
     const width = eleRef?.current?.offsetWidth;

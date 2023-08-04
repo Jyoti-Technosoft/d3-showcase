@@ -204,7 +204,7 @@ function Chart() {
           onHide={() => setPieModel(false)}
           chartTitle="Countries With Population (in Millions)"
           chartText2="Click on Country name to view more details"
-          // crudModalType="pieChart"
+          crudModalType="pieChart"
           chartType={
             <PieChart
               className="d-flex justify-content-center pie-size"
@@ -225,7 +225,7 @@ function Chart() {
           onHide={() => setDonutModel(false)}
           chartTitle="Indian Cities With Population (In Millions)"
           chartText2=""
-          // crudModalType="donutChart"
+          crudModalType="donutChart"
           chartType={
             <MultiLevelDonutChart
               chartId="donutchart2"

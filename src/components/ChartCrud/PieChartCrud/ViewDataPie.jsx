@@ -101,7 +101,12 @@ const ViewDataPie = () => {
             <tbody>
               {pieDataSet?.map((val, index) => {
                 return (
-                  <tr key={index}>
+                  <React.Fragment key={index}>
+                  <tr>
+                    <td colSpan="5" style={{background: '#c0c3c7'}}>
+                    </td>
+                  </tr>
+                  <tr>
                     <td className="p-2 text-center">{index + 1}</td>
                     <td className="p-2 text-center">{val.country}</td>
                     <td className="p-2 text-center">{val.value}</td>
@@ -122,10 +127,34 @@ const ViewDataPie = () => {
                       </p>
                     </td>
                   </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                    {val.subState.map((subVal, subIndex) => (
+                    <tr key={`${index}-${subIndex}`} className="sub-state-row">
+                      <td className="p-2 text-center"></td>
+                      <td className="p-2 text-center">{subVal.country}</td>
+                      <td className="p-2 text-center">{subVal.value}</td>
+                      <td className="p-2 text-center text-info">
+                        {/* <p role="button" onClick={() => editData(subVal)}>
+                          Edit
+                        </p> */}
+                      </td>
+                      <td className="p-2 text-center text-danger">
+                        {/* <p
+                          role="button"
+                          onClick={() => {
+                            setDeleteId(subVal.id);
+                            handleShow();
+                          }}
+                        >
+                          Delete
+                        </p> */}
+                      </td>
+                    </tr>
+                  ))}
+                </React.Fragment>
+              );
+            })}
+          </tbody>
+        </table>
         </div>
         <button
           onClick={() => {

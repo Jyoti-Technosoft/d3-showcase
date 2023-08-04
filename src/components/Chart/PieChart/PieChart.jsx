@@ -11,72 +11,9 @@ function PieChart({
   isModal,
   onClickOpenInside,
 }) {
-  const { updateDataPie } = useContext(CustomContext);
+  const { updateDataPie, pieDataSet } = useContext(CustomContext);
 
   const pieEle = useRef();
-
-  const pieDataSet = [
-    {
-      id: "1",
-      country: "US",
-      value: "332.0",
-      subState: [
-        { id: "1", state: "California", value: "39.5" },
-        { id: "2", state: "Texas", value: "29.1" },
-        { id: "3", state: "Florida", value: "21.5" },
-        { id: "4", state: "New York", value: "20.2" },
-        { id: "5", state: "Ohio", value: "11.7" },
-      ],
-    },
-    {
-      id: "2",
-      country: "China",
-      value: "1425.7",
-      subState: [
-        { id: "1", state: "Guangdong", value: "115" },
-        { id: "2", state: "Shandong", value: "110" },
-        { id: "3", state: "Henan", value: "95" },
-        { id: "4", state: "Sichuan", value: "83" },
-        { id: "5", state: "Jiangsu", value: "80" },
-      ],
-    },
-    {
-      id: "3",
-      country: "Indonesia",
-      value: "273.8",
-      subState: [
-        { id: "1", state: "Jawa Barat", value: "48" },
-        { id: "2", state: "Jawa Timur", value: "40" },
-        { id: "3", state: "Jawa Tengah", value: "34" },
-        { id: "4", state: "Sumatera", value: "14" },
-        { id: "5", state: "Banten", value: "12" },
-      ],
-    },
-    {
-      id: "4",
-      country: "Brazil",
-      value: "213.4",
-      subState: [
-        { id: "1", state: "São Paulo", value: "46" },
-        { id: "2", state: "Minas Gerais", value: "21" },
-        { id: "3", state: "Rio de Janeiro", value: "17" },
-        { id: "4", state: "Bahia", value: "15" },
-        { id: "5", state: "Paraná", value: "11" },
-      ],
-    },
-    {
-      id: "5",
-      country: "India",
-      value: "1425.8",
-      subState: [
-        { id: "1", state: "Gujarat", value: "63" },
-        { id: "2", state: "Rajasthan", value: "78" },
-        { id: "3", state: "Uttar Pradesh", value: "230" },
-        { id: "4", state: "Tamil Nadu", value: "78" },
-        { id: "5", state: "Maharastra", value: "120" },
-      ],
-    },
-  ];
 
   useEffect(() => {
     createPieChart(pieDataSet);
@@ -84,47 +21,24 @@ function PieChart({
 
   if (updateDataPie) {
     d3.select(`#${chartId} svg`).remove();
+    d3.select(`#${chartId} .tooltip`).remove();
     createPieChart(pieDataSet);
   }
 
-  function myFunc(country) {
+  function createLayer2(data) {
     d3.select(`#${chartId} svg`).remove();
     d3.select(`#${chartId} .tooltip`).remove();
 
-    switch (country) {
-      case "US":
-        createInsidePieChart(
-          [{ id: "1", scountry: "US", value: "25" }],
-          pieDataSet[0].subState
-        );
-        break;
-      case "China":
-        createInsidePieChart(
-          [{ id: "1", scountry: "China", value: "25" }],
-          pieDataSet[1].subState
-        );
-        break;
-      case "Indonesia":
-        createInsidePieChart(
-          [{ id: "1", scountry: "Indonesia", value: "25" }],
-          pieDataSet[2].subState
-        );
-        break;
-      case "Brazil":
-        createInsidePieChart(
-          [{ id: "1", scountry: "Brazil", value: "25" }],
-          pieDataSet[3].subState
-        );
-        break;
-      case "India":
-        createInsidePieChart(
-          [{ id: "1", scountry: "India", value: "25" }],
-          pieDataSet[4].subState
-        );
-        break;
-      default:
-        createPieChart(pieDataSet);
-    }
+    createInsidePieChart(
+      [{ id: data.id, scountry: data.country, value: data.value }],
+      data.subState
+    );
+  }
+
+  function backToLayer1() {
+    d3.select(`#${chartId} svg`).remove();
+    d3.select(`#${chartId} .tooltip`).remove();
+    createPieChart(pieDataSet)
   }
 
   function createPieChart(chartData) {
@@ -187,7 +101,7 @@ function PieChart({
 
     if (onClickOpenInside) {
       slices.on("click", function (event, d) {
-        myFunc(d.data.country);
+        createLayer2(d.data);
       });
     }
 
@@ -278,7 +192,7 @@ function PieChart({
       slice1
         .on("mouseover", function (event, d) {
           tooltip
-            .html(`States: ${d.data.state} <br> Population: ${d.data.value} M`)
+            .html(`States: ${d.data.country} <br> Population: ${d.data.value} M`)
             .style("opacity", 1);
         })
         .on("mousemove", function (event) {
@@ -296,7 +210,7 @@ function PieChart({
       .attr("transform", function (d) {
         return `translate(${arc.centroid(d)})`;
       })
-      .text((d) => d.data.state)
+      .text((d) => d.data.country)
       .style("text-anchor", "middle")
       .style("pointer-events", "none")
       .style("font-size", 12);
@@ -329,8 +243,8 @@ function PieChart({
       .style("pointer-events", "none")
       .style("font-size", 12);
 
-    arcs2.on("click", function (event, d) {
-      myFunc(d.data.country);
+    arcs2.on("click", function () {
+      backToLayer1();
     });
   }
 

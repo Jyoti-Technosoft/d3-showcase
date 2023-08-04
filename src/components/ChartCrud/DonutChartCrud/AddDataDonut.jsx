@@ -3,10 +3,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { CustomContext } from "src/components/CustomContext";
 
-import "./AddDataPie.scss";
+import "./AddDataDonut.scss";
 
 const addSchema = Yup.object({
-  country: Yup.string()
+  place: Yup.string()
     .min(2, "Atleast 2 Character")
     .max(25, "Character less then 25")
     .required("Please Enter month"),
@@ -18,98 +18,121 @@ const addSchema = Yup.object({
     .moreThan(-1, "Negative values not accepted"),
 });
 
-const AddDataPie = () => {
+const AddDataDonut = () => {
   const {
     setShowToast,
     isEdit,
     updateValue,
-    pieDataSet,
-    setPieDataSet,
-    setUpdateDataPie,
-    setAddPieCrudModal,
+    donutDataSet,
+    setDonutDataSet,
+    setUpdateDataDonut,
+    setAddDonutCrudModal,
   } = useContext(CustomContext);
 
-  const upd_obj = pieDataSet?.findIndex((ele) => ele?.id === updateValue?.id);
-
   const addInitialValues = {
-    country: pieDataSet[upd_obj]?.country || "",
-    value: pieDataSet[upd_obj]?.value || "",
-    id: pieDataSet[upd_obj]?.id || "",
+    count: updateValue?.count || "",
+    place: updateValue?.place || "",
+    id: updateValue?.id || "",
+    layer: "",
   };
 
   const addDataFormik = useFormik({
     initialValues: addInitialValues,
-    validationSchema: addSchema,
+    // validationSchema: addSchema,
     onSubmit: (value, action) => {
       if (isEdit) {
-        let updatedArray = pieDataSet.map((obj) =>
+        let updatedArray = donutDataSet.map((val) => val.map((obj) =>
           obj?.id == value.id ? value : obj
-        );
-        setPieDataSet(updatedArray);
+        ));
+        setDonutDataSet(updatedArray);
         setShowToast({
           show: true,
           msg: "Record Updated Successfully",
           type: "success",
         });
-        setUpdateDataPie(true);
+        setUpdateDataDonut(true);
       } else {
-        const newId = pieDataSet.length + 1;
-        setPieDataSet((previous) => [
-          ...previous,
-          { id: newId, country: value.country, value: value.value },
-        ]);
+        let indexVal = Number(value.layer);
+        const newId = donutDataSet[indexVal].length + 1;
+        donutDataSet[indexVal].push({id: newId, count: value.count, place: value.place});
         setShowToast({
           show: true,
           msg: "Record Added Successfully",
           type: "success",
         });
-        setUpdateDataPie(true);
+        setUpdateDataDonut(true);
       }
       action.resetForm();
-      setAddPieCrudModal(false);
+      setAddDonutCrudModal(false);
     },
   });
 
   return (
     <>
       <form className="px-3" onSubmit={addDataFormik.handleSubmit}>
+
+        {
+          isEdit ? null
+            : 
+            <div className="mb-3">
+              <label className="form-label" htmlFor="layer">
+                Layer
+              </label>
+              <select id="layer" name="layer" className="ms-3 px-3 py-1 text-dark"
+                value={addDataFormik.values.layer}
+                onChange={addDataFormik.handleChange}
+              >
+                <option value="nooption">-----</option>
+                <option value="0">Layer 1</option>
+                <option value="1">Layer 2</option>
+                <option value="2">Layer 3</option>
+              </select>
+              <br />
+              {addDataFormik.errors.place && addDataFormik.touched.place ? (
+                <p className="text-danger text-center mt-2">
+                  {addDataFormik.errors.place}
+                </p>
+              ) : null}
+            </div>
+        }
+
         <label className="form-label" htmlFor="value">
-          Country
+          City
         </label>
         <input
           className="input-style p-2 w-100 border-0 my-2"
           type="text"
-          id="country"
-          name="country"
-          value={addDataFormik.values.country}
+          id="place"
+          name="place"
+          value={addDataFormik.values.place}
           onChange={addDataFormik.handleChange}
           onBlur={addDataFormik.handleBlur}
           placeholder="Enter Country"
           autoComplete="off"
         />
-        {addDataFormik.errors.country && addDataFormik.touched.country ? (
+        {addDataFormik.errors.place && addDataFormik.touched.place ? (
           <p className="text-danger text-center mt-2">
-            {addDataFormik.errors.country}
+            {addDataFormik.errors.place}
           </p>
         ) : null}
 
         <label className="form-label" htmlFor="value">
-          Value
+          Count
         </label>
         <input
           className="input-style p-2 w-100 border-0 my-2"
           type="number"
-          id="value"
-          name="value"
-          value={addDataFormik.values.value}
+          id="count"
+          name="count"
+          value={addDataFormik.values.count}
           onChange={addDataFormik.handleChange}
           onBlur={addDataFormik.handleBlur}
           placeholder="Enter Value"
           autoComplete="off"
         />
-        {addDataFormik.errors.value && addDataFormik.touched.value ? (
+        {addDataFormik.errors.count && addDataFormik.touched.count ? (
           <p className="text-danger text-center mt-2">
-            {addDataFormik.errors.value}
+            {addDataFormik.errors.count}
           </p>
         ) : null}
 
@@ -127,4 +150,4 @@ const AddDataPie = () => {
   );
 };
 
-export default AddDataPie;
+export default AddDataDonut;
