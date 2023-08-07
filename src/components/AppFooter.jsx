@@ -8,9 +8,10 @@ const AppFooter = () => {
 
   return (
     <CFooter className="d-flex justify-content-center">
-      <div>
+      <div className='text-center'>
         <span className="ms-1">&copy; {currentYear}</span>
-        <a rel="noopener noreferrer"> D3 Showcase</a>
+        <span> Jyoti Technosoft LLP. All Rights Reserved by </span>
+        <a href='https://www.jyotitechnosoft.com' target='_blank' className='text-dark' style={{textDecoration: "none"}}>https://www.jyotitechnosoft.com</a>
       </div>
     </CFooter>
   )

@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import { CustomContext } from "src/components/CustomContext";
 
-const CandleStickChart = ({ chartId, parentWidth, parentHeight }) => {
+const CandleStickChart = ({ chartId, parentWidth, parentHeight, borderSize }) => {
   const chartDiv = useRef();
   const { candleDataSet, updateDataCandle } = useContext(CustomContext);
 
@@ -181,7 +181,7 @@ const CandleStickChart = ({ chartId, parentWidth, parentHeight }) => {
         style={{
           width: parentWidth,
           height: parentHeight,
-          boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+          border: borderSize,
         }}
       ></div>
     </>

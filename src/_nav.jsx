@@ -10,9 +10,21 @@ const _nav = [
   },
   {
     component: CNavItem,
-    name: "Chart",
+    name: "Charts",
     to: "/dashboard",
     icon: <CIcon icon={cilChartPie} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: "About Charts",
+    to: "/aboutchart",
+    icon: <CIcon icon={cilChartPie} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: "About Us",
+    to: "/aboutus",
+    icon: "",
   },
 ];
 

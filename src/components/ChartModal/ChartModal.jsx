@@ -162,11 +162,7 @@ export function CrudGroupChartModal(props) {
             <ViewDataGroup hide={props.onHide} />
           )}
         </div>
-        <Button
-          className="mt-3"
-          style={{ height: "7%" }}
-          onClick={props.onHide}
-        >
+        <Button className="mt-3" onClick={props.onHide}>
           Close
         </Button>
       </Modal.Body>
@@ -227,11 +223,7 @@ export function CrudStackedChartModal(props) {
             <ViewDataStacked hide={props.onHide} />
           )}
         </div>
-        <Button
-          className="mt-3"
-          style={{ height: "7%" }}
-          onClick={props.onHide}
-        >
+        <Button className="mt-3" onClick={props.onHide}>
           Close
         </Button>
       </Modal.Body>
@@ -289,11 +281,7 @@ export function CrudDonutChartModal(props) {
             <ViewDataDonut hide={props.onHide} />
           )}
         </div>
-        <Button
-          className="mt-3"
-          style={{ height: "7%" }}
-          onClick={props.onHide}
-        >
+        <Button className="mt-3" onClick={props.onHide}>
           Close
         </Button>
       </Modal.Body>
@@ -354,11 +342,7 @@ export function CrudCandleChartModal(props) {
             <ViewDataCandle hide={props.onHide} />
           )}
         </div>
-        <Button
-          className="mt-3"
-          style={{ height: "7%" }}
-          onClick={props.onHide}
-        >
+        <Button className="mt-3" onClick={props.onHide}>
           Close
         </Button>
       </Modal.Body>
@@ -414,10 +398,7 @@ export function CrudMapChartModal(props) {
           )}
         </div>
         <Button
-          className="mt-3"
-          style={{ height: "7%" }}
-          onClick={props.onHide}
-        >
+          className="mt-3" onClick={props.onHide}>
           Close
         </Button>
       </Modal.Body>
@@ -474,11 +455,7 @@ export function CrudPieChartModal(props) {
             <ViewDataPie hide={props.onHide} />
           )}
         </div>
-        <Button
-          className="mt-3"
-          style={{ height: "7%" }}
-          onClick={props.onHide}
-        >
+        <Button className="mt-3" onClick={props.onHide}>
           Close
         </Button>
       </Modal.Body>

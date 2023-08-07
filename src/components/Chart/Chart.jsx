@@ -119,6 +119,7 @@ function Chart() {
               parentWidth="350px"
               parentHeight="250px"
               tooltipShow={false}
+              showLegend={true}
             />
           </div>
         </div>
@@ -177,6 +178,7 @@ function Chart() {
               parentWidth="75vw"
               parentHeight="65vh"
               tooltipShow={true}
+              showLegend={true}
             />
           }
         />
