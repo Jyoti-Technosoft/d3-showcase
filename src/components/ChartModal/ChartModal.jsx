@@ -16,6 +16,8 @@ import AddDataMap from "../ChartCrud/IndiaMapChartCrud/AddDataMap";
 import ViewDataMap from "../ChartCrud/IndiaMapChartCrud/ViewDataMap";
 import ViewDataDonut from "../ChartCrud/DonutChartCrud/ViewDataDonut";
 import AddDataDonut from "../ChartCrud/DonutChartCrud/AddDataDonut";
+import ViewDataSunBrust from "../ChartCrud/SunBrustChartCrud/ViewDataSunBrust";
+import AddDataSunBrust from "../ChartCrud/SunBrustChartCrud/AddDataSunBrust";
 
 export const OpenChartModal = ({
   show,
@@ -30,6 +32,7 @@ export const OpenChartModal = ({
     setOpenStackedCrudModal,
     setOpenDonutCrudModal,
     setOpenPieCrudModal,
+    setOpenCrudModal,
     stateMap, setStateMap
   } = useContext(CustomContext);
 
@@ -49,6 +52,9 @@ export const OpenChartModal = ({
         break;
       case "donutChart":
         setOpenDonutCrudModal(true);
+        break;
+      case "sunBrustChart":
+        setOpenCrudModal(true);
         break;
       case "mapChart":
         setStateMap({
@@ -113,18 +119,22 @@ export const OpenChartModal = ({
   );
 };
 
-export function CrudGroupChartModal(props) {
-  const { addGroupCrudModal, setAddGroupCrudModal, setUpdateValue, setIsEdit } =
-    useContext(CustomContext);
+export const CrudGroupChartModal = (props) => {
+  const {
+    addStackedCrudModal,
+    setAddStackedCrudModal,
+    setUpdateValue,
+    setIsEdit,
+  } = useContext(CustomContext);
 
   const openAddGroup = () => {
-    setAddGroupCrudModal(true);
+    setAddStackedCrudModal(true);
     setUpdateValue("");
     setIsEdit(false);
   };
 
   const backToView = () => {
-    setAddGroupCrudModal(false);
+    setAddStackedCrudModal(false);
   };
 
   return (
@@ -141,7 +151,7 @@ export function CrudGroupChartModal(props) {
       >
         <div className="header-crud w-100 d-flex justify-content-between">
           <h4>Petrol v/s Diesel (In $USD)</h4>
-          {addGroupCrudModal ? (
+          {addStackedCrudModal ? (
             <div onClick={backToView}>
               <span role="button" className="fs-4">
                 Back
@@ -156,7 +166,7 @@ export function CrudGroupChartModal(props) {
           )}
         </div>
         <div className="w-100 body-crud my-2">
-          {addGroupCrudModal ? (
+          {addStackedCrudModal ? (
             <AddDataGroup />
           ) : (
             <ViewDataGroup hide={props.onHide} />
@@ -279,6 +289,59 @@ export function CrudDonutChartModal(props) {
             <AddDataDonut />
           ) : (
             <ViewDataDonut hide={props.onHide} />
+          )}
+        </div>
+        <Button className="mt-3" onClick={props.onHide}>
+          Close
+        </Button>
+      </Modal.Body>
+    </Modal>
+  );
+}
+
+export function CrudSunBrustChartModal(props) {
+  const { setUpdateValue, setIsEdit, addDataCrud, setaddDataCrud } =
+    useContext(CustomContext);
+
+  const openAddGroup = () => {
+    setaddDataCrud(true);
+    setUpdateValue("");
+    setIsEdit(false);
+  };
+
+  const backToView = () => {
+    setaddDataCrud(false);
+  };
+
+  return (
+    <Modal
+      {...props}
+      dialogClassName="my-crud-modal"
+      fullscreen={true}
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Body
+        className="d-flex align-items-center flex-column"
+        style={{ height: "inherit" }}
+      >
+        <div className="header-crud w-100 d-flex justify-content-between">
+          <h4>Oil Consumption By Country (In Barrels)</h4>
+          {addDataCrud ? (
+            <div onClick={backToView}>
+              <span role="button" className="fs-4">
+                Back
+              </span>
+            </div>
+          ) : (
+            null
+          )}
+        </div>
+        <div className="w-100 body-crud my-2">
+          {addDataCrud ? (
+            <AddDataSunBrust />
+          ) : (
+            <ViewDataSunBrust hide={props.onHide} />
           )}
         </div>
         <Button className="mt-3" onClick={props.onHide}>

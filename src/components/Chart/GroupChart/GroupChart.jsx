@@ -4,7 +4,7 @@ import { CustomContext } from "src/components/CustomContext";
 
 import "./GroupChart.scss";
 
-function GroupChart({ chartId, parentWidth, parentHeight, tooltipShow }) {
+function GroupChart({ chartId, parentWidth, parentHeight, borderSize, tooltipShow, showLabels }) {
   const chartDiv = useRef();
 
   const { groupDataSet, updateDataGroup } = useContext(CustomContext);
@@ -181,7 +181,11 @@ function GroupChart({ chartId, parentWidth, parentHeight, tooltipShow }) {
 
       const g = svg
         .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      if (showLabels) {
+        g.attr("transform", "translate(" + (margin.left + 20) + "," + (margin.top - 30) + ")");
+      } else {
+        g.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      }
 
       svg
         .append("text")
@@ -233,6 +237,25 @@ function GroupChart({ chartId, parentWidth, parentHeight, tooltipShow }) {
       g.append("g")
         .attr("class", "axis axis--y")
         .call(d3.axisLeft(yScale).ticks(8));
+
+      if (showLabels) {
+        svg
+          .append("text")
+          .attr("class", "x-axis-label")
+          .attr("x", width / 2 + 20)
+          .attr("y", height + margin.top + 10)
+          .style("text-anchor", "middle")
+          .text("Months");
+
+        svg
+          .append("text")
+          .attr("class", "y-axis-label")
+          .attr("x", -height / 2 - 20)
+          .attr("y", margin.left - 10)
+          .attr("transform", "rotate(-90)")
+          .style("text-anchor", "middle")
+          .text("Petrol In USD");
+      }
 
       const tooltip = d3
         .select(`#${chartId}`)
@@ -360,7 +383,8 @@ function GroupChart({ chartId, parentWidth, parentHeight, tooltipShow }) {
         style={{
           width: parentWidth,
           height: parentHeight,
-          boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+          border: borderSize,
+          background: 'transparent'
         }}
       ></div>
     </>

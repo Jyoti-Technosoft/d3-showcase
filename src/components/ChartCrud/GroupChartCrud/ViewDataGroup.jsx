@@ -14,6 +14,7 @@ const ViewDataGroup = () => {
         setIsEdit,
         groupDataSet,
         setAddGroupCrudModal,
+        setAddStackedCrudModal
     } = useContext(CustomContext);
 
     const elementRef = useRef();
@@ -24,7 +25,7 @@ const ViewDataGroup = () => {
     const editData = (val) => {
         setUpdateValue(val);
         setIsEdit(true);
-        setAddGroupCrudModal(true);
+        setAddStackedCrudModal(true);
     };
 
     const [arrowDisableLeft, setArrowDisableLeft] = useState(true);

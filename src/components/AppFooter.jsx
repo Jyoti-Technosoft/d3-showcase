@@ -11,7 +11,7 @@ const AppFooter = () => {
       <div className='text-center'>
         <span className="ms-1">&copy; {currentYear}</span>
         <span> Jyoti Technosoft LLP. All Rights Reserved by </span>
-        <a href='https://www.jyotitechnosoft.com' target='_blank' className='text-dark' style={{textDecoration: "none"}}>https://www.jyotitechnosoft.com</a>
+        <a href='https://www.jyotitechnosoft.com' target='_blank' className='text-info' style={{textDecoration: "none"}}>Jyoti Technosoft LLP</a>
       </div>
     </CFooter>
   )

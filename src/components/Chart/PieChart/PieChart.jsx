@@ -55,7 +55,7 @@ function PieChart({
       .append("svg")
       .attr("viewBox", `0 0 ${width} ${height}`)
       .append("g")
-      .attr("transform", `translate(${width / 2}, ${height / 2 - 10})`);
+      .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
     const color = d3
       .scaleOrdinal()

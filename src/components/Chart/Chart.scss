@@ -1,11 +1,33 @@
-.my-card {
-  width: 100%;
-  height: 300px;
-  min-height: 300px;
+.charts-card{
+  width: 350px;
+  height: 270px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 
-.my-col {
-  background-color: aqua;
-  border: 1px solid white;
+.charts2-card{
+  width: 350px;
+  height: 270px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.chart-description{
+  width: 350px;
+  padding: 10px;
+}
+
+.chart-box{
+  border-radius: 10px;
+  background-color: white;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.my-card{
+  display: flex;
+  justify-content: center;
 }

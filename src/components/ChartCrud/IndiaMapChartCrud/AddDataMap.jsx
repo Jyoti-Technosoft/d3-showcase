@@ -3,7 +3,6 @@ import { CustomContext } from "src/components/CustomContext";
 import { useFormik } from "formik";
 
 import "./AddDataMap.scss";
-import axios from "axios";
 
 const AddDataMap = () => {
   const {
@@ -11,6 +10,8 @@ const AddDataMap = () => {
     updateValue,
     mapDataArr,
     setMapDataArr,
+    setUpdateMapData,
+    setAddCandleCrudModal
   } = useContext(CustomContext);
 
   const upd_obj = mapDataArr?.features?.findIndex(
@@ -38,16 +39,9 @@ const AddDataMap = () => {
       console.log("update",updateMapDataJson)
       setMapDataArr({ ...mapDataArr, features: updatedMapDataArr });
 
-      console.log(mapDataArr);
 
-      // axios
-      //   .post("/assets/states.json", updateMapDataJson)
-      //   .then((res) => {
-      //     // console.log("JSON data updated successfully!");
-      //   })
-      //   .catch((err) => {
-      //     // console.log(err);
-      //   });
+      setUpdateMapData(true);
+      setAddCandleCrudModal(false);
     },
   });
 

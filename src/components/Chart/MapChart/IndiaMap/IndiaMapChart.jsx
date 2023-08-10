@@ -1,11 +1,19 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import * as d3 from "d3";
+import { CustomContext } from "src/components/CustomContext";
 
 function IndiaMapChart({ chartId, toolTipShow, parentWidth, parentHeight, isModal }) {
+
+  const { mapDataArr, updateMapData } = useContext(CustomContext);
 
   useEffect(() => {
     createChart();
   }, []);
+
+  if(updateMapData){
+    d3.select(`#${chartId} svg`).remove();
+    createChart();
+  }
 
   function createChart() {
     const width = parentWidth;
@@ -19,13 +27,13 @@ function IndiaMapChart({ chartId, toolTipShow, parentWidth, parentHeight, isModa
 
     const india = svg.append("g").attr("id", "india");
 
-    d3.json("./assets/states.json").then(function (json) {
+    if(mapDataArr){
       const colorScale = d3
         .scaleQuantile()
-        .domain(json.features.map((d) => d.total))
+        .domain(mapDataArr.features.map((d) => d.total))
         .range(d3.schemeOranges[9]);
 
-      const projection = d3.geoMercator().fitSize([width, height], json);
+      const projection = d3.geoMercator().fitSize([width, height], mapDataArr);
       const path = d3.geoPath(projection);
 
       const tooltip = d3
@@ -45,7 +53,7 @@ function IndiaMapChart({ chartId, toolTipShow, parentWidth, parentHeight, isModa
 
       const states = india
         .selectAll("path")
-        .data(json.features)
+        .data(mapDataArr.features)
         .enter()
         .append("path")
         .attr("d", path)
@@ -71,7 +79,7 @@ function IndiaMapChart({ chartId, toolTipShow, parentWidth, parentHeight, isModa
             tooltip.style("opacity", 0);
           });
       }
-    });
+    }
 
     if (isModal) {
       const legendData = [0.5, 5, 10, 20, 40, 80, 160, 200, 250];

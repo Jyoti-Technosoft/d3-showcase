@@ -1,7 +1,7 @@
 import React from "react";
-import CIcon from "@coreui/icons-react";
-import { cilChartPie } from "@coreui/icons";
 import { CNavItem, CNavTitle } from "@coreui/react";
+import personicon from './Images/Icon/personicon.svg';
+import charticon from './Images/Icon/charticon.svg';
 
 const _nav = [
   {
@@ -12,19 +12,13 @@ const _nav = [
     component: CNavItem,
     name: "Charts",
     to: "/dashboard",
-    icon: <CIcon icon={cilChartPie} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavItem,
-    name: "About Charts",
-    to: "/aboutchart",
-    icon: <CIcon icon={cilChartPie} customClassName="nav-icon" />,
+    icon: <img src={charticon} width="22px" className="ms-2 me-3"></img>,
   },
   {
     component: CNavItem,
     name: "About Us",
     to: "/aboutus",
-    icon: "",
+    icon: <img src={personicon} width="22px" className="ms-2 me-3"></img>,
   },
 ];
 

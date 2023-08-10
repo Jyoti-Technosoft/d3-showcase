@@ -1,27 +1,31 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { CustomContext } from "src/components/CustomContext";
-import Axios from 'axios';
+import DeleteModalSunBrust from "./DeleteModalSunBrust";
 
-import "./ViewDataMap.scss";
+import "./ViewDataSunBrust.scss";
 
-const ViewDataMap = () => {
-
+const ViewDataSunBrust = () => {
   const [show, setShow] = useState(false);
   const {
     crudData,
+    setDeleteId,
+    showToast,
     setUpdateValue,
     setIsEdit,
-    setAddCandleCrudModal,
-    stateMap,
-    mapDataArr, setMapDataArr
+    sunBrustDataSet,
+    setaddDataCrud,
   } = useContext(CustomContext);
 
   const elementRef = useRef();
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const editData = (val) => {
+    console.log(val);
     setUpdateValue(val);
     setIsEdit(true);
-    setAddCandleCrudModal(true);
+    setaddDataCrud(true);
   };
 
   const [arrowDisableLeft, setArrowDisableLeft] = useState(true);
@@ -85,29 +89,34 @@ const ViewDataMap = () => {
         <div className="table-container w-100" ref={elementRef}>
           <table className="w-100 table table-hover">
             <thead>
-              <tr className="table-header">
-                <th className="p-2 text-center">No.</th>
-                <th className="p-2 text-center">States</th>
-                <th className="p-2 text-center">Population</th>
-                <th className="p-2 text-center">Action</th>
-              </tr>
+
             </thead>
             <tbody>
-              {mapDataArr?.features?.map((val, index) => {
-                return (
-                  <tr key={index}>
-                    <td className="p-2 text-center">{index + 1}</td>
-                    <td className="p-2 text-center">{val.id}</td>
-                    <td className="p-2 text-center">{val.total}</td>
-                    <td className="p-2 text-center text-info">
-                      <p role="button" onClick={() => editData(val)}>
-                        Edit
-                      </p>
-                    </td>
+              {sunBrustDataSet.children.map(region => (
+                <React.Fragment key={region.name}>
+                  <tr>
+                    <td colSpan="12" className="region-cell" style={{background: "#b5b8bc"}}>{region.name}</td>
                   </tr>
-                );
-              })}
+                  {region.children.map(subregion => (
+                    <React.Fragment key={subregion.name}>
+                      <tr>
+                        <td className="subregion-cell">{subregion.name}</td>
+                        {subregion.children.map(city => (
+                          <React.Fragment key={city.name}>
+                            <td>{city.name}</td>
+                            <td>{city.value}</td>
+                            <td>
+                              <button className="bg-transparent border-0 text-info" onClick={() => editData({city,region,subregion})}>Edit</button>
+                            </td>
+                          </React.Fragment>
+                        ))}
+                      </tr>
+                    </React.Fragment>
+                  ))}
+                </React.Fragment>
+              ))}
             </tbody>
+
           </table>
         </div>
         <button
@@ -129,8 +138,15 @@ const ViewDataMap = () => {
           </svg>
         </button>
       </div>
+      {
+        <DeleteModalSunBrust
+          show={show}
+          setShow={setShow}
+          handleClose={handleClose}
+        />
+      }
     </>
   );
 };
 
-export default ViewDataMap;
+export default ViewDataSunBrust;

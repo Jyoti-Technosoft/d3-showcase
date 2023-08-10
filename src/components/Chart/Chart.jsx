@@ -1,4 +1,3 @@
-import MultiLevelDonutChart from "./DonutChart/MultiLevelDonutChart";
 import GroupChart from "./GroupChart/GroupChart";
 import PieChart from "./PieChart/PieChart";
 import StackedChart from "./StackedChart/StackedChart";
@@ -13,23 +12,22 @@ import {
   CrudMapChartModal,
   CrudPieChartModal,
   CrudStackedChartModal,
-  DonutChartModal,
-  MapChartModal,
+  CrudSunBrustChartModal,
   OpenChartModal,
-  PieChartModal,
 } from "../ChartModal/ChartModal";
 import { CustomContext } from "../CustomContext";
 import CandleStickChart from "./CandleStickChart/CandleStickChart";
 import CustomToast from "../ToastComponent/CustomToast";
 import IndiaMapChart from "./MapChart/IndiaMap/IndiaMapChart";
+import SunBrustChart from "./DonutChart/SunBrustChart";
 
 function Chart() {
   const [groupModel, setGroupModel] = useState(false);
-  const [donutModel, setDonutModel] = useState(false);
   const [pieModel, setPieModel] = useState(false);
   const [stackedModel, setStackedModel] = useState(false);
   const [mapModel, setMapModel] = useState(false);
   const [candleModel, setCandleModel] = useState(false);
+  const [sunBrustModel, setSunBrustModel] = useState(false);
 
   const {
     showToast,
@@ -40,111 +38,145 @@ function Chart() {
     openPieCrudModal,
     setOpenPieCrudModal,
     openDonutCrudModal,
+    openCrudModal, setOpenCrudModal,
     setOpenDonutCrudModal,
     openCandleCrudModal,
+    openSunBrustCrudModal,
     setOpenCandleCrudModal,
     stateMap, setStateMap
   } = useContext(CustomContext);
 
-  const openDonutModel = () => {
-    setDonutModel(true);
-  };
-
-  const openGroupModel = () => {
-    setGroupModel(true);
-  };
-
-  const openPieModel = () => {
-    setPieModel(true);
-  };
-
-  const openStackedModel = () => {
-    setStackedModel(true);
-  };
-
-  const openMapModel = () => {
-    setMapModel(true);
-  };
-
-  const openCandleModel = () => {
-    setCandleModel(true);
-  };
-
   return (
     <>
       <div className="container">
-        <div className="row align-items-center">
-          <div
-            className="col my-2 d-flex justify-content-center my-card"
-            onClick={openPieModel}
-          >
-            <PieChart
-              chartId="pie1"
-              parentWidth="20em"
-              tooltipShow={false}
-              onClickOpenInside={false}
-            />
+        <div className="row">
+          <div className="col-sm my-card mb-4">
+            <div className="chart-box">
+              <div className="charts-card d-flex justify-content-center" onClick={() => {
+                setGroupModel(true);
+              }}>
+                <GroupChart
+                  chartId="group1"
+                  parentWidth="350px"
+                  parentHeight="250px"
+                  borderSize="0"
+                  tooltipShow={false}
+                  showLabels={false}
+                />
+              </div>
+              <div className="chart-description">
+                <h5 className="mb-2">Group Chart</h5>
+                <p>
+                  Group chart (grouped bar) visually compares data values across categories. Bars represent categories, divided into segments for subcategories. Useful for inter-group data comparison and trend identification.
+                </p>
+              </div>
+            </div>
           </div>
-          <div
-            className="col my-2 d-flex justify-content-center my-card"
-            onClick={openGroupModel}
-          >
-            <GroupChart
-              chartId="group1"
-              parentWidth="350px"
-              parentHeight="250px"
-              tooltipShow={false}
-            />
+          <div className="col-sm my-card mb-4">
+            <div className="chart-box">
+              <div className="charts-card d-flex justify-content-center" onClick={() => {
+                setStackedModel(true);
+              }}>
+                <StackedChart
+                  chartId="stacked1"
+                  parentWidth="350px"
+                  parentHeight="250px"
+                  borderSize="0"
+                  tooltipShow={false}
+                  showLegend={true}
+                  showLables={false}
+                />
+              </div>
+              <div className="chart-description">
+                <h5 className="mb-2">Stacked Chart</h5>
+                <p>
+                  Stacked chart (stacked bar) shows category-wise data composition. Stacked bars represent values, segments depict portions. Useful for visualizing individual values and overall distribution in diverse groups.
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="row align-items-center">
-          <div
-            className="col my-2 d-flex justify-content-center my-card"
-            onClick={openDonutModel}
-          >
-            <MultiLevelDonutChart
-              chartId="donutchart1"
-              cardwidth="15em"
-              tooltipShow={false}
-              zoomOn={false}
-              isModal={false}
-            />
+          <div className="col-sm my-card mb-4">
+            <div className="chart-box">
+              <div className="charts-card d-flex justify-content-center" onClick={() => {
+                setCandleModel(true);
+              }}>
+                <CandleStickChart
+                  chartId="candle1"
+                  parentWidth="350px"
+                  parentHeight="250px"
+                  borderSize="0"
+                  showlabels={false}
+                />
+              </div>
+              <div className="chart-description">
+                <h5 className="mb-2">Candlestick chart</h5>
+                <p>
+                  Candlestick chart aids financial analysis, displaying open, high, low, close prices over time. Rectangular body shows range, wicks indicate highs and lows. Valuable for trend and pattern recognition.
+                </p>
+              </div>
+            </div>
           </div>
-          <div
-            className="col my-2 d-flex justify-content-center my-card"
-            onClick={openStackedModel}
-          >
-            <StackedChart
-              chartId="stacked1"
-              parentWidth="350px"
-              parentHeight="250px"
-              tooltipShow={false}
-              showLegend={true}
-            />
+          <div className="col-sm my-card mb-4">
+            <div className="chart-box">
+              <div className="charts-card d-flex justify-content-center" onClick={() => {
+                setMapModel(true);
+              }}>
+                <IndiaMapChart
+                  chartId="indiamap1"
+                  toolTipShow={false}
+                  parentWidth="240"
+                  parentHeight="240"
+                  isModal={false}
+                />
+              </div>
+              <div className="chart-description">
+                <h5 className="mb-2">Map Chart</h5>
+                <p>
+                  Map chart shades regions by data values, offering spatial insight. Visualizes distributions, patterns, and variations across geography. Interactive for detailed exploration, conveying valuable geographic insights effectively.
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="row align-items-center">
-          <div
-            className="col my-2 d-flex justify-content-center my-card"
-            onClick={openMapModel}
-          >
-            <IndiaMapChart
-              chartId="indiamap1"
-              toolTipShow={false}
-              parentWidth="300"
-              parentHeight="300"
-              isModal={false}
-            />
+          <div className="col-sm my-card mb-4">
+            <div className="chart-box">
+              <div className="charts2-card d-flex justify-content-center" onClick={() => {
+                setPieModel(true);
+              }}>
+                <PieChart
+                  chartId="pie1"
+                  parentWidth="20em"
+                  tooltipShow={false}
+                  onClickOpenInside={false}
+                />
+              </div>
+              <div className="chart-description">
+                <h5 className="mb-2">Pie Chart</h5>
+                <p>
+                  A multilevel pie chart, represents data in a circular format where each level of the chart corresponds to a different category. The outer rings of the pie chart show broader categories, while the inner rings show subcategories or detailed data.
+                </p>
+              </div>
+            </div>
           </div>
-          <div
-            className="col my-2 d-flex justify-content-center my-card"
-            onClick={openCandleModel}
-          >
-            <CandleStickChart
-              chartId="candle1"
-              parentWidth="350px"
-              parentHeight="250px"
-            />
+          <div className="col-sm my-card mb-4">
+            <div className="chart-box">
+              <div className="charts-card d-flex justify-content-center" onClick={() => {
+                setSunBrustModel(true);
+              }}>
+                <SunBrustChart
+                  chartId="donutchart1"
+                  cardwidth="15em"
+                  tooltipShow={false}
+                  zoomOn={false}
+                  isModal={false}
+                />
+              </div>
+              <div className="chart-description">
+                <h5 className="mb-2">SunBurst Chart</h5>
+                <p>
+                  A D3.js Sunburst chart is a hierarchical, multi-layered pie chart with angular sectors representing data distribution across categories, offering interactive exploration of nested relationships and values.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -179,6 +211,7 @@ function Chart() {
               parentHeight="65vh"
               tooltipShow={true}
               showLegend={true}
+              showLables={true}
             />
           }
         />
@@ -195,6 +228,7 @@ function Chart() {
               chartId="candle2"
               parentWidth="75vw"
               parentHeight="65vh"
+              showlabels={true}
             />
           }
         />
@@ -221,15 +255,15 @@ function Chart() {
         />
       ) : null}
 
-      {donutModel ? (
+      {sunBrustModel ? (
         <OpenChartModal
-          show={donutModel}
-          onHide={() => setDonutModel(false)}
-          chartTitle="Indian Cities With Population (In Millions)"
+          show={sunBrustModel}
+          onHide={() => setSunBrustModel(false)}
+          chartTitle="World Population (In Millions)"
           chartText2=""
-          crudModalType="donutChart"
+          crudModalType="sunBrustChart"
           chartType={
-            <MultiLevelDonutChart
+            <SunBrustChart
               chartId="donutchart2"
               cardwidth="30vw"
               tooltipShow={true}
@@ -261,7 +295,7 @@ function Chart() {
 
       {openGroupCrudModal ? (
         <CrudGroupChartModal
-          show={openGroupCrudModal}
+        show={openGroupCrudModal}
           onHide={() => setOpenGroupCrudModal(false)}
         />
       ) : null}
@@ -284,6 +318,13 @@ function Chart() {
         <CrudDonutChartModal
           show={openDonutCrudModal}
           onHide={() => setOpenDonutCrudModal(false)}
+        />
+      ) : null}
+
+      {openCrudModal ? (
+        <CrudSunBrustChartModal
+          show={openCrudModal}
+          onHide={() => setOpenCrudModal(false)}
         />
       ) : null}
 

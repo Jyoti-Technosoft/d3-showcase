@@ -33,6 +33,7 @@ const AddDataGroup = () => {
     setGroupDataSet,
     setAddGroupCrudModal,
     setUpdateDataGroup,
+    setAddStackedCrudModal
   } = useContext(CustomContext);
 
   const upd_obj = groupDataSet?.findIndex((ele) => ele?.id === updateValue?.id);
@@ -78,7 +79,7 @@ const AddDataGroup = () => {
         });
         setUpdateDataGroup(true);
       }
-      setAddGroupCrudModal(false);
+      setAddStackedCrudModal(false);
     },
   });
 

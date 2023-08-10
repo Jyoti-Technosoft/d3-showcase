@@ -1,15 +1,16 @@
 import React, { createContext, useEffect, useState } from "react"
 
-import { groupData, stackedData, pieData, donutData, candleData } from "./Chart/ChartsData/ChartData";
+import { groupData, stackedData, pieData, donutData, candleData, sunBrustData } from "./Chart/ChartsData/ChartData";
+import Axios from 'axios';
 
 export const CustomContext = createContext();
 
 export const ContextProvider = (props) => {
 
-    const [crudData, setCrudData] = useState();
-    const [deleteId, setDeleteId] = useState();
+    const [crudData, setCrudData] = useState([]);
+    const [deleteId, setDeleteId] = useState(0);
     const [showToast, setShowToast] = useState(false);
-    const [updateValue, setUpdateValue] = useState();
+    const [updateValue, setUpdateValue] = useState(0);
     const [isEdit, setIsEdit] = useState(false);
 
     const [groupDataSet, setGroupDataSet] = useState(groupData);
@@ -32,6 +33,11 @@ export const ContextProvider = (props) => {
     const [addDonutCrudModal, setAddDonutCrudModal] = useState(false);
     const [updateDataDonut, setUpdateDataDonut] = useState(false);
 
+    const [sunBrustDataSet, setSunBrustDataSet] = useState(sunBrustData);
+    const [openCrudModal, setOpenCrudModal] = useState(false);
+    const [addDataCrud, setaddDataCrud] = useState(false);
+    const [updateDataSunBrust, setUpdateDataSunBrust] = useState(false);
+
     const [candleDataSet, setCandleDataSet] = useState(candleData);
     const [openCandleCrudModal, setOpenCandleCrudModal] = useState(false);
     const [addCandleCrudModal, setAddCandleCrudModal] = useState(false);
@@ -47,7 +53,18 @@ export const ContextProvider = (props) => {
     const [stateMap, setStateMap] = useState(initialStateMap); 
 
     const [mapDataArr, setMapDataArr] = useState();
-    
+    const [updateMapData, setUpdateMapData] = useState(true);
+
+    useEffect(() => {
+      Axios.get('/assets/states.json')
+        .then(response => {
+          setMapDataArr(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching states data:', error);
+        });
+    }, []);
+
     useEffect(() => {
         fetch(stateMap.mapDataSet)
           .then((response) => response.json())
@@ -63,7 +80,7 @@ export const ContextProvider = (props) => {
 
     return (
         <>
-            <CustomContext.Provider value={{ crudData, setCrudData, deleteId, setDeleteId, showToast, setShowToast, updateValue, setUpdateValue, isEdit, setIsEdit, stackedObj, setStackedObj, groupDataSet, setGroupDataSet, openGroupCrudModal, setOpenGroupCrudModal, addGroupCrudModal, setAddGroupCrudModal, updateDataGroup, setUpdateDataGroup, openStackedCrudModal, setOpenStackedCrudModal, addStackedCrudModal, setAddStackedCrudModal, updateDataStacked, setUpdateDataStacked, openPieCrudModal, setOpenPieCrudModal, pieDataSet, setPieDataSet, addPieCrudModal, setAddPieCrudModal, updateDataPie, setUpdateDataPie, openDonutCrudModal, setOpenDonutCrudModal, addDonutCrudModal, setAddDonutCrudModal, updateDataDonut, setUpdateDataDonut, donutDataSet, setDonutDataSet, openCandleCrudModal, setOpenCandleCrudModal, addCandleCrudModal, setAddCandleCrudModal, updateDataCandle, setUpdateDataCandle, candleDataSet, setCandleDataSet, stateMap, setStateMap, mapDataArr, setMapDataArr }}>
+            <CustomContext.Provider value={{ crudData, setCrudData, deleteId, setDeleteId, showToast, setShowToast, updateValue, setUpdateValue, isEdit, setIsEdit, stackedObj, setStackedObj, groupDataSet, setGroupDataSet, openGroupCrudModal, setOpenGroupCrudModal, addGroupCrudModal, setAddGroupCrudModal, updateDataGroup, setUpdateDataGroup, openStackedCrudModal, setOpenStackedCrudModal, addStackedCrudModal, setAddStackedCrudModal, updateDataStacked, setUpdateDataStacked, openPieCrudModal, setOpenPieCrudModal, pieDataSet, setPieDataSet, addPieCrudModal, setAddPieCrudModal, updateDataPie, setUpdateDataPie, openDonutCrudModal, setOpenDonutCrudModal, addDonutCrudModal, setAddDonutCrudModal, updateDataDonut, setUpdateDataDonut, donutDataSet, setDonutDataSet, openCandleCrudModal, setOpenCandleCrudModal, addCandleCrudModal, setAddCandleCrudModal, updateDataCandle, setUpdateDataCandle, candleDataSet, setCandleDataSet, stateMap, setStateMap, mapDataArr, setMapDataArr, sunBrustDataSet, setSunBrustDataSet, addDataCrud, setaddDataCrud, openCrudModal, setOpenCrudModal, updateDataSunBrust, setUpdateDataSunBrust, updateMapData, setUpdateMapData}}>
                 {props.children}
             </CustomContext.Provider>
         </>

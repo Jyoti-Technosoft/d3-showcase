@@ -7,6 +7,7 @@ import { AppSidebarNav } from './AppSidebarNav'
 
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
+import JT from '../Images/JT .png'
 
 import navigation from '../_nav'
 
@@ -25,7 +26,8 @@ const AppSidebar = () => {
       }}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
-        <h5 className='mb-0'>D3 Showcase</h5>
+        <img src={JT} alt="" style={{width: "40px"}}/>
+        <h5 className='mb-0 ms-2'>D3 Showcase</h5>
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>

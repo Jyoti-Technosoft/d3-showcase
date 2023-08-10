@@ -218,3 +218,113 @@ export const candleData = [
   { id: "15", date: "2023-07-15", open: 175, high: 177, low: 140, close: 145 },
   { id: "16", date: "2023-07-16", open: 170, high: 175, low: 140, close: 155 },
 ];
+
+export const sunBrustData = {
+  name: "World",
+  children: [
+    {
+      name: "India",
+      children: [
+        {
+          name: "Uttar Pradesh",
+          children: [
+            { name: "Lucknow", value: 50 },
+            { name: "Agra", value: 30 },
+          ],
+        },
+        {
+          name: "Gujarat",
+          children: [
+            { name: "Surat", value: 40 },
+            { name: "Rajkot", value: 25 },
+          ],
+        },
+        {
+          name: "Maharastra",
+          children: [
+            { name: "Mumbai", value: 70 },
+            { name: "Pune", value: 40 },
+          ],
+        },
+      ],
+    },
+    {
+      name: "China",
+      children: [
+        {
+          name: "Guangdong",
+          children: [
+            { name: "Guangzhou", value: 50 },
+            { name: "Shenzhen", value: 20 },
+          ],
+        },
+        {
+          name: "Zhejiang",
+          children: [
+            { name: "Hangzhou", value: 35 },
+            { name: "Ningbo", value: 30 },
+          ],
+        },
+        {
+          name: "Jiangsu",
+          children: [
+            { name: "Suzhou", value: 50 },
+            { name: "Nanjing", value: 35 },
+          ],
+        },
+      ],
+    },
+    {
+      name: "USA",
+      children: [
+        {
+          name: "California",
+          children: [
+            { name: "Los Angeles", value: 30 },
+            { name: "San Francisco", value: 20 },
+          ],
+        },
+        {
+          name: "Texas",
+          children: [
+            { name: "Houston", value: 20 },
+            { name: "Dallas", value: 30 },
+          ],
+        },
+        {
+          name: "Florida",
+          children: [
+            { name: "Miami", value: 10 },
+            { name: "Orlando", value: 20 },
+          ],
+        },
+      ],
+    },
+    {
+      name: "Brazil",
+      children: [
+        {
+          name: "São Paulo",
+          children: [
+            { name: "Campinas", value: 12 },
+            { name: "Guarulhos", value: 18 },
+          ],
+        },
+        {
+          name: "Rio de Janeiro",
+          children: [
+            { name: "Niterói", value: 8 },
+            { name: "Nova Iguaçu", value: 30 },
+          ],
+        },
+        {
+          name: "Bahia",
+          children: [
+            { name: "Salvador", value: 8 },
+            { name: "Feira de Santana", value: 12 },
+          ],
+        },
+      ],
+    },
+  ],
+};

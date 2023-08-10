@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import { CustomContext } from "src/components/CustomContext";
 
-const CandleStickChart = ({ chartId, parentWidth, parentHeight, borderSize }) => {
+const CandleStickChart = ({ chartId, parentWidth, parentHeight, borderSize, showlabels }) => {
   const chartDiv = useRef();
   const { candleDataSet, updateDataCandle } = useContext(CustomContext);
 
@@ -96,7 +96,7 @@ const CandleStickChart = ({ chartId, parentWidth, parentHeight, borderSize }) =>
 
     const width = chartDiv?.current?.offsetWidth - 70;
     const height = chartDiv?.current?.offsetHeight - 50;
-    const margin = { top: 20, right: 30, bottom: 30, left: 40 };
+    const margin = { top: 20, right: 30, bottom: 30, left: 40 + 5 };
 
     const svg = d3
       .select(`#${chartId}`)
@@ -104,7 +104,7 @@ const CandleStickChart = ({ chartId, parentWidth, parentHeight, borderSize }) =>
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
-      .attr("transform", `translate(${margin.left},${margin.top})`);
+      .attr("transform", `translate(${margin.left},${margin.top - (showlabels ? 10 : 0)})`);
 
     const xScale = d3
       .scaleBand()
@@ -158,6 +158,24 @@ const CandleStickChart = ({ chartId, parentWidth, parentHeight, borderSize }) =>
       .call(xAxis);
 
     svg.append("g").attr("class", "y-axis-candle").call(d3.axisLeft(yScale));
+
+    if(showlabels){
+    svg
+      .append("text")
+      .attr("class", "x-axis-label")
+      .attr("x", width / 2)
+      .attr("y", height + margin.top + 12)
+      .style("text-anchor", "middle")
+      .text("Date");
+    svg
+      .append("text")
+      .attr("class", "y-axis-label")
+      .attr("x", -height / 2)
+      .attr("y", -margin.left + 15)
+      .attr("transform", "rotate(-90)")
+      .style("text-anchor", "middle")
+      .text("Price");
+    }
   }
 
   let zoom = d3.zoom().on("zoom", handleZoom);
@@ -182,6 +200,7 @@ const CandleStickChart = ({ chartId, parentWidth, parentHeight, borderSize }) =>
           width: parentWidth,
           height: parentHeight,
           border: borderSize,
+          background: 'transparent'
         }}
       ></div>
     </>

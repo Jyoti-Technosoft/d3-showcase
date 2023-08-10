@@ -4,7 +4,7 @@ import * as d3 from "d3";
 import { CustomContext } from "src/components/CustomContext";
 import "./StackedChart.scss";
 
-function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow }) {
+function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow, borderSize, showLegend, showLables }) {
   const chartDiv = useRef();
 
   const { stackedObj, updateDataStacked } = useContext(CustomContext);
@@ -153,7 +153,7 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow }) {
     const cardWidth = chartDiv?.current?.offsetWidth;
     const cardHeight = chartDiv?.current?.offsetHeight;
 
-    const margin = { top: 30, right: 20, bottom: 50, left: 50 },
+    const margin = { top: 30, right: 20, bottom: 50, left: showLables ? 75 : 50 },
       width = cardWidth - margin.left - margin.right,
       height = cardHeight - margin.top - margin.bottom;
 
@@ -220,6 +220,25 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow }) {
       .attr("class", "stackedbars")
       .style("cursor", "pointer");
 
+    if (showLables) {
+      svg
+        .append("text")
+        .attr("class", "x-axis-label")
+        .attr("x", width / 2)
+        .attr("y", height + margin.bottom - 10)
+        .style("text-anchor", "middle")
+        .text("Months");
+
+      svg
+        .append("text")
+        .attr("class", "y-axis-label")
+        .attr("x", -height / 2)
+        .attr("y", -margin.left + 20)
+        .attr("transform", "rotate(-90)")
+        .style("text-anchor", "middle")
+        .text("In Barrels");
+    }
+
     if (tooltipShow) {
       bar
         .on("mouseover", function (event, d) {
@@ -238,6 +257,8 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow }) {
           tooltip.style("opacity", 0);
         });
     }
+
+    if (showLegend) {
 
     var legend = d3
       .select(`#${chartId} svg`)
@@ -304,6 +325,8 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow }) {
       .attr("dy", ".35em")
       .text("South America")
       .style("font-size", "13px");
+
+    }
   }
 
   return (
@@ -315,7 +338,8 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow }) {
         style={{
           width: parentWidth,
           height: parentHeight,
-          boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+          border: borderSize,
+          background: 'transparent'
         }}
       ></div>
     </>
