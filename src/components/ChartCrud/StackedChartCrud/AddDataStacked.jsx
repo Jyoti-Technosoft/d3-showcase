@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { CustomContext } from "src/components/CustomContext";
 
-import "./AddDataStacked.scss";
+import "../AddData.scss";
 
 const addSchema = Yup.object({
   Month: Yup.string()
@@ -43,7 +43,7 @@ const AddDataStacked = () => {
     updateValue,
     stackedObj,
     setStackedObj,
-    setAddStackedCrudModal,
+    setaddDataCrud,
     setUpdateDataStacked,
   } = useContext(CustomContext);
 
@@ -94,7 +94,7 @@ const AddDataStacked = () => {
         });
         setUpdateDataStacked(true);
       }
-      setAddStackedCrudModal(false);
+      setaddDataCrud(false);
     },
   });
 

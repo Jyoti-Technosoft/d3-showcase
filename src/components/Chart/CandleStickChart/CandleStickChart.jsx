@@ -18,6 +18,7 @@ const CandleStickChart = ({ chartId, parentWidth, parentHeight, borderSize, show
 
   if (updateDataCandle) {
     d3.select(`#${chartId} svg`).remove();
+    d3.select(`#${chartId} .tooltip`).remove();
     createChart(data);
   }
 
@@ -62,21 +63,10 @@ const CandleStickChart = ({ chartId, parentWidth, parentHeight, borderSize, show
       .attr("height", (d) => Math.abs(yScale(d.open) - yScale(d.close)));
 
     updatedchart
-      .selectAll("line")
+      .selectAll(".candle-bar")
       .attr("x1", (d) => xScale(d.date) + xScale.bandwidth() / 2)
       .attr("y1", (d) => yScale(d.high))
       .attr("x2", (d) => xScale(d.date) + xScale.bandwidth() / 2)
-      .attr("y2", (d) => yScale(d.low));
-
-    updatedchart
-      .selectAll("line")
-      .attr("x1", (d) => {
-        return xScale(d.date) + xScale.bandwidth() / 2;
-      })
-      .attr("y1", (d) => yScale(d.high))
-      .attr("x2", (d) => {
-        return xScale(d.date) + xScale.bandwidth() / 2;
-      })
       .attr("y2", (d) => yScale(d.low));
 
     updatedchart
@@ -85,6 +75,18 @@ const CandleStickChart = ({ chartId, parentWidth, parentHeight, borderSize, show
       .call(xAxis);
 
     updatedchart.select(".y-axis-candle").call(d3.axisLeft(yScale));
+
+    if (showlabels) {
+      updatedchart
+        .select(".x-axis-label")
+        .attr("x", width / 2)
+        .attr("y", height + margin.top + 12);
+      updatedchart
+        .select(".y-axis-label")
+        .attr("x", -height / 2)
+        .attr("y", -margin.left + 15)
+        .attr("transform", "rotate(-90)");
+    }
   }
 
   function createChart() {
@@ -137,10 +139,11 @@ const CandleStickChart = ({ chartId, parentWidth, parentHeight, borderSize, show
       .attr("fill", (d) => (d.open > d.close ? "red" : "green"));
 
     svg
-      .selectAll("line")
+      .selectAll(".candle-bar")
       .data(data)
       .enter()
       .append("line")
+      .attr("class", "candle-bar")
       .attr("x1", (d) => {
         return xScale(d.date) + xScale.bandwidth() / 2;
       })

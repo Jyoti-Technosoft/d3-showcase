@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { CustomContext } from "src/components/CustomContext";
 import DeleteModalSunBrust from "./DeleteModalSunBrust";
 
-import "./ViewDataSunBrust.scss";
+import "../ViewData.scss";
 
 const ViewDataSunBrust = () => {
   const [show, setShow] = useState(false);

@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import { CustomContext } from "src/components/CustomContext";
-import "./AddDataGroup.scss";
+import "../AddData.scss";
 
 const addSchema = Yup.object({
   month: Yup.string()
@@ -31,9 +31,8 @@ const AddDataGroup = () => {
     updateValue,
     groupDataSet,
     setGroupDataSet,
-    setAddGroupCrudModal,
     setUpdateDataGroup,
-    setAddStackedCrudModal
+    setaddDataCrud
   } = useContext(CustomContext);
 
   const upd_obj = groupDataSet?.findIndex((ele) => ele?.id === updateValue?.id);
@@ -79,7 +78,7 @@ const AddDataGroup = () => {
         });
         setUpdateDataGroup(true);
       }
-      setAddStackedCrudModal(false);
+      setaddDataCrud(false);
     },
   });
 

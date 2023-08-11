@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { CustomContext } from "src/components/CustomContext";
 import DeleteModalGroup from "./DeleteModalCandle";
 
-import "./ViewDataCandle.scss";
+import "../ViewData.scss";
 
 const ViewDataCandle = () => {
   const [show, setShow] = useState(false);
@@ -13,7 +13,7 @@ const ViewDataCandle = () => {
     setUpdateValue,
     setIsEdit,
     candleDataSet,
-    setAddCandleCrudModal,
+    setaddDataCrud,
   } = useContext(CustomContext);
 
   const elementRef = useRef();
@@ -24,7 +24,7 @@ const ViewDataCandle = () => {
   const editData = (val) => {
     setUpdateValue(val);
     setIsEdit(true);
-    setAddCandleCrudModal(true);
+    setaddDataCrud(true);
   };
 
   const [arrowDisableLeft, setArrowDisableLeft] = useState(true);

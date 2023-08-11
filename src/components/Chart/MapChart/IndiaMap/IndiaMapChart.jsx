@@ -12,6 +12,7 @@ function IndiaMapChart({ chartId, toolTipShow, parentWidth, parentHeight, isModa
 
   if(updateMapData){
     d3.select(`#${chartId} svg`).remove();
+    d3.select(`#${chartId} .tooltip`).remove();
     createChart();
   }
 

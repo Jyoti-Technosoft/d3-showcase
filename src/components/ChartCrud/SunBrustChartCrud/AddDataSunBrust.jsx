@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { CustomContext } from "src/components/CustomContext";
 
-import "./AddDataSunBrust.scss";
+import "../AddData.scss";
 
 const addSchema = Yup.object({
   name: Yup.string()
@@ -13,7 +13,7 @@ const addSchema = Yup.object({
   value: Yup.number()
     .typeError("Please enter number value only")
     .nullable()
-    .required()
+    .required("Please Enter Value")
     .min(0)
     .moreThan(-1, "Negative values not accepted"),
 });
@@ -27,7 +27,6 @@ const AddDataSunBrust = () => {
     setaddDataCrud,
     setUpdateDataSunBrust,
     setUpdateDataDonut,
-    setAddDonutCrudModal,
   } = useContext(CustomContext);
 
   const addInitialValues = {
@@ -77,11 +76,11 @@ const AddDataSunBrust = () => {
           placeholder="Enter Country"
           autoComplete="off"
         />
-        {/* {addDataFormik.errors.place && addDataFormik.touched.place ? (
+        {addDataFormik.errors.name && addDataFormik.touched.name ? (
           <p className="text-danger text-center mt-2">
-            {addDataFormik.errors.place}
+            {addDataFormik.errors.name}
           </p>
-        ) : null} */}
+        ) : null}
 
         <label className="form-label" htmlFor="value">
           Count
@@ -97,11 +96,11 @@ const AddDataSunBrust = () => {
           placeholder="Enter Value"
           autoComplete="off"
         />
-        {/* {addDataFormik.errors.count && addDataFormik.touched.count ? (
+        {addDataFormik.errors.value && addDataFormik.touched.value ? (
           <p className="text-danger text-center mt-2">
-            {addDataFormik.errors.count}
+            {addDataFormik.errors.value}
           </p>
-        ) : null} */}
+        ) : null}
 
         {isEdit ? (
           <input

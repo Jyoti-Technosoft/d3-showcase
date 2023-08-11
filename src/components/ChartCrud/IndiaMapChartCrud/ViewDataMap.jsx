@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { CustomContext } from "src/components/CustomContext";
 import Axios from 'axios';
 
-import "./ViewDataMap.scss";
+import "../ViewData.scss";
 
 const ViewDataMap = () => {
 
@@ -11,9 +11,8 @@ const ViewDataMap = () => {
     crudData,
     setUpdateValue,
     setIsEdit,
-    setAddCandleCrudModal,
-    stateMap,
-    mapDataArr, setMapDataArr
+    setaddDataCrud,
+    mapDataArr,
   } = useContext(CustomContext);
 
   const elementRef = useRef();
@@ -21,7 +20,7 @@ const ViewDataMap = () => {
   const editData = (val) => {
     setUpdateValue(val);
     setIsEdit(true);
-    setAddCandleCrudModal(true);
+    setaddDataCrud(true);
   };
 
   const [arrowDisableLeft, setArrowDisableLeft] = useState(true);

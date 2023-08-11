@@ -7,7 +7,6 @@ import "./Chart.scss";
 import { useContext, useState } from "react";
 import {
   CrudCandleChartModal,
-  CrudDonutChartModal,
   CrudGroupChartModal,
   CrudMapChartModal,
   CrudPieChartModal,
@@ -37,9 +36,7 @@ function Chart() {
     setOpenStackedCrudModal,
     openPieCrudModal,
     setOpenPieCrudModal,
-    openDonutCrudModal,
     openCrudModal, setOpenCrudModal,
-    setOpenDonutCrudModal,
     openCandleCrudModal,
     openSunBrustCrudModal,
     setOpenCandleCrudModal,
@@ -193,6 +190,7 @@ function Chart() {
               parentWidth="75vw"
               parentHeight="70vh"
               tooltipShow={true}
+              showLabels={true}
             />
           }
         />
@@ -311,13 +309,6 @@ function Chart() {
         <CrudPieChartModal
           show={openPieCrudModal}
           onHide={() => setOpenPieCrudModal(false)}
-        />
-      ) : null}
-
-      {openDonutCrudModal ? (
-        <CrudDonutChartModal
-          show={openDonutCrudModal}
-          onHide={() => setOpenDonutCrudModal(false)}
         />
       ) : null}
 

@@ -1,8 +1,18 @@
 import React, { useContext } from "react";
 import { CustomContext } from "src/components/CustomContext";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 
-import "./AddDataMap.scss";
+import "../AddData.scss";
+
+const addSchema = Yup.object({
+  total: Yup.number()
+    .typeError("Please enter number value only")
+    .nullable()
+    .required("Population is Required")
+    .min(0)
+    .moreThan(-1, "Negative values not accepted"),
+});
 
 const AddDataMap = () => {
   const {
@@ -11,7 +21,7 @@ const AddDataMap = () => {
     mapDataArr,
     setMapDataArr,
     setUpdateMapData,
-    setAddCandleCrudModal
+    setaddDataCrud
   } = useContext(CustomContext);
 
   const upd_obj = mapDataArr?.features?.findIndex(
@@ -25,6 +35,7 @@ const AddDataMap = () => {
 
   const addDataFormik = useFormik({
     initialValues: addInitialValues,
+    validationSchema: addSchema,
     onSubmit: (values) => {
       const updatedMapDataArr = [...mapDataArr.features];
       const featureIndex = updatedMapDataArr.findIndex(
@@ -41,7 +52,7 @@ const AddDataMap = () => {
 
 
       setUpdateMapData(true);
-      setAddCandleCrudModal(false);
+      setaddDataCrud(false);
     },
   });
 
@@ -77,9 +88,9 @@ const AddDataMap = () => {
           placeholder="Enter Population"
           autoComplete="off"
         />
-        {addDataFormik.errors.open && addDataFormik.touched.open ? (
+        {addDataFormik.errors.total && addDataFormik.touched.total ? (
           <p className="text-danger text-center mt-2">
-            {addDataFormik.errors.open}
+            {addDataFormik.errors.total}
           </p>
         ) : null}
 

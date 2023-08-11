@@ -90,6 +90,7 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow, borderS
 
   if (updateDataStacked) {
     d3.select(`#${chartId} svg`).remove();
+    d3.select(`#${chartId} .tooltip`).remove();
     createChart();
   }
 
@@ -146,6 +147,17 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow, borderS
       updatedChart
         .select(".legend")
         .attr("transform", `translate(0,${height + margin.bottom})`);
+
+      updatedChart
+        .select(".x-axis-label")
+        .attr("x", width / 2)
+        .attr("y", height + margin.bottom - 10);
+
+      updatedChart
+        .select(".y-axis-label")
+        .attr("x", -height / 2)
+        .attr("y", -margin.left)
+        .attr("transform", "rotate(-90)");
     }
   }
 

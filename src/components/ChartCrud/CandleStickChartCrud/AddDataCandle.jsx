@@ -3,7 +3,7 @@ import { CustomContext } from "src/components/CustomContext";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import "./AddDataCandle.scss";
+import "../AddData.scss";
 
 const addSchema = Yup.object({
   date: Yup.date().required("Please enter a date"),
@@ -46,7 +46,7 @@ const AddDataCandle = () => {
     updateValue,
     candleDataSet,
     setCandleDataSet,
-    setAddCandleCrudModal,
+    setaddDataCrud,
     setUpdateDataCandle,
   } = useContext(CustomContext);
 
@@ -99,7 +99,7 @@ const AddDataCandle = () => {
         });
         setUpdateDataCandle(true);
       }
-      setAddCandleCrudModal(false);
+      setaddDataCrud(false);
     },
   });
 

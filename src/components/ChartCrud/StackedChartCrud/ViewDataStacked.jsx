@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { CustomContext } from "src/components/CustomContext";
 import DeleteModalStacked from "./DeleteModalStacked";
 
-import "./ViewDataStacked.scss";
+import "../ViewData.scss";
 
 const ViewDataStacked = () => {
   const [show, setShow] = useState(false);
@@ -13,7 +13,7 @@ const ViewDataStacked = () => {
     setUpdateValue,
     setIsEdit,
     stackedObj,
-    setAddStackedCrudModal,
+    setaddDataCrud,
   } = useContext(CustomContext);
 
   const elementRef = useRef();
@@ -24,7 +24,7 @@ const ViewDataStacked = () => {
   const editData = (val) => {
     setUpdateValue(val);
     setIsEdit(true);
-    setAddStackedCrudModal(true);
+    setaddDataCrud(true);
   };
 
   const [arrowDisableLeft, setArrowDisableLeft] = useState(true);

@@ -23,6 +23,7 @@ function GroupChart({ chartId, parentWidth, parentHeight, borderSize, tooltipSho
 
   if (updateDataGroup) {
     d3.select(`#${chartId} svg`).remove();
+    d3.select(`#${chartId} .tooltip`).remove();
     createChart(dataArr);
   }
 
@@ -128,6 +129,16 @@ function GroupChart({ chartId, parentWidth, parentHeight, borderSize, tooltipSho
       .attr("height", function (d) {
         return height - yScale(d.dieselprice);
       });
+
+    updatedchart
+      .select(".x-axis-label")
+      .attr("x", width / 2)
+      .attr("y", height + margin.top + 12);
+    updatedchart
+      .select(".y-axis-label")
+      .attr("x", -height / 2 - 20)
+          .attr("y", margin.left - 10)
+          .attr("transform", "rotate(-90)");
 
     d3.selectAll(`#${chartId} svg`)
       .attr("width", width + margin.left + margin.right)
@@ -254,7 +265,7 @@ function GroupChart({ chartId, parentWidth, parentHeight, borderSize, tooltipSho
           .attr("y", margin.left - 10)
           .attr("transform", "rotate(-90)")
           .style("text-anchor", "middle")
-          .text("Petrol In USD");
+          .text("Price In USD");
       }
 
       const tooltip = d3

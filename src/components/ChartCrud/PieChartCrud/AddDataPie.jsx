@@ -3,17 +3,17 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { CustomContext } from "src/components/CustomContext";
 
-import "./AddDataPie.scss";
+import "../AddData.scss";
 
 const addSchema = Yup.object({
   country: Yup.string()
     .min(2, "Atleast 2 Character")
     .max(25, "Character less then 25")
-    .required("Please Enter month"),
-  value: Yup.number()
+    .required("Please Enter Country"),
+    value: Yup.number()
     .typeError("Please enter number value only")
     .nullable()
-    .required()
+    .required("Please enter Value")
     .min(0)
     .moreThan(-1, "Negative values not accepted"),
 });
@@ -26,7 +26,7 @@ const AddDataPie = () => {
     pieDataSet,
     setPieDataSet,
     setUpdateDataPie,
-    setAddPieCrudModal,
+    setaddDataCrud,
   } = useContext(CustomContext);
 
   const addInitialValues = {
@@ -47,7 +47,7 @@ const AddDataPie = () => {
 
   const addDataFormik = useFormik({
     initialValues: addInitialValues,
-    // validationSchema: addSchema,
+    validationSchema: addSchema,
     onSubmit: (value, action) => {
       if (isEdit) {
         let newObj = {
@@ -96,7 +96,7 @@ const AddDataPie = () => {
         setUpdateDataPie(true);
       }
       action.resetForm();
-      setAddPieCrudModal(false);
+      setaddDataCrud(false);
     },
   });
 
@@ -146,28 +146,28 @@ const AddDataPie = () => {
         <div className="">
           <div className="my-2">
             <label>State1</label>
-            <input className="input-style p-2 ms-2 border-0" type="text" name="state1" id="state1" placeholder="state1" value={addDataFormik.values.state1} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur}/>
-            <input className="input-style p-2 ms-2 border-0" type="number" name="value1" id="value1" placeholder="Value" value={addDataFormik.values.value1} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur} />
+            <input className="input-style p-2 ms-2 border-0" type="text" name="state1" id="state1" placeholder="state1" value={addDataFormik.values.state1} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur} required/>
+            <input className="input-style p-2 ms-2 border-0" type="number" name="value1" id="value1" placeholder="Value" value={addDataFormik.values.value1} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur} required/>
           </div>
           <div className="my-2">
             <label>State2</label>
-            <input className="input-style p-2 ms-2 border-0" type="text" name="state2" id="state2" placeholder="state2" value={addDataFormik.values.state2} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur}/>
-            <input className="input-style p-2 ms-2 border-0" type="number" name="value2" id="value2" placeholder="Value" value={addDataFormik.values.value2} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur} />
+            <input className="input-style p-2 ms-2 border-0" type="text" name="state2" id="state2" placeholder="state2" value={addDataFormik.values.state2} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur} required/>
+            <input className="input-style p-2 ms-2 border-0" type="number" name="value2" id="value2" placeholder="Value" value={addDataFormik.values.value2} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur} required/>
           </div>
           <div className="my-2">
             <label>State3</label>
-            <input className="input-style p-2 ms-2 border-0" type="text" name="state3" id="state3" placeholder="state3" value={addDataFormik.values.state3} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur}/>
-            <input className="input-style p-2 ms-2 border-0" type="number" name="value3" id="value3" placeholder="Value" value={addDataFormik.values.value3} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur} />
+            <input className="input-style p-2 ms-2 border-0" type="text" name="state3" id="state3" placeholder="state3" value={addDataFormik.values.state3} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur} required/>
+            <input className="input-style p-2 ms-2 border-0" type="number" name="value3" id="value3" placeholder="Value" value={addDataFormik.values.value3} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur} required/>
           </div>
           <div className="my-2">
             <label>State4</label>
-            <input className="input-style p-2 ms-2 border-0" type="text" name="state4" id="state4" placeholder="state4" value={addDataFormik.values.state4} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur}/>
-            <input className="input-style p-2 ms-2 border-0" type="number" name="value4" id="value4" placeholder="Value" value={addDataFormik.values.value4} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur} />
+            <input className="input-style p-2 ms-2 border-0" type="text" name="state4" id="state4" placeholder="state4" value={addDataFormik.values.state4} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur} required/>
+            <input className="input-style p-2 ms-2 border-0" type="number" name="value4" id="value4" placeholder="Value" value={addDataFormik.values.value4} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur} required/>
           </div>
           <div className="my-2">
             <label>State5</label>
-            <input className="input-style p-2 ms-2 border-0" type="text" name="state5" id="state5" placeholder="state5" value={addDataFormik.values.state5} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur}/>
-            <input className="input-style p-2 ms-2 border-0" type="number" name="value5" id="value5" placeholder="Value" value={addDataFormik.values.value5} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur} />
+            <input className="input-style p-2 ms-2 border-0" type="text" name="state5" id="state5" placeholder="state5" value={addDataFormik.values.state5} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur} required/>
+            <input className="input-style p-2 ms-2 border-0" type="number" name="value5" id="value5" placeholder="Value" value={addDataFormik.values.value5} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur} required/>
           </div>
         </div>
 

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { CustomContext } from "src/components/CustomContext";
 import DeleteModalGroup from "./DeleteModalGroup";
 
-import "./ViewDataGroup.scss";
+import "../ViewData.scss";
 
 const ViewDataGroup = () => {
     const [show, setShow] = useState(false);
@@ -13,8 +13,7 @@ const ViewDataGroup = () => {
         setUpdateValue,
         setIsEdit,
         groupDataSet,
-        setAddGroupCrudModal,
-        setAddStackedCrudModal
+        setaddDataCrud
     } = useContext(CustomContext);
 
     const elementRef = useRef();
@@ -25,7 +24,7 @@ const ViewDataGroup = () => {
     const editData = (val) => {
         setUpdateValue(val);
         setIsEdit(true);
-        setAddStackedCrudModal(true);
+        setaddDataCrud(true);
     };
 
     const [arrowDisableLeft, setArrowDisableLeft] = useState(true);

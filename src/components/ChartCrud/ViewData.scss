@@ -1,0 +1,13 @@
+.table-container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .table-header {
+        background-color: #c0c3c7;
+    }
+}
+
+.side-arrow-btn {
+    background-color: #c0c3c7;
+}

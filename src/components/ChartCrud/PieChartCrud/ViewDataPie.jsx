@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { CustomContext } from "src/components/CustomContext";
 import DeleteModalPie from "./DeleteModalPie";
 
-import "./ViewDataPie.scss";
+import "../ViewData.scss";
 
 const ViewDataPie = () => {
   const [show, setShow] = useState(false);
@@ -13,7 +13,7 @@ const ViewDataPie = () => {
     setUpdateValue,
     setIsEdit,
     pieDataSet,
-    setAddPieCrudModal,
+    setaddDataCrud,
   } = useContext(CustomContext);
 
   const elementRef = useRef();
@@ -24,7 +24,7 @@ const ViewDataPie = () => {
   const editData = (val) => {
     setUpdateValue(val);
     setIsEdit(true);
-    setAddPieCrudModal(true);
+    setaddDataCrud(true);
   };
 
   const [arrowDisableLeft, setArrowDisableLeft] = useState(true);
