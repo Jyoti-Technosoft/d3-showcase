@@ -176,30 +176,6 @@ export const pieData = [
   
 ];
 
-export const donutData = [
-  [
-    { id: 1, count: 6.5, place: "Surat" },
-    { id: 2, count: 2.4, place: "Vadodara" },
-    { id: 3, count: 1.2, place: "Valsad" },
-    { id: 4, count: 7.2, place: "Ahmedabad" },
-    { id: 5, count: 1.7, place: "Rajkot" },
-  ],
-  [
-    { id: 6, count: 25, place: "Lucknow" },
-    { id: 7, count: 15, place: "Varanasi" },
-    { id: 8, count: 25, place: "Nodai" },
-    { id: 9, count: 15, place: "Ayodhya" },
-    { id: 10, count: 45, place: "Prayagraj" },
-  ],
-  [
-    { id: 11, count: 15, place: "Delhi" },
-    { id: 12, count: 25, place: "Mumbai" },
-    { id: 13, count: 10, place: "Kolkata" },
-    { id: 14, count: 35, place: "Chennai" },
-    { id: 15, count: 15, place: "Pune" },
-  ],
-];
-
 export const candleData = [
   { id: "1", date: "2023-07-01", open: 100, high: 120, low: 80, close: 110 },
   { id: "2", date: "2023-07-02", open: 110, high: 130, low: 90, close: 120 },
