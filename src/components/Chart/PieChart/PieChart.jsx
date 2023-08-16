@@ -109,7 +109,7 @@ function PieChart({
       slices
         .on("mouseover", function (event, d) {
           tooltip
-            .html(`Country: ${d.data.country} <br> Population: ${d.data.value} M`)
+            .html(`<h6>${d.data.country}</h6> Population: ${d.data.value} M`)
             .style("opacity", 1);
         })
         .on("mousemove", function (event) {
@@ -127,7 +127,7 @@ function PieChart({
       .data(data_ready)
       .join("text")
       .text(function (d) {
-        return d.data.country;
+        return d.data.country.substring(0, 3).toUpperCase();
       })
       .style("pointer-events", "none")
       .attr("class", "slice-text")
@@ -192,7 +192,7 @@ function PieChart({
       slice1
         .on("mouseover", function (event, d) {
           tooltip
-            .html(`States: ${d.data.country} <br> Population: ${d.data.value} M`)
+            .html(`<h6>${d.data.country}</h6> Population: ${d.data.value} M`)
             .style("opacity", 1);
         })
         .on("mousemove", function (event) {

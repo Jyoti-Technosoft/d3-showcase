@@ -31,3 +31,9 @@
     display: none;
   }
 }
+
+@media screen and (max-width: 550px) {
+  .my-d3-chart{
+    height: 40vh !important;
+  }
+}

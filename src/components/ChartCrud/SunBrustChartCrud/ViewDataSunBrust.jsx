@@ -22,7 +22,6 @@ const ViewDataSunBrust = () => {
   const handleShow = () => setShow(true);
 
   const editData = (val) => {
-    console.log(val);
     setUpdateValue(val);
     setIsEdit(true);
     setaddDataCrud(true);

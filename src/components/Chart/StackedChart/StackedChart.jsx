@@ -4,7 +4,7 @@ import * as d3 from "d3";
 import { CustomContext } from "src/components/CustomContext";
 import "./StackedChart.scss";
 
-function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow, borderSize, showLegend, showLables }) {
+function StackedChart({ chartId, parentWidth, parentHeight, isModal, tooltipShow, borderSize, showLegend, showLables }) {
   const chartDiv = useRef();
 
   const { stackedObj, updateDataStacked } = useContext(CustomContext);
@@ -237,7 +237,7 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow, borderS
         .append("text")
         .attr("class", "x-axis-label")
         .attr("x", width / 2)
-        .attr("y", height + margin.bottom - 10)
+        .attr("y", height + margin.bottom - 13)
         .style("text-anchor", "middle")
         .text("Months");
 
@@ -275,12 +275,19 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow, borderS
     var legend = d3
       .select(`#${chartId} svg`)
       .append("g")
-      .attr("transform", `translate(0,${height + margin.bottom})`)
-      .attr("class", "legend");
+      .attr("class", "legend")
+
+    {
+      isModal ? 
+      legend.attr("transform", `translate(40,${height + margin.bottom})`)
+      :
+      legend.attr("transform", `translate(0,${height + margin.bottom})`)
+    }
 
     legend
       .append("rect")
       .attr("x", width - 240)
+      .attr("y", 8)
       .attr("width", 14)
       .attr("height", 14)
       .style("fill", "#66c2a5");
@@ -288,7 +295,7 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow, borderS
     legend
       .append("text")
       .attr("x", width - 220)
-      .attr("y", 6)
+      .attr("y", 16)
       .attr("dy", ".35em")
       .text("US")
       .style("font-size", "13px");
@@ -296,6 +303,7 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow, borderS
     legend
       .append("rect")
       .attr("x", width - 190)
+      .attr("y", 8)
       .attr("width", 14)
       .attr("height", 14)
       .style("fill", "#fc8d62");
@@ -303,7 +311,7 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow, borderS
     legend
       .append("text")
       .attr("x", width - 170)
-      .attr("y", 6)
+      .attr("y", 16)
       .attr("dy", ".35em")
       .text("Europe")
       .style("font-size", "13px");
@@ -311,6 +319,7 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow, borderS
     legend
       .append("rect")
       .attr("x", width - 120)
+      .attr("y", 8)
       .attr("width", 14)
       .attr("height", 14)
       .style("fill", "#8da0cb");
@@ -318,7 +327,7 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow, borderS
     legend
       .append("text")
       .attr("x", width - 100)
-      .attr("y", 6)
+      .attr("y", 16)
       .attr("dy", ".35em")
       .text("Asia")
       .style("font-size", "13px");
@@ -326,6 +335,7 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow, borderS
     legend
       .append("rect")
       .attr("x", width - 70)
+      .attr("y", 8)
       .attr("width", 14)
       .attr("height", 14)
       .style("fill", "#e78ac3");
@@ -333,7 +343,7 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow, borderS
     legend
       .append("text")
       .attr("x", width - 50)
-      .attr("y", 6)
+      .attr("y", 16)
       .attr("dy", ".35em")
       .text("South America")
       .style("font-size", "13px");
@@ -345,7 +355,7 @@ function StackedChart({ chartId, parentWidth, parentHeight, tooltipShow, borderS
     <>
       <div
         id={chartId}
-        className="card"
+        className={`card ${isModal ? 'my-d3-chart' : ''}`}
         ref={chartDiv}
         style={{
           width: parentWidth,

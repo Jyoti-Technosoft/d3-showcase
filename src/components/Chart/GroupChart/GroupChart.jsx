@@ -4,7 +4,7 @@ import { CustomContext } from "src/components/CustomContext";
 
 import "./GroupChart.scss";
 
-function GroupChart({ chartId, parentWidth, parentHeight, borderSize, tooltipShow, showLabels }) {
+function GroupChart({ chartId, parentWidth, parentHeight, isModal, borderSize, tooltipShow, showLabels }) {
   const chartDiv = useRef();
 
   const { groupDataSet, updateDataGroup } = useContext(CustomContext);
@@ -193,7 +193,7 @@ function GroupChart({ chartId, parentWidth, parentHeight, borderSize, tooltipSho
       const g = svg
         .append("g")
       if (showLabels) {
-        g.attr("transform", "translate(" + (margin.left + 20) + "," + (margin.top - 30) + ")");
+        g.attr("transform", "translate(" + (margin.left + 15) + "," + (margin.top - 20) + ")");
       } else {
         g.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
       }
@@ -202,7 +202,7 @@ function GroupChart({ chartId, parentWidth, parentHeight, borderSize, tooltipSho
         .append("text")
         .attr("transform", `translate(${width - 130},0)`)
         .attr("x", 50)
-        .attr("y", 30)
+        .attr("y", 20)
         .attr("class", "label1")
         .attr("font-size", "12px")
         .text("Petrol");
@@ -211,7 +211,7 @@ function GroupChart({ chartId, parentWidth, parentHeight, borderSize, tooltipSho
         .append("rect")
         .attr("transform", `translate(${width - 130},0)`)
         .attr("x", 86)
-        .attr("y", 18)
+        .attr("y", 8)
         .attr("class", "color-box")
         .attr("fill", colorArr[0].fill)
         .style("width", "15px")
@@ -223,7 +223,7 @@ function GroupChart({ chartId, parentWidth, parentHeight, borderSize, tooltipSho
         .append("text")
         .attr("transform", `translate(${width - 130},0)`)
         .attr("x", 110)
-        .attr("y", 30)
+        .attr("y", 20)
         .attr("class", "label2")
         .attr("font-size", "12px")
         .text("Diesel");
@@ -232,7 +232,7 @@ function GroupChart({ chartId, parentWidth, parentHeight, borderSize, tooltipSho
         .append("rect")
         .attr("transform", `translate(${width - 130},0)`)
         .attr("x", 145)
-        .attr("y", 18)
+        .attr("y", 8)
         .attr("class", "color-box2")
         .attr("fill", colorArr[1].fill)
         .style("width", "15px")
@@ -254,7 +254,7 @@ function GroupChart({ chartId, parentWidth, parentHeight, borderSize, tooltipSho
           .append("text")
           .attr("class", "x-axis-label")
           .attr("x", width / 2 + 20)
-          .attr("y", height + margin.top + 10)
+          .attr("y", height + margin.top + 20)
           .style("text-anchor", "middle")
           .text("Months");
 
@@ -388,7 +388,7 @@ function GroupChart({ chartId, parentWidth, parentHeight, borderSize, tooltipSho
   return (
     <>
       <div
-        className="card"
+        className={`card ${isModal ? 'my-d3-chart' : ''}`}
         id={`${chartId}`}
         ref={chartDiv}
         style={{

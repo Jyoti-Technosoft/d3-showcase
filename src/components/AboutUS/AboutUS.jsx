@@ -1,17 +1,16 @@
-import AboutImg from '../../Images/About-us-img.svg'
-
-import './AboutUS.scss'
+import './AboutUS.scss';
 
 const AboutUS = () => {
     return (
         <>
-            <div className="row">
-                <h2 className='text-center'>About US</h2>
-                <div className="col-sm d-flex justify-content-center align-items-center ">
-                    <img className='about-img' src={AboutImg} width="80%" alt="About US Image" />
+            <div className="row mb-5">
+                <div className="col-sm d-flex justify-content-center align-items-center img-div">
+                    <div className='w-100 img-div1'></div>
+                    <div className='w-100 img-div2'></div>
                 </div>
                 <div className="col-sm d-flex flex-column justify-content-center">
-                    <ul className="p-0" style={{ fontSize: "18px" }}>
+                <h1 className=''>About Us</h1>
+                    <ul className="p-0 about-us-content">
                         <li className="my-1" style={{ listStyle: "none" }}> <b><span style={{ color: "#2980b9", fontSize: "1.2em" }}>Jyoti Technosoft LLP </span></b>
                             is a Surat-based company delivering top of the line services to clients when it comes to web development, open source customization, custom software development services.
                         </li>

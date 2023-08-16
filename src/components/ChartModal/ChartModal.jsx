@@ -70,13 +70,13 @@ export const OpenChartModal = ({
       <Modal
         show={show}
         onHide={onHide}
-        dialogClassName="my-crud-modal"
+        dialogClassName="first-modal my-crud-modal"
         fullscreen={true}
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
         <Modal.Body className="d-flex align-items-center flex-column justify-content-between">
-          <div className="w-100 px-5 mb-2" id="contained-modal-title-vcenter">
+          <div className="w-100 mb-2 modal-heading" id="contained-modal-title-vcenter">
             <div className="d-flex justify-content-between">
               <h5> {chartTitle} </h5>
               <div
@@ -86,7 +86,7 @@ export const OpenChartModal = ({
               >
                 {crudModalType ? (
                   <h5 className="me-3 text-dark">
-                    Edit Data{" "}
+                    <span className="edit-text">Edit Data{" "}</span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"

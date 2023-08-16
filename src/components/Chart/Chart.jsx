@@ -38,7 +38,7 @@ function Chart() {
     setOpenPieCrudModal,
     openCrudModal, setOpenCrudModal,
     openCandleCrudModal,
-    openSunBrustCrudModal,
+    setaddDataCrud,
     setOpenCandleCrudModal,
     stateMap, setStateMap
   } = useContext(CustomContext);
@@ -57,6 +57,7 @@ function Chart() {
                   parentWidth="350px"
                   parentHeight="250px"
                   borderSize="0"
+                  isModal={false}
                   tooltipShow={false}
                   showLabels={false}
                 />
@@ -79,6 +80,7 @@ function Chart() {
                   parentWidth="350px"
                   parentHeight="250px"
                   borderSize="0"
+                  isModal={false}
                   tooltipShow={false}
                   showLegend={true}
                   showLables={false}
@@ -102,6 +104,7 @@ function Chart() {
                   parentWidth="350px"
                   parentHeight="250px"
                   borderSize="0"
+                  isModal={false}
                   showlabels={false}
                 />
               </div>
@@ -165,6 +168,7 @@ function Chart() {
                   tooltipShow={false}
                   zoomOn={false}
                   isModal={false}
+                  drillOn={false}
                 />
               </div>
               <div className="chart-description">
@@ -189,6 +193,7 @@ function Chart() {
               chartId="group2"
               parentWidth="75vw"
               parentHeight="70vh"
+              isModal={true}
               tooltipShow={true}
               showLabels={true}
             />
@@ -207,6 +212,7 @@ function Chart() {
               chartId="stacked2"
               parentWidth="75vw"
               parentHeight="65vh"
+              isModal={true}
               tooltipShow={true}
               showLegend={true}
               showLables={true}
@@ -226,6 +232,7 @@ function Chart() {
               chartId="candle2"
               parentWidth="75vw"
               parentHeight="65vh"
+              isModal={true}
               showlabels={true}
             />
           }
@@ -265,8 +272,9 @@ function Chart() {
               chartId="donutchart2"
               cardwidth="30vw"
               tooltipShow={true}
-              zoomOn={true}
+              zoomOn={false}
               isModal={true}
+              drillOn={true}
             />
           }
         />
@@ -294,42 +302,42 @@ function Chart() {
       {openGroupCrudModal ? (
         <CrudGroupChartModal
         show={openGroupCrudModal}
-          onHide={() => setOpenGroupCrudModal(false)}
+          onHide={() => {setOpenGroupCrudModal(false); setaddDataCrud(false);}}
         />
       ) : null}
 
       {openStackedCrudModal ? (
         <CrudStackedChartModal
           show={openStackedCrudModal}
-          onHide={() => setOpenStackedCrudModal(false)}
+          onHide={() => {setOpenStackedCrudModal(false); setaddDataCrud(false);}}
         />
       ) : null}
 
       {openPieCrudModal ? (
         <CrudPieChartModal
           show={openPieCrudModal}
-          onHide={() => setOpenPieCrudModal(false)}
+          onHide={() => {setOpenPieCrudModal(false); setaddDataCrud(false);}}
         />
       ) : null}
 
       {openCrudModal ? (
         <CrudSunBrustChartModal
           show={openCrudModal}
-          onHide={() => setOpenCrudModal(false)}
+          onHide={() => {setOpenCrudModal(false); setaddDataCrud(false);}}
         />
       ) : null}
 
       {openCandleCrudModal ? (
         <CrudCandleChartModal
           show={openCandleCrudModal}
-          onHide={() => setOpenCandleCrudModal(false)}
+          onHide={() => {setOpenCandleCrudModal(false); setaddDataCrud(false);}}
         />
       ) : null}
-
+ 
       {stateMap.openMapCrudModal ? (
         <CrudMapChartModal
           show={stateMap.openMapCrudModal}
-          onHide={() => setStateMap({ ...stateMap, openMapCrudModal: false, })}
+          onHide={() => {setStateMap({ ...stateMap, openMapCrudModal: false, }), setaddDataCrud(false);}}
         />
       ) : null}
 

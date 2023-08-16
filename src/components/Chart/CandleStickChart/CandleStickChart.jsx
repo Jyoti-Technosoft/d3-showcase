@@ -4,7 +4,9 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import { CustomContext } from "src/components/CustomContext";
 
-const CandleStickChart = ({ chartId, parentWidth, parentHeight, borderSize, showlabels }) => {
+import './CandleStickChart.scss'
+
+const CandleStickChart = ({ chartId, parentWidth, isModal, parentHeight, borderSize, showlabels }) => {
   const chartDiv = useRef();
   const { candleDataSet, updateDataCandle } = useContext(CustomContext);
 
@@ -196,7 +198,7 @@ const CandleStickChart = ({ chartId, parentWidth, parentHeight, borderSize, show
   return (
     <>
       <div
-        className="card"
+        className={`card ${isModal ? 'my-d3-chart' : ''}`}
         id={chartId}
         ref={chartDiv}
         style={{

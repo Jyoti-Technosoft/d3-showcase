@@ -9,3 +9,40 @@
         width: 350px;
     }
 }
+
+.img-div{
+    height: 500px;
+}
+
+.img-div1{
+    border-radius: 120px;
+    margin: 0 20px;
+    height: 80%;
+    background-image: url('../../Images/AboutUs/about-us-img1.jpg');
+    background-repeat: no-repeat;
+    background-position: 10%;
+    background-size: cover;
+}
+
+.img-div2{
+    border-radius: 120px;
+    margin: 0 10px;
+    height: 100%;
+    background-image: url('../../Images/AboutUs/about-us-img2.jpg');
+    background-repeat: no-repeat;
+    background-position: 70%;
+    background-size: cover;
+}
+
+.about-us-content{
+    font-size: 16px;
+}
+
+@media screen and (max-width: 990px) {
+    .img-div1{
+        width: 100% !important;
+    }
+    .img-div2{
+        display: none;
+    }
+}
