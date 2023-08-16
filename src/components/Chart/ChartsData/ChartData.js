@@ -116,7 +116,7 @@ export const pieData = [
   {
     id: "1",
     country: "US",
-    value: "332.0",
+    value: "357.0",
     subState: [
       { id: "101", country: "California", value: "39.5" },
       { id: "102", country: "Texas", value: "29.1" },
@@ -139,26 +139,26 @@ export const pieData = [
   },
   {
     id: "3",
-    country: "Indonesia",
-    value: "273.8",
+    country: "Japan",
+    value: "226.5",
     subState: [
-      { id: "301", country: "Jawa Barat", value: "48" },
-      { id: "302", country: "Jawa Timur", value: "40" },
-      { id: "303", country: "Jawa Tengah", value: "34" },
-      { id: "304", country: "Sumatera", value: "14" },
-      { id: "305", country: "Banten", value: "12" },
+      { id: "301", country: "Tokyo", value: "37" },
+      { id: "302", country: "Osaka", value: "16" },
+      { id: "303", country: "Kanagawa", value: "15" },
+      { id: "304", country: "Aichi", value: "10" },
+      { id: "305", country: "Chiba", value: "8.5" },
     ],
   },
   {
     id: "4",
-    country: "Brazil",
-    value: "213.4",
+    country: "Pakistan",
+    value: "333.2",
     subState: [
-      { id: "401", country: "São Paulo", value: "46" },
-      { id: "402", country: "Minas Gerais", value: "21" },
-      { id: "403", country: "Rio de Janeiro", value: "17" },
-      { id: "404", country: "Bahia", value: "15" },
-      { id: "405", country: "Paraná", value: "11" },
+      { id: "401", country: "Punjab", value: "70" },
+      { id: "402", country: "Sindh", value: "60" },
+      { id: "403", country: "Khyber Pakhtunkhwa", value: "40" },
+      { id: "404", country: "Balochistan", value: "25" },
+      { id: "405", country: "Islamabad", value: "22" },
     ],
   },
   {
@@ -170,10 +170,9 @@ export const pieData = [
       { id: "502", country: "Rajasthan", value: "78" },
       { id: "503", country: "Uttar Pradesh", value: "230" },
       { id: "504", country: "Tamil Nadu", value: "78" },
-      { id: "505", country: "Maharastra", value: "120" },
+      { id: "505", country: "Maharashtra", value: "120" },
     ],
   },
-  
 ];
 
 export const candleData = [
@@ -200,104 +199,120 @@ export const sunBrustData = {
   children: [
     {
       name: "India",
+      labelName: "IND",
       children: [
         {
           name: "Uttar Pradesh",
+          labelName: "UP",
           children: [
-            { name: "Lucknow", value: 50 },
-            { name: "Agra", value: 30 },
+            { name: "Lucknow", labelName: "LK", value: 50 },
+            { name: "Agra", labelName: "AG", value: 30 },
           ],
         },
         {
           name: "Gujarat",
+          labelName: "GUJ",
           children: [
-            { name: "Surat", value: 40 },
-            { name: "Rajkot", value: 25 },
+            { name: "Surat", labelName: "SU", value: 40 },
+            { name: "Rajkot", labelName: "RJ", value: 25 },
           ],
         },
         {
-          name: "Maharastra",
+          name: "Maharashtra",
+          labelName: "MH",
           children: [
-            { name: "Mumbai", value: 70 },
-            { name: "Pune", value: 40 },
+            { name: "Mumbai", labelName: "MI", value: 70 },
+            { name: "Pune", labelName: "PU", value: 40 },
           ],
         },
       ],
     },
     {
       name: "China",
+      labelName: "CN",
       children: [
         {
           name: "Guangdong",
+          labelName: "GUD",
           children: [
-            { name: "Guangzhou", value: 50 },
-            { name: "Shenzhen", value: 20 },
+            { name: "Guangzhou", labelName: "GH", value: 50 },
+            { name: "Shenzhen", labelName: "SH", value: 20 },
           ],
         },
         {
           name: "Zhejiang",
+          labelName: "ZHJ",
           children: [
-            { name: "Hangzhou", value: 35 },
-            { name: "Ningbo", value: 30 },
+            { name: "Hangzhou", labelName: "HZ", value: 35 },
+            { name: "Ningbo", labelName: "NB", value: 30 },
           ],
         },
         {
           name: "Jiangsu",
+          labelName: "JIG",
           children: [
-            { name: "Suzhou", value: 50 },
-            { name: "Nanjing", value: 35 },
+            { name: "Suzhou", labelName: "SH", value: 50 },
+            { name: "Nanjing", labelName: "NJ", value: 35 },
           ],
         },
       ],
     },
     {
       name: "USA",
+      labelName: "USA",
       children: [
         {
           name: "California",
+          labelName: "CA",
           children: [
-            { name: "Los Angeles", value: 30 },
-            { name: "San Francisco", value: 20 },
+            { name: "Los Angeles", labelName: "LA", value: 30 },
+            { name: "San Francisco", labelName: "SF", value: 20 },
           ],
         },
         {
           name: "Texas",
+          labelName: "TX",
           children: [
-            { name: "Houston", value: 20 },
-            { name: "Dallas", value: 30 },
+            { name: "Houston", labelName: "HUS", value: 20 },
+            { name: "Dallas", labelName: "DA", value: 30 },
           ],
         },
         {
           name: "Florida",
+          labelName: "FD",
           children: [
-            { name: "Miami", value: 10 },
-            { name: "Orlando", value: 20 },
+            { name: "Miami", labelName: "MI", value: 10 },
+            { name: "Orlando", labelName: "OL", value: 20 },
           ],
         },
       ],
     },
     {
-      name: "Brazil",
+      name: "Australia",
+      labelName: "AUS",
       children: [
         {
-          name: "São Paulo",
+          name: "New South Wales",
+          labelName: "NSW",
           children: [
-            { name: "Campinas", value: 12 },
-            { name: "Guarulhos", value: 18 },
+            { name: "Sydney", labelName: "SY", value: 15 },
+            { name: "Newcastle", labelName: "NC", value: 8 },
           ],
         },
         {
-          name: "Rio de Janeiro",
+          name: "Victoria",
+          labelName: "VC",
           children: [
-            { name: "Niterói", value: 8 },
-            { name: "Nova Iguaçu", value: 30 },
+            { name: "Melbourne", labelName: "MLB", value: 18 },
+            { name: "Geelong", labelName: "GL", value: 5 },
           ],
         },
         {
-          name: "Bahia",
+          name: "Queensland",
+          labelName: "QL",
           children: [
-            { name: "Salvador", value: 8 },
-            { name: "Feira de Santana", value: 12 },
+            { name: "Brisbane", labelName: "BB", value: 12 },
+            { name: "Gold Coast", labelName: "GC", value: 10 },
           ],
         },
       ],
