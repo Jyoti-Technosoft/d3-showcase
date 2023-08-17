@@ -277,7 +277,7 @@ export function CrudSunBrustChartModal(props) {
         style={{ height: "inherit" }}
       >
         <div className="header-crud w-100 d-flex justify-content-between">
-          <h4>Oil Consumption By Country (In Barrels)</h4>
+          <h4>World Population (In Millions)</h4>
           {addDataCrud ? (
             <div onClick={backToView}>
               <span role="button" className="fs-4">
@@ -340,7 +340,7 @@ export function CrudCandleChartModal(props) {
         style={{ height: "inherit" }}
       >
         <div className="header-crud w-100 d-flex justify-content-between">
-          <h4>Crud Candle</h4>
+          <h4>CandleStick Chart of ITC </h4>
           {addDataCrud ? (
             <div onClick={backToView}>
               <span role="button" className="fs-4">
@@ -400,7 +400,7 @@ export function CrudMapChartModal(props) {
         style={{ height: "inherit" }}
       >
         <div className="header-crud w-100 d-flex justify-content-between">
-          <h4>Crud India Map</h4>
+          <h4>India Map with Population (In Millions)</h4>
           {addDataCrud ? (
             <div onClick={backToView}>
               <span role="button" className="fs-4">
@@ -457,7 +457,7 @@ export function CrudPieChartModal(props) {
         style={{ height: "inherit" }}
       >
         <div className="header-crud w-100 d-flex justify-content-between">
-          <h4>Oil Consumption By Country (In Barrels)</h4>
+          <h4>Countries With Population (in Millions)</h4>
           {addDataCrud ? (
             <div onClick={backToView}>
               <span role="button" className="fs-4">

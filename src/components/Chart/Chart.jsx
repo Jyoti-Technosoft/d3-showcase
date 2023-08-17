@@ -225,7 +225,7 @@ function Chart() {
         <OpenChartModal
           show={candleModel}
           onHide={() => setCandleModel(false)}
-          chartTitle="CandleStick Chart"
+          chartTitle="CandleStick Chart of ITC (Demo Data)"
           crudModalType="candleStickChart"
           chartType={
             <CandleStickChart

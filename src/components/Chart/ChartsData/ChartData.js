@@ -192,6 +192,11 @@ export const candleData = [
   { id: "14", date: "2023-07-14", open: 150, high: 175, low: 140, close: 170 },
   { id: "15", date: "2023-07-15", open: 175, high: 177, low: 140, close: 145 },
   { id: "16", date: "2023-07-16", open: 170, high: 175, low: 140, close: 155 },
+  { id: "17", date: "2023-07-17", open: 140, high: 140, low: 90, close: 120 },
+  { id: "18", date: "2023-07-18", open: 125, high: 145, low: 110, close: 115 },
+  { id: "19", date: "2023-07-19", open: 170, high: 190, low: 160, close: 180 },
+  { id: "23", date: "2023-07-23", open: 190, high: 210, low: 180, close: 200 },
+  { id: "30", date: "2023-07-24", open: 225, high: 245, low: 215, close: 235 },
 ];
 
 export const sunBrustData = {
