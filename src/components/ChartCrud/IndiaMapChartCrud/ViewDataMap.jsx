@@ -82,7 +82,7 @@ const ViewDataMap = () => {
           </svg>
         </button>
         <div className="table-container w-100" ref={elementRef}>
-          <table className="w-100 table table-hover">
+          <table className="w-100 table">
             <thead>
               <tr className="table-header">
                 <th className="p-2 text-center">No.</th>

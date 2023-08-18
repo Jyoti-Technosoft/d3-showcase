@@ -105,7 +105,8 @@ const AddDataCandle = () => {
 
   return (
     <>
-      <form className="px-3" onSubmit={addDataFormik.handleSubmit}>
+      <form className="px-3 h-100 overflow-hidden" onSubmit={addDataFormik.handleSubmit}>
+      <div className="overflow-auto form-div">
         <label className="form-label" htmlFor="date">
           Date
         </label>
@@ -205,7 +206,8 @@ const AddDataCandle = () => {
             {addDataFormik.errors.close}
           </p>
         ) : null}
-
+        </div>
+        <div className="d-flex flex-row-reverse">
         {isEdit ? (
           <input
             type="submit"
@@ -215,6 +217,8 @@ const AddDataCandle = () => {
         ) : (
           <input type="submit" className="btn-sub px-3 py-2 border-0 my-2" />
         )}
+        <p role="button" className="px-3 py-2 border-0 my-2" onClick={() => setaddDataCrud(false)}>Cancel</p>
+        </div>
       </form>
     </>
   );

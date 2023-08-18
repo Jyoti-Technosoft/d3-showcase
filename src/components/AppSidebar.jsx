@@ -29,10 +29,10 @@ const AppSidebar = () => {
         <img src={JT} alt="" style={{width: "40px"}}/>
         <h5 className='mb-0 ms-2'>D3 Showcase</h5>
       </CSidebarBrand>
-      <CSidebarNav>
-        <SimpleBar>
+      <CSidebarNav style={{background: '#303c54'}}>
+        {/* <SimpleBar> */}
           <AppSidebarNav items={navigation} className="my-items" />
-        </SimpleBar>
+        {/* </SimpleBar> */}
       </CSidebarNav>
     </CSidebar>
   )

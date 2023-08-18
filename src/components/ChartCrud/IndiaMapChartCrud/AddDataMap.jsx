@@ -94,6 +94,7 @@ const AddDataMap = () => {
           </p>
         ) : null}
 
+        <div className="d-flex flex-row-reverse">
         {isEdit ? (
           <input
             type="submit"
@@ -103,6 +104,8 @@ const AddDataMap = () => {
         ) : (
           <input type="submit" className="btn-sub px-3 py-2 border-0 my-2" />
         )}
+        <p role="button" className="px-3 py-2 border-0 my-2" onClick={() => setaddDataCrud(false)}>Cancel</p>
+        </div>
       </form>
     </>
   );

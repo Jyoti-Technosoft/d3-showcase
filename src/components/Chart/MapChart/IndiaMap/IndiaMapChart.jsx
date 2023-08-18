@@ -73,8 +73,8 @@ function IndiaMapChart({ chartId, toolTipShow, parentWidth, parentHeight, isModa
           })
           .on("mousemove", function (event) {
             tooltip
-              .style("left", event.x + "px")
-              .style("top", event.y - 130 + "px");
+              .style("left", event.offsetX + 350 + "px")
+              .style("top", event.offsetY + "px");
           })
           .on("mouseleave", function () {
             tooltip.style("opacity", 0);

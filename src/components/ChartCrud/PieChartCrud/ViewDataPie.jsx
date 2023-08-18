@@ -87,12 +87,12 @@ const ViewDataPie = () => {
           </svg>
         </button>
         <div className="table-container w-100" ref={elementRef}>
-          <table className="w-100 table table-hover">
+          <table className="w-100 table">
             <thead>
               <tr className="table-header">
-                <th className="p-2 text-center">No.</th>
-                <th className="p-2 text-center">Country</th>
-                <th className="p-2 text-center">Value</th>
+                <th className="p-2">No.</th>
+                <th className="p-2">Country</th>
+                <th className="p-2">Value</th>
                 <th colSpan="2" className="p-2 text-center">
                   Action
                 </th>
@@ -107,15 +107,15 @@ const ViewDataPie = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td className="p-2 text-center">{index + 1}</td>
-                    <td className="p-2 text-center">{val.country}</td>
-                    <td className="p-2 text-center">{val.value}</td>
-                    <td className="p-2 text-center text-info">
+                    <td className="p-2">{index + 1}</td>
+                    <td className="p-2">{val.country}</td>
+                    <td className="p-2">{val.value}</td>
+                    <td className="p-2 text-end text-info">
                       <p role="button" onClick={() => editData(val)}>
                         Edit
                       </p>
                     </td>
-                    <td className="p-2 text-center text-danger">
+                    <td className="p-2 text-start text-danger">
                       <p
                         role="button"
                         onClick={() => {
@@ -129,15 +129,15 @@ const ViewDataPie = () => {
                   </tr>
                     {val.subState.map((subVal, subIndex) => (
                     <tr key={`${index}-${subIndex}`} className="sub-state-row">
-                      <td className="p-2 text-center"></td>
-                      <td className="p-2 text-center">{subVal.country}</td>
-                      <td className="p-2 text-center">{subVal.value}</td>
-                      <td className="p-2 text-center text-info">
+                      <td className="p-2"></td>
+                      <td className="p-2">{subVal.country}</td>
+                      <td className="p-2">{subVal.value}</td>
+                      <td className="p-2 text-info">
                         {/* <p role="button" onClick={() => editData(subVal)}>
                           Edit
                         </p> */}
                       </td>
-                      <td className="p-2 text-center text-danger">
+                      <td className="p-2 text-danger">
                         {/* <p
                           role="button"
                           onClick={() => {

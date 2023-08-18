@@ -86,7 +86,7 @@ const ViewDataGroup = () => {
                     </svg>
                 </button>
                 <div className="table-container w-100" ref={elementRef}>
-                    <table className="w-100 table table-hover">
+                    <table className="w-100 table">
                         <thead>
                             <tr className="table-header">
                                 <th className="p-2 text-center">No.</th>
@@ -106,12 +106,12 @@ const ViewDataGroup = () => {
                                         <td className="p-2 text-center">{val.month}</td>
                                         <td className="p-2 text-center">{val.petrolprice}</td>
                                         <td className="p-2 text-center">{val.dieselprice}</td>
-                                        <td className="p-2 text-center text-info">
+                                        <td className="p-2 text-end text-info">
                                             <p role="button" onClick={() => editData(val)}>
                                                 Edit
                                             </p>
                                         </td>
-                                        <td className="p-2 text-center text-danger">
+                                        <td className="p-2 text-start text-danger">
                                             <p
                                                 role="button"
                                                 onClick={() => {

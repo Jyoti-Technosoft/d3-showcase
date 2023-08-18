@@ -48,7 +48,7 @@ const AddDataSunBrust = () => {
             }
           }
         }
-      
+
       } else {
         // Handle adding new data
       }
@@ -102,15 +102,18 @@ const AddDataSunBrust = () => {
           </p>
         ) : null}
 
-        {isEdit ? (
-          <input
-            type="submit"
-            value="Update"
-            className="btn-sub px-3 py-2 border-0 my-2"
-          />
-        ) : (
-          <input type="submit" className="btn-sub px-3 py-2 border-0 my-2" />
-        )}
+        <div className="d-flex flex-row-reverse">
+          {isEdit ? (
+            <input
+              type="submit"
+              value="Update"
+              className="btn-sub px-3 py-2 border-0 my-2"
+            />
+          ) : (
+            <input type="submit" className="btn-sub px-3 py-2 border-0 my-2" />
+          )}
+          <p role="button" className="px-3 py-2 border-0 my-2" onClick={() => setaddDataCrud(false)}>Cancel</p>
+        </div>
       </form>
     </>
   );

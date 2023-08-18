@@ -84,78 +84,82 @@ const AddDataGroup = () => {
 
   return (
     <>
-      <form className="px-3" onSubmit={addDataFormik.handleSubmit}>
-        <label className="form-label" htmlFor="month">
-          Month
-        </label>
-        <input
-          className="input-style p-2 w-100 border-0 my-2"
-          type="text"
-          id="month"
-          name="month"
-          value={addDataFormik.values.month}
-          onChange={addDataFormik.handleChange}
-          onBlur={addDataFormik.handleBlur}
-          placeholder="Enter month"
-          autoComplete="off"
-        />
-        {addDataFormik.errors.month && addDataFormik.touched.month ? (
-          <p className="text-danger text-center mt-2">
-            {addDataFormik.errors.month}
-          </p>
-        ) : null}
-
-        <label className="form-label" htmlFor="petrolprice">
-          Petrol Price
-        </label>
-        <input
-          className="input-style p-2 w-100 border-0 my-2"
-          type="number"
-          id="petrolprice"
-          name="petrolprice"
-          value={addDataFormik.values.petrolprice}
-          onChange={addDataFormik.handleChange}
-          onBlur={addDataFormik.handleBlur}
-          placeholder="Enter petrolprice Value"
-          autoComplete="off"
-        />
-        {addDataFormik.errors.petrolprice &&
-        addDataFormik.touched.petrolprice ? (
-          <p className="text-danger text-center mt-2">
-            {addDataFormik.errors.petrolprice}
-          </p>
-        ) : null}
-
-        <label className="form-label" htmlFor="dieselprice">
-          Diesel Price
-        </label>
-        <input
-          className="input-style p-2 w-100 border-0 my-2"
-          type="number"
-          id="dieselprice"
-          name="dieselprice"
-          value={addDataFormik.values.dieselprice}
-          onChange={addDataFormik.handleChange}
-          onBlur={addDataFormik.handleBlur}
-          placeholder="Enter dieselprice Value"
-          autoComplete="off"
-        />
-        {addDataFormik.errors.dieselprice &&
-        addDataFormik.touched.dieselprice ? (
-          <p className="text-danger text-center mt-2">
-            {addDataFormik.errors.dieselprice}
-          </p>
-        ) : null}
-
-        {isEdit ? (
+      <form className="px-3 h-100 overflow-hidden" onSubmit={addDataFormik.handleSubmit}>
+        <div className="overflow-auto form-div">
+          <label className="form-label" htmlFor="month">
+            Month
+          </label>
           <input
-            type="submit"
-            value="Update"
-            className="btn-sub px-3 py-2 border-0 my-2"
+            className="input-style p-2 w-100 border-0 my-2"
+            type="text"
+            id="month"
+            name="month"
+            value={addDataFormik.values.month}
+            onChange={addDataFormik.handleChange}
+            onBlur={addDataFormik.handleBlur}
+            placeholder="Enter month"
+            autoComplete="off"
           />
-        ) : (
-          <input type="submit" className="btn-sub px-3 py-2 border-0 my-2" />
-        )}
+          {addDataFormik.errors.month && addDataFormik.touched.month ? (
+            <p className="text-danger text-center mt-2">
+              {addDataFormik.errors.month}
+            </p>
+          ) : null}
+
+          <label className="form-label" htmlFor="petrolprice">
+            Petrol Price
+          </label>
+          <input
+            className="input-style p-2 w-100 border-0 my-2"
+            type="number"
+            id="petrolprice"
+            name="petrolprice"
+            value={addDataFormik.values.petrolprice}
+            onChange={addDataFormik.handleChange}
+            onBlur={addDataFormik.handleBlur}
+            placeholder="Enter petrolprice Value"
+            autoComplete="off"
+          />
+          {addDataFormik.errors.petrolprice &&
+            addDataFormik.touched.petrolprice ? (
+            <p className="text-danger text-center mt-2">
+              {addDataFormik.errors.petrolprice}
+            </p>
+          ) : null}
+
+          <label className="form-label" htmlFor="dieselprice">
+            Diesel Price
+          </label>
+          <input
+            className="input-style p-2 w-100 border-0 my-2"
+            type="number"
+            id="dieselprice"
+            name="dieselprice"
+            value={addDataFormik.values.dieselprice}
+            onChange={addDataFormik.handleChange}
+            onBlur={addDataFormik.handleBlur}
+            placeholder="Enter dieselprice Value"
+            autoComplete="off"
+          />
+          {addDataFormik.errors.dieselprice &&
+            addDataFormik.touched.dieselprice ? (
+            <p className="text-danger text-center mt-2">
+              {addDataFormik.errors.dieselprice}
+            </p>
+          ) : null}
+        </div>
+        <div className="d-flex flex-row-reverse">
+          {isEdit ? (
+            <input
+              type="submit"
+              value="Update"
+              className="btn-sub px-3 py-2 border-0 my-2"
+            />
+          ) : (
+            <input type="submit" className="btn-sub px-3 py-2 border-0 my-2" />
+          )}
+          <p role="button" className="px-3 py-2 border-0 my-2" onClick={() => setaddDataCrud(false)}>Cancel</p>
+        </div>
       </form>
     </>
   );

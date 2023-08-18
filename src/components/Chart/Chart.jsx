@@ -19,6 +19,7 @@ import CandleStickChart from "./CandleStickChart/CandleStickChart";
 import CustomToast from "../ToastComponent/CustomToast";
 import IndiaMapChart from "./MapChart/IndiaMap/IndiaMapChart";
 import SunBrustChart from "./DonutChart/SunBrustChart";
+import { useNavigate } from "react-router-dom";
 
 function Chart() {
   const [groupModel, setGroupModel] = useState(false);
@@ -27,6 +28,8 @@ function Chart() {
   const [mapModel, setMapModel] = useState(false);
   const [candleModel, setCandleModel] = useState(false);
   const [sunBrustModel, setSunBrustModel] = useState(false);
+
+  const navigate = useNavigate();
 
   const {
     showToast,
@@ -46,11 +49,14 @@ function Chart() {
   return (
     <>
       <div className="container">
+
+        <p className="w-75 mx-auto mb-4 text-center">D3 Showcase is an interactive data visualization web application that seamlessly integrates React.js and D3.js. With a variety of six dynamic charts, users can delve into data insights, perform CRUD operations, and observe real-time updates. This fusion of technologies empowers efficient data analysis within a user-friendly interface.</p>
+
         <div className="row">
           <div className="col-sm my-card mb-4">
             <div className="chart-box">
               <div className="charts-card d-flex justify-content-center" onClick={() => {
-                setGroupModel(true);
+                navigate('/charts/groupchart');
               }}>
                 <GroupChart
                   chartId="group1"
@@ -73,7 +79,7 @@ function Chart() {
           <div className="col-sm my-card mb-4">
             <div className="chart-box">
               <div className="charts-card d-flex justify-content-center" onClick={() => {
-                setStackedModel(true);
+                navigate('/charts/stackedchart');
               }}>
                 <StackedChart
                   chartId="stacked1"
@@ -97,7 +103,7 @@ function Chart() {
           <div className="col-sm my-card mb-4">
             <div className="chart-box">
               <div className="charts-card d-flex justify-content-center" onClick={() => {
-                setCandleModel(true);
+                navigate('/charts/candlestickchart');
               }}>
                 <CandleStickChart
                   chartId="candle1"
@@ -119,7 +125,7 @@ function Chart() {
           <div className="col-sm my-card mb-4">
             <div className="chart-box">
               <div className="charts-card d-flex justify-content-center" onClick={() => {
-                setMapModel(true);
+                navigate('/charts/mapchart');
               }}>
                 <IndiaMapChart
                   chartId="indiamap1"
@@ -140,7 +146,7 @@ function Chart() {
           <div className="col-sm my-card mb-4">
             <div className="chart-box">
               <div className="charts2-card d-flex justify-content-center" onClick={() => {
-                setPieModel(true);
+                navigate('/charts/piechart');
               }}>
                 <PieChart
                   chartId="pie1"
@@ -160,7 +166,7 @@ function Chart() {
           <div className="col-sm my-card mb-4">
             <div className="chart-box">
               <div className="charts-card d-flex justify-content-center" onClick={() => {
-                setSunBrustModel(true);
+                navigate('/charts/sunburstchart');
               }}>
                 <SunBrustChart
                   chartId="donutchart1"

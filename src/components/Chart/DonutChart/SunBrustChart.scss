@@ -1,5 +1,11 @@
 @media screen and (max-width: 1050px) {
     .multi-level-chart{
-        width: 80vw !important;
+        width: 40vw !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .multi-level-chart{
+        width: 60vw !important;
     }
 }

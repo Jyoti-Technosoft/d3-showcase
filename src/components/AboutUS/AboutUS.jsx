@@ -17,10 +17,14 @@ const AboutUS = () => {
                         <li className="my-1" style={{ listStyle: "none" }}>
                             We are fully aware of the current trends and practices of the IT industry and we always strive to present our clients with better services and make a difference in their lives.
                         </li>
+                        <br />
                         <li className="my-1" style={{ listStyle: "none" }}>
                             We understand that not all our clients are tech savvy, and gently guide them through the ever changing realm of the internet to their desired destination.We have created, launched and revamped many web sites and web applications. This experience has led us to a deep understanding of what makes software projects successful.
                         </li>
                     </ul>
+                    <button className='contact-us-btn'>
+                        <a className='contact-us-a' href="https://www.jyotitechnosoft.com/contact-us" target='_blank'>Contact Us</a>
+                    </button>
                 </div>
             </div>
 
