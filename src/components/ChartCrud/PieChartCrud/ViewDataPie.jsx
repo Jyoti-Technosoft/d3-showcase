@@ -87,10 +87,10 @@ const ViewDataPie = () => {
           </svg>
         </button>
         <div className="table-container w-100" ref={elementRef}>
-          <table className="w-100 table">
+          <table className="w-100 table charts-data-table">
             <thead>
               <tr className="table-header">
-                <th className="p-2">No.</th>
+                <th className="p-2 text-center">No.</th>
                 <th className="p-2">Country</th>
                 <th className="p-2">Value</th>
                 <th colSpan="2" className="p-2 text-center">
@@ -103,28 +103,23 @@ const ViewDataPie = () => {
                 return (
                   <React.Fragment key={index}>
                   <tr>
-                    <td colSpan="5" style={{background: '#c0c3c7'}}>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="p-2">{index + 1}</td>
+                    <td className="p-2 text-center">{index + 1}</td>
                     <td className="p-2">{val.country}</td>
                     <td className="p-2">{val.value}</td>
-                    <td className="p-2 text-end text-info">
-                      <p role="button" onClick={() => editData(val)}>
+                    <td className="p-2 text-center">
+                      <span role="button" className="m-0 me-2 text-info" onClick={() => editData(val)}>
                         Edit
-                      </p>
-                    </td>
-                    <td className="p-2 text-start text-danger">
-                      <p
+                      </span>
+                      <span
                         role="button"
+                        className="ms-2 m-0 text-danger"
                         onClick={() => {
                           setDeleteId(val.id);
                           handleShow();
                         }}
                       >
                         Delete
-                      </p>
+                      </span>
                     </td>
                   </tr>
                     {val.subState.map((subVal, subIndex) => (
@@ -133,23 +128,15 @@ const ViewDataPie = () => {
                       <td className="p-2">{subVal.country}</td>
                       <td className="p-2">{subVal.value}</td>
                       <td className="p-2 text-info">
-                        {/* <p role="button" onClick={() => editData(subVal)}>
-                          Edit
-                        </p> */}
                       </td>
                       <td className="p-2 text-danger">
-                        {/* <p
-                          role="button"
-                          onClick={() => {
-                            setDeleteId(subVal.id);
-                            handleShow();
-                          }}
-                        >
-                          Delete
-                        </p> */}
                       </td>
                     </tr>
                   ))}
+                  <tr>
+                    <th colSpan="5" style={{background: '#c0c3c7'}}>
+                    </th>
+                  </tr>
                 </React.Fragment>
               );
             })}

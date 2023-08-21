@@ -330,8 +330,8 @@ function GroupChart({ chartId, parentWidth, parentHeight, isModal, borderSize, t
           })
           .on("mousemove", function (event) {
             tooltip
-              .style("left", d3.pointer(event)[0] + 50 + "px")
-              .style("top", d3.pointer(event)[1] + 20 + "px");
+            .style("left", d3.pointer(event)[0] + 80 + "px")
+            .style("top", d3.pointer(event)[1] + 20 + "px");
           })
           .on("mouseleave", function () {
             tooltip.style("opacity", 0);
@@ -387,6 +387,11 @@ function GroupChart({ chartId, parentWidth, parentHeight, isModal, borderSize, t
 
   return (
     <>
+      {
+        isModal ?
+          <h5 className="text-center">Petrol v/s Diesel (In $USD)</h5>
+          : null
+      }
       <div
         className={`card ${isModal ? 'my-d3-chart' : ''}`}
         id={`${chartId}`}

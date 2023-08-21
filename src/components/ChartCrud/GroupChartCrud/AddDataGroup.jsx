@@ -35,7 +35,10 @@ const AddDataGroup = () => {
     setaddDataCrud
   } = useContext(CustomContext);
 
-  const upd_obj = groupDataSet?.findIndex((ele) => ele?.id === updateValue?.id);
+  let upd_obj;
+  if(isEdit){
+    upd_obj = groupDataSet?.findIndex((ele) => ele?.id === updateValue?.id);
+  }
 
   const addInitialValues = {
     month: groupDataSet[upd_obj]?.month || "",

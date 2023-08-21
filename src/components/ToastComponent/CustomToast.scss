@@ -42,3 +42,10 @@
     }
   }
 }
+
+.custom-toast{
+  position: fixed !important;
+  top: 10px !important;
+  right: 10px !important;
+  z-index: 9999 !important;
+}

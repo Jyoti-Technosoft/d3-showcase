@@ -6,7 +6,7 @@ import { CustomContext } from "src/components/CustomContext";
 
 import './CandleStickChart.scss'
 
-const CandleStickChart = ({ chartId, parentWidth, isModal, parentHeight, borderSize, showlabels }) => {
+const CandleStickChart = ({ chartId, parentWidth, isModal, parentHeight, borderSize, showlabels, tooltipShow }) => {
   const chartDiv = useRef();
   const { candleDataSet, updateDataCandle } = useContext(CustomContext);
 
@@ -129,7 +129,14 @@ const CandleStickChart = ({ chartId, parentWidth, isModal, parentHeight, borderS
       .domain([d3.min(data, (d) => d.low), d3.max(data, (d) => d.high)])
       .range([height, 0]);
 
-    svg
+    const tooltip = d3
+      .select(`#${chartId}`)
+      .append("div")
+      .style("opacity", 1)
+      .attr("class", "tooltip")
+      .style("position", "absolute")
+      
+    let bar = svg
       .selectAll("rect")
       .data(data)
       .enter()
@@ -164,22 +171,41 @@ const CandleStickChart = ({ chartId, parentWidth, isModal, parentHeight, borderS
 
     svg.append("g").attr("class", "y-axis-candle").call(d3.axisLeft(yScale));
 
-    if(showlabels){
-    svg
-      .append("text")
-      .attr("class", "x-axis-label")
-      .attr("x", width / 2)
-      .attr("y", height + margin.top + 12)
-      .style("text-anchor", "middle")
-      .text("Date");
-    svg
-      .append("text")
-      .attr("class", "y-axis-label")
-      .attr("x", -height / 2)
-      .attr("y", -margin.left + 15)
-      .attr("transform", "rotate(-90)")
-      .style("text-anchor", "middle")
-      .text("Price");
+    if (tooltipShow) {
+      bar
+        .on("mouseover", function (event, d) {
+          console.log(d);
+          tooltip
+            .html(
+              `O: ${d.open} H: ${d.high} L: ${d.low} C: ${d.close}`
+            )
+            .style("opacity", 1);
+        })
+        .on("mousemove", function (event) {
+          tooltip
+            .style("left", 65 + "px");
+        })
+        .on("mouseleave", function () {
+          tooltip.style("opacity", 0);
+        });
+    }
+
+    if (showlabels) {
+      svg
+        .append("text")
+        .attr("class", "x-axis-label")
+        .attr("x", width / 2)
+        .attr("y", height + margin.top + 12)
+        .style("text-anchor", "middle")
+        .text("Date");
+      svg
+        .append("text")
+        .attr("class", "y-axis-label")
+        .attr("x", -height / 2)
+        .attr("y", -margin.left + 15)
+        .attr("transform", "rotate(-90)")
+        .style("text-anchor", "middle")
+        .text("Price");
     }
   }
 
@@ -197,6 +223,11 @@ const CandleStickChart = ({ chartId, parentWidth, isModal, parentHeight, borderS
 
   return (
     <>
+      {
+        isModal ?
+          <h5 className="text-center">CandleStick Chart of ITC (Demo Data)</h5>
+          : null
+      }
       <div
         className={`card ${isModal ? 'my-d3-chart' : ''}`}
         id={chartId}
@@ -205,7 +236,8 @@ const CandleStickChart = ({ chartId, parentWidth, isModal, parentHeight, borderS
           width: parentWidth,
           height: parentHeight,
           border: borderSize,
-          background: 'transparent'
+          background: 'transparent',
+          position: 'relative'
         }}
       ></div>
     </>

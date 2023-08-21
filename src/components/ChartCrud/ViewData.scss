@@ -11,3 +11,31 @@
 .side-arrow-btn {
     background-color: #c0c3c7;
 }
+
+.table-header{
+    th{
+        background-color: #303c54 !important;
+        color: #ffffff !important;
+    }
+}
+
+.charts-data-table{
+    tbody{
+        tr:hover{
+            td{
+                background-color: #d1def7 !important;
+            }
+        }
+    }
+}
+
+.charts-data-table{
+    tbody{
+        tr{
+            td{
+                vertical-align: middle;
+                padding: 10px 0 !important;
+            }
+        }
+    }
+}

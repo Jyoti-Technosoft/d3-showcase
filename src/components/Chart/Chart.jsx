@@ -4,53 +4,18 @@ import StackedChart from "./StackedChart/StackedChart";
 
 import "./Chart.scss";
 
-import { useContext, useState } from "react";
-import {
-  CrudCandleChartModal,
-  CrudGroupChartModal,
-  CrudMapChartModal,
-  CrudPieChartModal,
-  CrudStackedChartModal,
-  CrudSunBrustChartModal,
-  OpenChartModal,
-} from "../ChartModal/ChartModal";
-import { CustomContext } from "../CustomContext";
 import CandleStickChart from "./CandleStickChart/CandleStickChart";
-import CustomToast from "../ToastComponent/CustomToast";
 import IndiaMapChart from "./MapChart/IndiaMap/IndiaMapChart";
 import SunBrustChart from "./DonutChart/SunBrustChart";
 import { useNavigate } from "react-router-dom";
 
 function Chart() {
-  const [groupModel, setGroupModel] = useState(false);
-  const [pieModel, setPieModel] = useState(false);
-  const [stackedModel, setStackedModel] = useState(false);
-  const [mapModel, setMapModel] = useState(false);
-  const [candleModel, setCandleModel] = useState(false);
-  const [sunBrustModel, setSunBrustModel] = useState(false);
-
   const navigate = useNavigate();
-
-  const {
-    showToast,
-    openGroupCrudModal,
-    setOpenGroupCrudModal,
-    openStackedCrudModal,
-    setOpenStackedCrudModal,
-    openPieCrudModal,
-    setOpenPieCrudModal,
-    openCrudModal, setOpenCrudModal,
-    openCandleCrudModal,
-    setaddDataCrud,
-    setOpenCandleCrudModal,
-    stateMap, setStateMap
-  } = useContext(CustomContext);
-
   return (
     <>
       <div className="container">
 
-        <p className="w-75 mx-auto mb-4 text-center">D3 Showcase is an interactive data visualization web application that seamlessly integrates React.js and D3.js. With a variety of six dynamic charts, users can delve into data insights, perform CRUD operations, and observe real-time updates. This fusion of technologies empowers efficient data analysis within a user-friendly interface.</p>
+        <p className="mb-4 charts-description">D3 Showcase is an interactive data visualization web application that seamlessly integrates React.js and D3.js. With a variety of six dynamic charts, users can delve into data insights, perform CRUD operations, and observe real-time updates. This fusion of technologies empowers efficient data analysis within a user-friendly interface.</p>
 
         <div className="row">
           <div className="col-sm my-card mb-4">
@@ -187,167 +152,6 @@ function Chart() {
           </div>
         </div>
       </div>
-
-      {groupModel ? (
-        <OpenChartModal
-          show={groupModel}
-          onHide={() => setGroupModel(false)}
-          chartTitle="Petrol v/s Diesel (In $USD)"
-          crudModalType="groupChart"
-          chartType={
-            <GroupChart
-              chartId="group2"
-              parentWidth="75vw"
-              parentHeight="70vh"
-              isModal={true}
-              tooltipShow={true}
-              showLabels={true}
-            />
-          }
-        />
-      ) : null}
-
-      {stackedModel ? (
-        <OpenChartModal
-          show={stackedModel}
-          onHide={() => setStackedModel(false)}
-          chartTitle="Oil Consumption By Country (In Barrels)"
-          crudModalType="stackedChart"
-          chartType={
-            <StackedChart
-              chartId="stacked2"
-              parentWidth="75vw"
-              parentHeight="65vh"
-              isModal={true}
-              tooltipShow={true}
-              showLegend={true}
-              showLables={true}
-            />
-          }
-        />
-      ) : null}
-
-      {candleModel ? (
-        <OpenChartModal
-          show={candleModel}
-          onHide={() => setCandleModel(false)}
-          chartTitle="CandleStick Chart of ITC (Demo Data)"
-          crudModalType="candleStickChart"
-          chartType={
-            <CandleStickChart
-              chartId="candle2"
-              parentWidth="75vw"
-              parentHeight="65vh"
-              isModal={true}
-              showlabels={true}
-            />
-          }
-        />
-      ) : null}
-
-      {pieModel ? (
-        <OpenChartModal
-          show={pieModel}
-          onHide={() => setPieModel(false)}
-          chartTitle="Countries With Population (in Millions)"
-          chartText2="Click on Country name to view more details"
-          crudModalType="pieChart"
-          chartType={
-            <PieChart
-              className="d-flex justify-content-center pie-size"
-              chartId="pie2"
-              parentWidth="30vw"
-              parentHeight="30vw"
-              tooltipShow={true}
-              isModal={true}
-              onClickOpenInside={true}
-            />
-          }
-        />
-      ) : null}
-
-      {sunBrustModel ? (
-        <OpenChartModal
-          show={sunBrustModel}
-          onHide={() => setSunBrustModel(false)}
-          chartTitle="World Population (In Millions)"
-          chartText2=""
-          crudModalType="sunBrustChart"
-          chartType={
-            <SunBrustChart
-              chartId="donutchart2"
-              cardwidth="30vw"
-              tooltipShow={true}
-              zoomOn={false}
-              isModal={true}
-              drillOn={true}
-            />
-          }
-        />
-      ) : null}
-
-      {mapModel ? (
-        <OpenChartModal
-          show={mapModel}
-          onHide={() => setMapModel(false)}
-          chartTitle="India Map with Population (In Millions)"
-          chartText2=""
-          crudModalType="mapChart"
-          chartType={
-            <IndiaMapChart
-              chartId="indiamap2"
-              toolTipShow={true}
-              parentWidth="350"
-              parentHeight="350"
-              isModal={true}
-            />
-          }
-        />
-      ) : null}
-
-      {openGroupCrudModal ? (
-        <CrudGroupChartModal
-        show={openGroupCrudModal}
-          onHide={() => {setOpenGroupCrudModal(false); setaddDataCrud(false);}}
-        />
-      ) : null}
-
-      {openStackedCrudModal ? (
-        <CrudStackedChartModal
-          show={openStackedCrudModal}
-          onHide={() => {setOpenStackedCrudModal(false); setaddDataCrud(false);}}
-        />
-      ) : null}
-
-      {openPieCrudModal ? (
-        <CrudPieChartModal
-          show={openPieCrudModal}
-          onHide={() => {setOpenPieCrudModal(false); setaddDataCrud(false);}}
-        />
-      ) : null}
-
-      {openCrudModal ? (
-        <CrudSunBrustChartModal
-          show={openCrudModal}
-          onHide={() => {setOpenCrudModal(false); setaddDataCrud(false);}}
-        />
-      ) : null}
-
-      {openCandleCrudModal ? (
-        <CrudCandleChartModal
-          show={openCandleCrudModal}
-          onHide={() => {setOpenCandleCrudModal(false); setaddDataCrud(false);}}
-        />
-      ) : null}
- 
-      {stateMap.openMapCrudModal ? (
-        <CrudMapChartModal
-          show={stateMap.openMapCrudModal}
-          onHide={() => {setStateMap({ ...stateMap, openMapCrudModal: false, }), setaddDataCrud(false);}}
-        />
-      ) : null}
-
-      {showToast ? <CustomToast /> : null}
     </>
   );
 }

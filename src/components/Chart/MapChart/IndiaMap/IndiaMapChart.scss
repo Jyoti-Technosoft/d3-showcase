@@ -1,0 +1,13 @@
+@media screen and (max-width: 440px) {
+    .india-map-div svg{
+        width: 300px !important;
+        height: 280px !important;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .india-map-div svg{
+        width: 220px !important;
+        height: 200px !important;
+    }
+}

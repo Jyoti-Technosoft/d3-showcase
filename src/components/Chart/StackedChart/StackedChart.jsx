@@ -190,7 +190,7 @@ function StackedChart({ chartId, parentWidth, parentHeight, isModal, tooltipShow
         })
         .on("mousemove", function (event) {
           tooltip
-            .style("left", d3.pointer(event)[0] + 70 + "px")
+            .style("left", d3.pointer(event)[0] + 100 + "px")
             .style("top", d3.pointer(event)[1] + 20 + "px");
         })
         .on("mouseleave", function () {
@@ -200,87 +200,92 @@ function StackedChart({ chartId, parentWidth, parentHeight, isModal, tooltipShow
 
     if (showLegend) {
 
-    var legend = d3
-      .select(`#${chartId} svg`)
-      .append("g")
-      .attr("class", "legend")
+      var legend = d3
+        .select(`#${chartId} svg`)
+        .append("g")
+        .attr("class", "legend")
 
-    {
-      isModal ? 
-      legend.attr("transform", `translate(40,${height + margin.bottom})`)
-      :
-      legend.attr("transform", `translate(0,${height + margin.bottom})`)
-    }
+      {
+        isModal ?
+          legend.attr("transform", `translate(40,${height + margin.bottom})`)
+          :
+          legend.attr("transform", `translate(0,${height + margin.bottom})`)
+      }
 
-    legend
-      .append("rect")
-      .attr("x", width - 240)
-      .attr("y", 8)
-      .attr("width", 14)
-      .attr("height", 14)
-      .style("fill", "#66c2a5");
+      legend
+        .append("rect")
+        .attr("x", width - 240)
+        .attr("y", 8)
+        .attr("width", 14)
+        .attr("height", 14)
+        .style("fill", "#66c2a5");
 
-    legend
-      .append("text")
-      .attr("x", width - 220)
-      .attr("y", 16)
-      .attr("dy", ".35em")
-      .text("US")
-      .style("font-size", "13px");
+      legend
+        .append("text")
+        .attr("x", width - 220)
+        .attr("y", 16)
+        .attr("dy", ".35em")
+        .text("US")
+        .style("font-size", "13px");
 
-    legend
-      .append("rect")
-      .attr("x", width - 190)
-      .attr("y", 8)
-      .attr("width", 14)
-      .attr("height", 14)
-      .style("fill", "#fc8d62");
+      legend
+        .append("rect")
+        .attr("x", width - 190)
+        .attr("y", 8)
+        .attr("width", 14)
+        .attr("height", 14)
+        .style("fill", "#fc8d62");
 
-    legend
-      .append("text")
-      .attr("x", width - 170)
-      .attr("y", 16)
-      .attr("dy", ".35em")
-      .text("Europe")
-      .style("font-size", "13px");
+      legend
+        .append("text")
+        .attr("x", width - 170)
+        .attr("y", 16)
+        .attr("dy", ".35em")
+        .text("Europe")
+        .style("font-size", "13px");
 
-    legend
-      .append("rect")
-      .attr("x", width - 120)
-      .attr("y", 8)
-      .attr("width", 14)
-      .attr("height", 14)
-      .style("fill", "#8da0cb");
+      legend
+        .append("rect")
+        .attr("x", width - 120)
+        .attr("y", 8)
+        .attr("width", 14)
+        .attr("height", 14)
+        .style("fill", "#8da0cb");
 
-    legend
-      .append("text")
-      .attr("x", width - 100)
-      .attr("y", 16)
-      .attr("dy", ".35em")
-      .text("Asia")
-      .style("font-size", "13px");
+      legend
+        .append("text")
+        .attr("x", width - 100)
+        .attr("y", 16)
+        .attr("dy", ".35em")
+        .text("Asia")
+        .style("font-size", "13px");
 
-    legend
-      .append("rect")
-      .attr("x", width - 70)
-      .attr("y", 8)
-      .attr("width", 14)
-      .attr("height", 14)
-      .style("fill", "#e78ac3");
+      legend
+        .append("rect")
+        .attr("x", width - 70)
+        .attr("y", 8)
+        .attr("width", 14)
+        .attr("height", 14)
+        .style("fill", "#e78ac3");
 
-    legend
-      .append("text")
-      .attr("x", width - 50)
-      .attr("y", 16)
-      .attr("dy", ".35em")
-      .text("South America")
-      .style("font-size", "13px");
+      legend
+        .append("text")
+        .attr("x", width - 50)
+        .attr("y", 16)
+        .attr("dy", ".35em")
+        .text("South America")
+        .style("font-size", "13px");
 
     }
   }
 
   return (
     <>
+      {
+        isModal ?
+          <h5 className="text-center">Oil Consumption By Country (In Barrels)</h5>
+          : null
+      }
       <div
         id={chartId}
         className={`card ${isModal ? 'my-d3-chart' : ''}`}

@@ -4,16 +4,18 @@ import ViewDataGroup from '../ChartCrud/GroupChartCrud/ViewDataGroup';
 import './ChartPage.scss'
 import { CustomContext } from '../CustomContext';
 import { CrudGroupChartModal } from '../ChartModal/ChartModal';
+import CustomToast from '../ToastComponent/CustomToast';
 
 const GroupChartPage = () => {
 
-    const { addDataCrud, setaddDataCrud } = useContext(CustomContext)
+    const { addDataCrud, setaddDataCrud, setIsEdit, showToast } = useContext(CustomContext)
 
     return (
         <>
             <h2>Group Chart</h2>
             <p className='mb-3'>Group chart (grouped bar) visually compares data values across categories. Bars represent categories, divided into segments for subcategories. Useful for inter-group data comparison and trend identification.</p>
-            <div className="card chart-page-card">
+            <p>The chart illustrates monthly price comparisons between diesel and petrol per liter from January to December. Beneath the chart, a tabular representation of the data is provided. Enhance user insights by enabling tooltips on bar hover, revealing supplementary data. Users can seamlessly edit, delete, or add data points in the table, observing real-time adjustments in the chart. To make changes, simply click on the respective data entry and select the desired action, with all modifications dynamically reflected in the charts, ensuring a real-time visualization of changes.</p>
+            <div className="card chart-page-card chart-page-card1">
                 <GroupChart
                     chartId="group4"
                     parentWidth="100%"
@@ -27,7 +29,7 @@ const GroupChartPage = () => {
             <h4 className='mt-5 mb-2'>Group Chart Tabular Data</h4>
             <div className="header-crud w-100 d-flex justify-content-between mb-3">
                 <h6>Petrol v/s Diesel (In $USD)</h6>
-                <button className='data-add-btn' onClick={() => setaddDataCrud(true)}>Add</button>
+                <button className='data-add-btn' onClick={() => { setaddDataCrud(true); setIsEdit(false)}}>Add</button>
             </div>
             <ViewDataGroup />
 
@@ -37,6 +39,8 @@ const GroupChartPage = () => {
                     onHide={() => setaddDataCrud(false)}
                 />
             ) : null}
+
+            {showToast ? <CustomToast /> : null}
         </>
     )
 }

@@ -23,9 +23,7 @@ function DeleteModal({ show, setShow, handleClose }) {
                 </p>
                 <p>Do you really want to delete this Record?</p>
                 <div className="w-100 d-flex flex-row-reverse">
-                    <Button variant="primary" onClick={deleteData}>
-                        Delete
-                    </Button>
+                    <button className="btn-sub px-3 py-2 border-0 my-2" onClick={deleteData}>Delete</button>
                     <Button variant="secondary" className="bg-transparent border-0" onClick={handleClose}>
                         Cancel
                     </Button>

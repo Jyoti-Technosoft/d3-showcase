@@ -87,7 +87,7 @@ const ViewDataStacked = () => {
           </svg>
         </button>
         <div className="table-container w-100" ref={elementRef}>
-          <table className="w-100 table">
+          <table className="w-100 table charts-data-table">
             <thead>
               <tr className="table-header">
                 <th className="p-2 text-center">No.</th>
@@ -111,21 +111,20 @@ const ViewDataStacked = () => {
                     <td className="p-2 text-center">{val.Europe}</td>
                     <td className="p-2 text-center">{val.Asia}</td>
                     <td className="p-2 text-center">{val.SouthAmerica}</td>
-                    <td className="p-2 text-end text-info">
-                      <p role="button" onClick={() => editData(val)}>
+                    <td className="p-2 text-center">
+                      <span role="button" className="m-0 me-2 text-info" onClick={() => editData(val)}>
                         Edit
-                      </p>
-                    </td>
-                    <td className="p-2 text-start text-danger">
-                      <p
+                      </span>
+                      <span
                         role="button"
+                        className="m-0 ms-2 text-danger"
                         onClick={() => {
                           setDeleteId(val.id);
                           handleShow();
                         }}
                       >
                         Delete
-                      </p>
+                      </span>
                     </td>
                   </tr>
                 );

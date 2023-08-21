@@ -52,6 +52,13 @@ const AddDataSunBrust = () => {
       } else {
         // Handle adding new data
       }
+
+      setShowToast({
+        show: true,
+        msg: "Record Updated Successfully",
+        type: "success",
+      });
+
       setUpdateDataSunBrust(true);
       setaddDataCrud(false);
       action.resetForm();

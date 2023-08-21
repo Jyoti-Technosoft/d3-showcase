@@ -1,12 +1,12 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import routes from '../routes'
 
-import { CBreadcrumb, CBreadcrumbItem } from '@coreui/react'
-
 const AppBreadcrumb = () => {
-  const currentLocation = useLocation().pathname
+  const currentLocation = useLocation().pathname;
+
+  const navigate = useNavigate();
 
   const getRouteName = (pathname, routes) => {
     const currentRoute = routes.find((route) => route.path === pathname)
@@ -22,7 +22,7 @@ const AppBreadcrumb = () => {
         breadcrumbs.push({
           pathname: currentPathname,
           name: routeName,
-          active: index + 1 === array.length ? true : false,
+          // active: index + 1 === array.length ? true : false,
         })
       return currentPathname
     })
@@ -32,19 +32,19 @@ const AppBreadcrumb = () => {
   const breadcrumbs = getBreadcrumbs(currentLocation)
 
   return (
-    <CBreadcrumb className="m-0 ms-2">
-      <CBreadcrumbItem href="/"></CBreadcrumbItem>
+    <div>
+      <span role='button' className='mb-0 bread-crumb-item' onClick={() => navigate('/')}>Dashboard</span>
       {breadcrumbs.map((breadcrumb, index) => {
         return (
-          <CBreadcrumbItem
+          <span
             {...(breadcrumb.active ? { active: true } : { href: breadcrumb.pathname })}
-            key={index}
+            key={index} role='button'
           >
-            {breadcrumb.name}
-          </CBreadcrumbItem>
+            { breadcrumb.name === "Dashboard" ? null : ' / ' + breadcrumb.name }
+          </span>
         )
       })}
-    </CBreadcrumb>
+    </div>
   )
 }
 

@@ -1,10 +1,12 @@
 .chart-page-card{
-    // width: 80%;
-    height: 70vh !important;
     border: none !important;
     padding: 10px;
     margin: 10px auto;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.chart-page-card1{
+    height: 70vh !important;
 }
 
 .data-add-btn{
@@ -16,7 +18,7 @@
 }
 
 @media screen and (max-width: 550px) {
-    .chart-page-card{
+    .chart-page-card1{
         height: 42vh !important;
     }
 }

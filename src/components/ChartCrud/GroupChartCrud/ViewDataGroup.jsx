@@ -86,14 +86,14 @@ const ViewDataGroup = () => {
                     </svg>
                 </button>
                 <div className="table-container w-100" ref={elementRef}>
-                    <table className="w-100 table">
+                    <table className="w-100 table charts-data-table">
                         <thead>
                             <tr className="table-header">
-                                <th className="p-2 text-center">No.</th>
+                                <th className="p-2 text-center align-middle">No.</th>
                                 <th className="p-2 text-center">Month</th>
                                 <th className="p-2 text-center">Petrol Price</th>
                                 <th className="p-2 text-center">Diesel Price</th>
-                                <th colSpan="2" className="p-2 text-center">
+                                <th className="p-2 text-center">
                                     Action
                                 </th>
                             </tr>
@@ -106,21 +106,20 @@ const ViewDataGroup = () => {
                                         <td className="p-2 text-center">{val.month}</td>
                                         <td className="p-2 text-center">{val.petrolprice}</td>
                                         <td className="p-2 text-center">{val.dieselprice}</td>
-                                        <td className="p-2 text-end text-info">
-                                            <p role="button" onClick={() => editData(val)}>
+                                        <td className="p-2 text-center text-info">
+                                            <span role="button" className="m-0 me-2" onClick={() => editData(val)}>
                                                 Edit
-                                            </p>
-                                        </td>
-                                        <td className="p-2 text-start text-danger">
-                                            <p
+                                            </span>
+                                            <span
                                                 role="button"
+                                                className="m-0 ms-2 text-danger"
                                                 onClick={() => {
                                                     setDeleteId(val.id);
                                                     handleShow();
                                                 }}
                                             >
                                                 Delete
-                                            </p>
+                                            </span>
                                         </td>
                                     </tr>
                                 );

@@ -86,7 +86,7 @@ const ViewDataSunBrust = () => {
           </svg>
         </button>
         <div className="table-container w-100" ref={elementRef}>
-          <table className="w-100 table">
+          <table className="w-100 table charts-data-table">
             <thead>
 
             </thead>
@@ -94,12 +94,12 @@ const ViewDataSunBrust = () => {
               {sunBrustDataSet.children.map(region => (
                 <React.Fragment key={region.name}>
                   <tr>
-                    <td colSpan="12" className="region-cell" style={{background: "#b5b8bc"}}>{region.name}</td>
+                    <th colSpan="12" className="region-cell" style={{background: "#303c54", color: "#ffffff"}}>{region.name}</th>
                   </tr>
                   {region.children.map(subregion => (
                     <React.Fragment key={subregion.name}>
                       <tr>
-                        <td className="subregion-cell">{subregion.name}</td>
+                        <td className="subregion-cell ps-2">{subregion.name}</td>
                         {subregion.children.map(city => (
                           <React.Fragment key={city.name}>
                             <td>{city.name}</td>

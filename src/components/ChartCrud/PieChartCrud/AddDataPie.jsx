@@ -30,9 +30,9 @@ const AddDataPie = () => {
   } = useContext(CustomContext);
 
   const addInitialValues = {
-    country: updateValue.country || "",
-    value: updateValue.value || "",
-    id: updateValue.id || "",
+    country: isEdit ? updateValue.country : "",
+    value: isEdit ? updateValue.value : "",
+    id: isEdit ? updateValue.id : "",
     state1: isEdit ? updateValue?.subState[0]?.country : "",
     value1: isEdit ? updateValue?.subState[0]?.value : "",
     state2: isEdit ? updateValue?.subState[1]?.country : "",
@@ -71,6 +71,11 @@ const AddDataPie = () => {
         }
 
         const updatedData = replaceObjectById(value.id, newObj);
+        setShowToast({
+          show: true,
+          msg: "Record Updated Successfully",
+          type: "success",
+        });
         setPieDataSet(updatedData);
         setUpdateDataPie(true);
 

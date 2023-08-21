@@ -318,6 +318,11 @@ function SunBrustChart({
 
     return (
         <>
+            {
+                isModal ?
+                    <h5 className="text-center">World Population (In Millions)</h5>
+                    : null
+            }
             <div
                 id={`${chartId}`}
                 className={`card ${isModal ? "multi-level-chart" : ""}`}

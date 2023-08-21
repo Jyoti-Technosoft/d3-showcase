@@ -21,7 +21,8 @@ const AddDataMap = () => {
     mapDataArr,
     setMapDataArr,
     setUpdateMapData,
-    setaddDataCrud
+    setaddDataCrud,
+    setShowToast
   } = useContext(CustomContext);
 
   const upd_obj = mapDataArr?.features?.findIndex(
@@ -50,7 +51,11 @@ const AddDataMap = () => {
       console.log("update",updateMapDataJson)
       setMapDataArr({ ...mapDataArr, features: updatedMapDataArr });
 
-
+      setShowToast({
+        show: true,
+        msg: "Record Updated Successfully",
+        type: "success",
+      });
       setUpdateMapData(true);
       setaddDataCrud(false);
     },

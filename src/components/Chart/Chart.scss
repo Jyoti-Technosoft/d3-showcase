@@ -31,3 +31,49 @@
   display: flex;
   justify-content: center;
 }
+
+.charts-description{
+  margin: 0 22px;
+}
+
+@media screen and (max-width: 1560px) {
+  .charts-description{
+    margin: 0 10px;
+  }
+}
+
+@media screen and (max-width: 1494px) {
+  .charts-description{
+    margin: 0 100px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .charts-description{
+    margin: 0 80px;
+  }
+}
+
+@media screen and (max-width: 1330px) {
+  .charts-description{
+    margin: 0 60px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .charts-description{
+    margin: 0 40px;
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .charts-description{
+    margin: 0 38px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .charts-description{
+    margin: 0;
+  }
+}

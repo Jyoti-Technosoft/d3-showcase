@@ -21,7 +21,7 @@ function CustomToast() {
                   <Col xs={6}>
                     <ToastContainer
                       position="top-end"
-                      className="m-2 toast-container-design"
+                      className="m-2 toast-container-design custom-toast"
                     >
                       <Toast
                         className="toast-design"
@@ -33,7 +33,7 @@ function CustomToast() {
                           }))
                         }
                         show={showToast.show}
-                        delay={3000}
+                        delay={2000}
                         autohide
                       >
                         <Toast.Body className="toast-body-success p-0">
@@ -67,7 +67,7 @@ function CustomToast() {
                   <Col xs={6}>
                     <ToastContainer
                       position="top-end"
-                      className="m-2 toast-container-design"
+                      className="m-2 toast-container-design custom-toast"
                     >
                       <Toast
                         className="toast-design"
@@ -79,7 +79,7 @@ function CustomToast() {
                           }))
                         }
                         show={showToast.show}
-                        delay={3000}
+                        delay={2000}
                         autohide
                       >
                         <Toast.Body className="toast-body-error p-0">
@@ -113,7 +113,7 @@ function CustomToast() {
                   <Col xs={6}>
                     <ToastContainer
                       position="top-end"
-                      className="m-2 toast-container-design"
+                      className="m-2 toast-container-design custom-toast"
                     >
                       <Toast
                         className="toast-design"
@@ -125,7 +125,7 @@ function CustomToast() {
                           }))
                         }
                         show={showToast.show}
-                        delay={3000}
+                        delay={2000}
                         autohide
                       >
                         <Toast.Body className="toast-body-warning p-0">

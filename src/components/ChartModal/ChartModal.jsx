@@ -2,18 +2,14 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 import { useContext } from "react";
-import ViewDataGroup from "../ChartCrud/GroupChartCrud/ViewDataGroup";
 import { CustomContext } from "../CustomContext";
 import AddDataGroup from "../ChartCrud/GroupChartCrud/AddDataGroup";
-import ViewDataStacked from "../ChartCrud/StackedChartCrud/ViewDataStacked";
 import AddDataStacked from "../ChartCrud/StackedChartCrud/AddDataStacked";
 import AddDataPie from "../ChartCrud/PieChartCrud/AddDataPie";
-import ViewDataPie from "../ChartCrud/PieChartCrud/ViewDataPie";
 import ViewDataCandle from "../ChartCrud/CandleStickChartCrud/ViewDataCandle";
 import AddDataCandle from "../ChartCrud/CandleStickChartCrud/AddDataCandle";
 import AddDataMap from "../ChartCrud/IndiaMapChartCrud/AddDataMap";
 import ViewDataMap from "../ChartCrud/IndiaMapChartCrud/ViewDataMap";
-import ViewDataSunBrust from "../ChartCrud/SunBrustChartCrud/ViewDataSunBrust";
 import AddDataSunBrust from "../ChartCrud/SunBrustChartCrud/AddDataSunBrust";
 import closeIcon from "../../Images/Icon/closeicon.svg"
 
@@ -120,19 +116,19 @@ export const OpenChartModal = ({
 };
 
 export const CrudGroupChartModal = (props) => {
-  const { setaddDataCrud, setOpenGroupCrudModal,
+  const { setaddDataCrud, setOpenGroupCrudModal, setIsEdit
   } = useContext(CustomContext);
 
   const closeBtn = () => {
     setaddDataCrud(false);
     setOpenGroupCrudModal(false);
+    setIsEdit(false);
   }
 
   return (
     <Modal
       {...props}
       dialogClassName="my-crud-modal"
-      // fullscreen={true}
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -153,19 +149,19 @@ export const CrudGroupChartModal = (props) => {
 }
 
 export function CrudStackedChartModal(props) {
-  const { addDataCrud, setaddDataCrud, setOpenStackedCrudModal,
+  const { setaddDataCrud, setOpenStackedCrudModal, setIsEdit
   } = useContext(CustomContext);
 
   const closeBtn = () => {
     setaddDataCrud(false);
     setOpenStackedCrudModal(false);
+    setIsEdit(false);
   }
 
   return (
     <Modal
       {...props}
       dialogClassName="my-crud-modal"
-      // fullscreen={true}
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -186,18 +182,18 @@ export function CrudStackedChartModal(props) {
 }
 
 export function CrudSunBrustChartModal(props) {
-  const { setaddDataCrud, setOpenCrudModal } = useContext(CustomContext);
+  const { setaddDataCrud, setOpenCrudModal, setIsEdit } = useContext(CustomContext);
 
   const closeBtn = () => {
     setaddDataCrud(false);
     setOpenCrudModal(false);
+    setIsEdit(false);
   }
 
   return (
     <Modal
       {...props}
       dialogClassName="my-crud-modal"
-      // fullscreen={true}
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -218,18 +214,18 @@ export function CrudSunBrustChartModal(props) {
 }
 
 export function CrudCandleChartModal(props) {
-  const { addDataCrud, setaddDataCrud, setOpenCandleCrudModal } = useContext(CustomContext);
+  const { addDataCrud, setaddDataCrud, setOpenCandleCrudModal, setIsEdit } = useContext(CustomContext);
 
   const closeBtn = () => {
     setaddDataCrud(false);
     setOpenCandleCrudModal(false);
+    setIsEdit(false);
   }
 
   return (
     <Modal
       {...props}
       dialogClassName="my-crud-modal"
-      // fullscreen={true}
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -258,23 +254,20 @@ export function CrudMapChartModal(props) {
     addDataCrud,
     setaddDataCrud,
     setStateMap,
-    stateMap
+    stateMap,
+    setIsEdit
   } = useContext(CustomContext);
-
-  const backToView = () => {
-    setaddDataCrud(false);
-  };
 
   const closeBtn = () => {
     setaddDataCrud(false);
     setStateMap({ ...stateMap, openMapCrudModal: false, });
+    setIsEdit(false);
   }
 
   return (
     <Modal
       {...props}
       dialogClassName="my-crud-modal"
-      // fullscreen={true}
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -299,19 +292,19 @@ export function CrudMapChartModal(props) {
 }
 
 export function CrudPieChartModal(props) {
-  const { addDataCrud, setaddDataCrud, setOpenPieCrudModal } =
+  const { setaddDataCrud, setOpenPieCrudModal, setIsEdit } =
     useContext(CustomContext);
 
   const closeBtn = () => {
     setaddDataCrud(false);
     setOpenPieCrudModal(false);
+    setIsEdit(false);
   }
 
   return (
     <Modal
       {...props}
       dialogClassName="my-crud-modal"
-      // fullscreen={true}
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >

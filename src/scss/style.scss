@@ -4,6 +4,10 @@ $enable-rtl: true;
 @import "@coreui/coreui/scss/coreui";
 @import "layout";
 
+.bread-crumb-item:hover{
+	text-decoration: underline;
+}
+
 ::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);

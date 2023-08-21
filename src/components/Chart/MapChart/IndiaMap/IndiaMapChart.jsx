@@ -2,6 +2,8 @@ import { useContext, useEffect } from "react";
 import * as d3 from "d3";
 import { CustomContext } from "src/components/CustomContext";
 
+import './IndiaMapChart.scss'
+
 function IndiaMapChart({ chartId, toolTipShow, parentWidth, parentHeight, isModal }) {
 
   const { mapDataArr, updateMapData } = useContext(CustomContext);
@@ -10,7 +12,7 @@ function IndiaMapChart({ chartId, toolTipShow, parentWidth, parentHeight, isModa
     createChart();
   }, []);
 
-  if(updateMapData){
+  if (updateMapData) {
     d3.select(`#${chartId} svg`).remove();
     d3.select(`#${chartId} .tooltip`).remove();
     createChart();
@@ -28,7 +30,7 @@ function IndiaMapChart({ chartId, toolTipShow, parentWidth, parentHeight, isModa
 
     const india = svg.append("g").attr("id", "india");
 
-    if(mapDataArr){
+    if (mapDataArr) {
       const colorScale = d3
         .scaleQuantile()
         .domain(mapDataArr.features.map((d) => d.total))
@@ -131,6 +133,11 @@ function IndiaMapChart({ chartId, toolTipShow, parentWidth, parentHeight, isModa
 
   return (
     <>
+      {
+        isModal ?
+          <h5>India Map with Population (In Millions)</h5>
+          : null
+      }
       <div
         className="india-map-div"
         id={chartId}

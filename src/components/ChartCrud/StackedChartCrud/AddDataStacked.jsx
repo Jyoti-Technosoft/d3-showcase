@@ -47,7 +47,10 @@ const AddDataStacked = () => {
     setUpdateDataStacked,
   } = useContext(CustomContext);
 
-  const upd_obj = stackedObj?.findIndex((ele) => ele?.id === updateValue?.id);
+  let upd_obj;
+  if(isEdit){
+    upd_obj = stackedObj?.findIndex((ele) => ele?.id === updateValue?.id);
+  }
 
   const addInitialValues = {
     Month: stackedObj[upd_obj]?.Month || "",

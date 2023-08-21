@@ -50,9 +50,10 @@ const AddDataCandle = () => {
     setUpdateDataCandle,
   } = useContext(CustomContext);
 
-  const upd_obj = candleDataSet?.findIndex(
-    (ele) => ele?.id === updateValue?.id
-  );
+  let upd_obj;
+  if(isEdit){
+    upd_obj = candleDataSet?.findIndex((ele) => ele?.id === updateValue?.id); 
+  }
 
   const addInitialValues = {
     date: candleDataSet[upd_obj]?.date || "",

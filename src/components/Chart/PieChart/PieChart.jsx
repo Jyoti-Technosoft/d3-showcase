@@ -50,6 +50,8 @@ function PieChart({
 
     const radius = Math.max(width / 2, height / 2) - margin;
 
+    const totalValue = data.reduce((total, d) => total + parseInt(d.value), 0);
+
     const svg = d3
       .select(`#${chartId}`)
       .append("svg")
@@ -107,9 +109,10 @@ function PieChart({
 
     if (tooltipShow) {
       slices
-        .on("mouseover", function (event, d) {
+      .on("mouseover", function (event, d) {
+          const percentage = ((parseInt(d.value) / totalValue) * 100).toFixed(2);
           tooltip
-            .html(`<h6>${d.data.country}</h6> Population: ${d.data.value} M`)
+            .html(`<h6>${d.data.country}</h6> <p class="mb-0">Percentage: ${percentage}%</p> Population: ${d.data.value} M`)
             .style("opacity", 1);
         })
         .on("mousemove", function (event) {
@@ -127,7 +130,8 @@ function PieChart({
       .data(data_ready)
       .join("text")
       .text(function (d) {
-        return d.data.country.substring(0, 3).toUpperCase();
+        const percentage = ((parseInt(d.value) / totalValue) * 100).toFixed(2);
+        return `${d.data.shortName}`;
       })
       .style("pointer-events", "none")
       .attr("class", "slice-text")
@@ -250,6 +254,11 @@ function PieChart({
 
   return (
     <>
+      {
+        isModal ? 
+        <h5 className="text-center">Countries with highest Population (In Millions)</h5>
+        : null
+      }
       <div
         id={`${chartId}`}
         className={`card ${isModal ? "pieChart" : ""}`}
