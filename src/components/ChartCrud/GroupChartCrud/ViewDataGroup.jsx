@@ -9,7 +9,6 @@ const ViewDataGroup = () => {
     const {
         crudData,
         setDeleteId,
-        showToast,
         setUpdateValue,
         setIsEdit,
         groupDataSet,

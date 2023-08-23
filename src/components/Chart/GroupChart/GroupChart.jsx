@@ -41,14 +41,14 @@ function GroupChart({ chartId, parentWidth, parentHeight, isModal, borderSize, t
       height = cardHeight - 80;
 
     const xScale = d3
-        .scaleBand()
-        .rangeRound([0, width])
-        .padding(0.05)
-        .domain(
-          dataArr.map(function (d) {
-            return d.month;
-          })
-        ),
+      .scaleBand()
+      .rangeRound([0, width])
+      .padding(0.1)
+      .domain(
+        dataArr.map(function (d) {
+          return d.month;
+        })
+      ),
       yScale = d3
         .scaleLinear()
         .rangeRound([height, 0])
@@ -112,7 +112,7 @@ function GroupChart({ chartId, parentWidth, parentHeight, isModal, borderSize, t
       .attr("y", function (d) {
         return yScale(d.petrolprice);
       })
-      .attr("width", xScale.bandwidth())
+      .attr("width", xScale.bandwidth() / 2)
       .attr("height", function (d) {
         return height - yScale(d.petrolprice);
       });
@@ -120,12 +120,12 @@ function GroupChart({ chartId, parentWidth, parentHeight, isModal, borderSize, t
     updatedchart
       .selectAll(".bar2")
       .attr("x", function (d) {
-        return xScale(d.month);
+        return xScale(d.month) + xScale.bandwidth() / 2;
       })
       .attr("y", function (d) {
         return yScale(d.dieselprice);
       })
-      .attr("width", xScale.bandwidth())
+      .attr("width", xScale.bandwidth() / 2)
       .attr("height", function (d) {
         return height - yScale(d.dieselprice);
       });
@@ -137,8 +137,8 @@ function GroupChart({ chartId, parentWidth, parentHeight, isModal, borderSize, t
     updatedchart
       .select(".y-axis-label")
       .attr("x", -height / 2 - 20)
-          .attr("y", margin.left - 10)
-          .attr("transform", "rotate(-90)");
+      .attr("y", margin.left - 10)
+      .attr("transform", "rotate(-90)");
 
     d3.selectAll(`#${chartId} svg`)
       .attr("width", width + margin.left + margin.right)
@@ -166,14 +166,14 @@ function GroupChart({ chartId, parentWidth, parentHeight, isModal, borderSize, t
         height = cardHeight - 80;
 
       const xScale = d3
-          .scaleBand()
-          .rangeRound([0, width])
-          .padding(0.05)
-          .domain(
-            dataSet.map(function (d) {
-              return d.month;
-            })
-          ),
+        .scaleBand()
+        .rangeRound([0, width])
+        .padding(0.1)
+        .domain(
+          dataSet.map(function (d) {
+            return d.month;
+          })
+        ),
         yScale = d3
           .scaleLinear()
           .rangeRound([height, 0])
@@ -295,7 +295,7 @@ function GroupChart({ chartId, parentWidth, parentHeight, isModal, borderSize, t
         .attr("y", function (d) {
           return yScale(d.petrolprice);
         })
-        .attr("width", xScale.bandwidth())
+        .attr("width", xScale.bandwidth() / 2)
         .attr("height", function (d) {
           return height - yScale(d.petrolprice);
         })
@@ -306,12 +306,12 @@ function GroupChart({ chartId, parentWidth, parentHeight, isModal, borderSize, t
       bar2
         .append("rect")
         .attr("x", function (d) {
-          return xScale(d.month);
+          return xScale(d.month) + xScale.bandwidth() / 2;
         })
         .attr("y", function (d) {
           return yScale(d.dieselprice);
         })
-        .attr("width", xScale.bandwidth())
+        .attr("width", xScale.bandwidth() / 2)
         .attr("height", function (d) {
           return height - yScale(d.dieselprice);
         })
@@ -319,28 +319,40 @@ function GroupChart({ chartId, parentWidth, parentHeight, isModal, borderSize, t
         .attr("fill", colorArr[1].fill)
         .style("cursor", "pointer");
 
-      const toolTipHover = (bar) => {
-        bar
+      if (tooltipShow) {
+        bar1
           .on("mouseover", function (event, d) {
             tooltip
               .html(
-                `<b>${d.month}</b> <br> <span id="petrollegend"></span> Petrol: $${d.petrolprice} <br> <span id="diesellegend"></span> Diesel: $${d.dieselprice}`
+                `<b>${d.month}</b> <br> <span id="petrollegend"></span> Petrol: $${d.petrolprice} <br>`
               )
               .style("opacity", 1);
           })
           .on("mousemove", function (event) {
             tooltip
-            .style("left", d3.pointer(event)[0] + 80 + "px")
-            .style("top", d3.pointer(event)[1] + 20 + "px");
+              .style("left", d3.pointer(event)[0] + 80 + "px")
+              .style("top", d3.pointer(event)[1] + 20 + "px");
           })
           .on("mouseleave", function () {
             tooltip.style("opacity", 0);
           });
-      };
 
-      if (tooltipShow) {
-        toolTipHover(bar1);
-        toolTipHover(bar2);
+        bar2
+          .on("mouseover", function (event, d) {
+            tooltip
+              .html(
+                `<b>${d.month}</b> <br><span id="diesellegend"></span> Diesel: $${d.dieselprice}`
+              )
+              .style("opacity", 1);
+          })
+          .on("mousemove", function (event) {
+            tooltip
+              .style("left", d3.pointer(event)[0] + 80 + "px")
+              .style("top", d3.pointer(event)[1] + 20 + "px");
+          })
+          .on("mouseleave", function () {
+            tooltip.style("opacity", 0);
+          });
       }
 
       const appendLine = (
@@ -396,6 +408,7 @@ function GroupChart({ chartId, parentWidth, parentHeight, isModal, borderSize, t
         className={`card ${isModal ? 'my-d3-chart' : ''}`}
         id={`${chartId}`}
         ref={chartDiv}
+        data-testid="test-chart"
         style={{
           width: parentWidth,
           height: parentHeight,

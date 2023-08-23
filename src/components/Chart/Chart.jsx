@@ -7,7 +7,7 @@ import "./Chart.scss";
 import CandleStickChart from "./CandleStickChart/CandleStickChart";
 import IndiaMapChart from "./MapChart/IndiaMap/IndiaMapChart";
 import SunBrustChart from "./DonutChart/SunBrustChart";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 function Chart() {
   const navigate = useNavigate();

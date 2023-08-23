@@ -36,7 +36,7 @@ const AddDataGroup = () => {
   } = useContext(CustomContext);
 
   let upd_obj;
-  if(isEdit){
+  if (isEdit) {
     upd_obj = groupDataSet?.findIndex((ele) => ele?.id === updateValue?.id);
   }
 
@@ -92,17 +92,34 @@ const AddDataGroup = () => {
           <label className="form-label" htmlFor="month">
             Month
           </label>
-          <input
-            className="input-style p-2 w-100 border-0 my-2"
-            type="text"
-            id="month"
-            name="month"
-            value={addDataFormik.values.month}
-            onChange={addDataFormik.handleChange}
-            onBlur={addDataFormik.handleBlur}
-            placeholder="Enter month"
-            autoComplete="off"
-          />
+          {
+            isEdit ?
+              <input
+                className="input-style p-2 w-100 border-0 my-2"
+                type="text"
+                id="month"
+                name="month"
+                readOnly
+                value={addDataFormik.values.month}
+                onChange={addDataFormik.handleChange}
+                onBlur={addDataFormik.handleBlur}
+                placeholder="Enter month"
+                autoComplete="off"
+              />
+              :
+              <input
+                className="input-style p-2 w-100 border-0 my-2"
+                type="text"
+                id="month"
+                name="month"
+                value={addDataFormik.values.month}
+                onChange={addDataFormik.handleChange}
+                onBlur={addDataFormik.handleBlur}
+                placeholder="Enter month"
+                autoComplete="off"
+              />
+          }
+
           {addDataFormik.errors.month && addDataFormik.touched.month ? (
             <p className="text-danger text-center mt-2">
               {addDataFormik.errors.month}
@@ -159,7 +176,7 @@ const AddDataGroup = () => {
               className="btn-sub px-3 py-2 border-0 my-2"
             />
           ) : (
-            <input type="submit" className="btn-sub px-3 py-2 border-0 my-2" />
+            <input type="submit" data-testid="submit-add" className="btn-sub px-3 py-2 border-0 my-2" />
           )}
           <p role="button" className="px-3 py-2 border-0 my-2" onClick={() => setaddDataCrud(false)}>Cancel</p>
         </div>

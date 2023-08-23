@@ -30,7 +30,7 @@ const CandleStickChartPage = () =>{
 
             <h4 className='mt-5 mb-2'>Candle Chart Tabular Data</h4>
             <div className="header-crud w-100 d-flex justify-content-between mb-3">
-                <h6>CandleStick Chart of ITC (Demo Data)</h6>
+                <h6>CandleStick Chart of Tata Motors (01/06/2023 to 31/07/2023)</h6>
                 <button className='data-add-btn' onClick={() => {setaddDataCrud(true); setIsEdit(false)}}>Add</button>
             </div>
             <ViewDataCandle/>

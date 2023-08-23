@@ -225,7 +225,7 @@ const CandleStickChart = ({ chartId, parentWidth, isModal, parentHeight, borderS
     <>
       {
         isModal ?
-          <h5 className="text-center">CandleStick Chart of ITC (Demo Data)</h5>
+          <h5 className="text-center">CandleStick Chart of Tata Motors (01/06/2023 to 31/07/2023)</h5>
           : null
       }
       <div
