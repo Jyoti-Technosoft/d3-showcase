@@ -15,10 +15,6 @@ function DeleteModalCandle({ show, setShow, handleClose }) {
     setShowToast({ show: true, msg: "Delete Successfully", type: "success" });
   };
 
-  useEffect(() =>{
-    console.log(newCandle);
-  })
-
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Body>
