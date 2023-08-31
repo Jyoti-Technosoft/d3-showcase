@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react"
 
-import { groupData, stackedData, pieData, candleData, sunBrustData } from "./Chart/ChartsData/ChartData";
+import { groupData, stackedData, pieData, candleData, candleData2, sunBrustData } from "./Chart/ChartsData/ChartData";
 import Axios from 'axios';
 
 export const CustomContext = createContext();
@@ -15,24 +15,21 @@ export const ContextProvider = (props) => {
     const [addDataCrud, setaddDataCrud] = useState(false);
 
     const [groupDataSet, setGroupDataSet] = useState(groupData);
-    const [openGroupCrudModal, setOpenGroupCrudModal] = useState(false);
     const [updateDataGroup, setUpdateDataGroup] = useState(false);
 
     const [stackedObj, setStackedObj] = useState(stackedData);
-    const [openStackedCrudModal, setOpenStackedCrudModal] = useState(false);
     const [updateDataStacked, setUpdateDataStacked] = useState(false);
 
     const [pieDataSet, setPieDataSet] = useState(pieData);
-    const [openPieCrudModal, setOpenPieCrudModal] = useState(false);
     const [updateDataPie, setUpdateDataPie] = useState(false);
 
     const [sunBrustDataSet, setSunBrustDataSet] = useState(sunBrustData);
-    const [openCrudModal, setOpenCrudModal] = useState(false);
     const [updateDataSunBrust, setUpdateDataSunBrust] = useState(false);
 
     const [candleDataSet, setCandleDataSet] = useState(candleData);
-    const [openCandleCrudModal, setOpenCandleCrudModal] = useState(false);
     const [updateDataCandle, setUpdateDataCandle] = useState(false);
+
+    const [newCandle, setNewCandle] = useState(candleData2);
 
     const initialStateMap = {
         mapDataSet: '/assets/states.json',
@@ -71,7 +68,7 @@ export const ContextProvider = (props) => {
 
     return (
         <>
-            <CustomContext.Provider value={{ crudData, setCrudData, deleteId, setDeleteId, showToast, setShowToast, updateValue, setUpdateValue, isEdit, setIsEdit, stackedObj, setStackedObj, groupDataSet, setGroupDataSet, openGroupCrudModal, setOpenGroupCrudModal, updateDataGroup, setUpdateDataGroup, openStackedCrudModal, setOpenStackedCrudModal, updateDataStacked, setUpdateDataStacked, openPieCrudModal, setOpenPieCrudModal, pieDataSet, setPieDataSet, updateDataPie, setUpdateDataPie, openCandleCrudModal, setOpenCandleCrudModal, updateDataCandle, setUpdateDataCandle, candleDataSet, setCandleDataSet, stateMap, setStateMap, mapDataArr, setMapDataArr, sunBrustDataSet, setSunBrustDataSet, addDataCrud, setaddDataCrud, openCrudModal, setOpenCrudModal, updateDataSunBrust, setUpdateDataSunBrust, updateMapData, setUpdateMapData}}>
+            <CustomContext.Provider value={{ crudData, setCrudData, deleteId, setDeleteId, showToast, setShowToast, updateValue, setUpdateValue, isEdit, setIsEdit, stackedObj, setStackedObj, groupDataSet, setGroupDataSet,  updateDataGroup, setUpdateDataGroup, updateDataStacked, setUpdateDataStacked, pieDataSet, setPieDataSet, updateDataPie, setUpdateDataPie, updateDataCandle, setUpdateDataCandle, candleDataSet, setCandleDataSet, stateMap, setStateMap, mapDataArr, setMapDataArr, sunBrustDataSet, setSunBrustDataSet, addDataCrud, setaddDataCrud,  updateDataSunBrust, setUpdateDataSunBrust, updateMapData, setUpdateMapData, newCandle, setNewCandle }}>
                 {props.children}
             </CustomContext.Provider>
         </>

@@ -121,7 +121,7 @@ const AddDataGroup = () => {
           }
 
           {addDataFormik.errors.month && addDataFormik.touched.month ? (
-            <p className="text-danger text-center mt-2">
+            <p className="text-danger mt-2">
               {addDataFormik.errors.month}
             </p>
           ) : null}
@@ -142,7 +142,7 @@ const AddDataGroup = () => {
           />
           {addDataFormik.errors.petrolprice &&
             addDataFormik.touched.petrolprice ? (
-            <p className="text-danger text-center mt-2">
+            <p className="text-danger mt-2">
               {addDataFormik.errors.petrolprice}
             </p>
           ) : null}
@@ -163,7 +163,7 @@ const AddDataGroup = () => {
           />
           {addDataFormik.errors.dieselprice &&
             addDataFormik.touched.dieselprice ? (
-            <p className="text-danger text-center mt-2">
+            <p className="text-danger mt-2">
               {addDataFormik.errors.dieselprice}
             </p>
           ) : null}

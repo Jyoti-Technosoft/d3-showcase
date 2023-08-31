@@ -1,19 +1,23 @@
 import { color } from "d3";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { CustomContext } from "src/components/CustomContext";
 
 function DeleteModalCandle({ show, setShow, handleClose }) {
-  const { deleteId, setShowToast, setCandleDataSet, setUpdateDataCandle } =
+  const { deleteId, setShowToast, setCandleDataSet, setUpdateDataCandle, newCandle, setNewCandle } =
     useContext(CustomContext);
 
   const deleteData = () => {
-    setCandleDataSet((current) => current.filter((ele) => ele.id !== deleteId));
+    setNewCandle((current) => current.filter((ele) => ele.id !== deleteId));
     setUpdateDataCandle(true);
     setShow(false);
     setShowToast({ show: true, msg: "Delete Successfully", type: "success" });
   };
+
+  useEffect(() =>{
+    console.log(newCandle);
+  })
 
   return (
     <Modal show={show} onHide={handleClose} centered>

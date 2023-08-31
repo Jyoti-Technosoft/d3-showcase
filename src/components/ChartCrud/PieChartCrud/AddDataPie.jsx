@@ -124,7 +124,7 @@ const AddDataPie = () => {
             autoComplete="off"
           />
           {addDataFormik.errors.country && addDataFormik.touched.country ? (
-            <p className="text-danger text-center mt-2">
+            <p className="text-danger mt-2">
               {addDataFormik.errors.country}
             </p>
           ) : null}
@@ -144,7 +144,7 @@ const AddDataPie = () => {
             autoComplete="off"
           />
           {addDataFormik.errors.value && addDataFormik.touched.value ? (
-            <p className="text-danger text-center mt-2">
+            <p className="text-danger mt-2">
               {addDataFormik.errors.value}
             </p>
           ) : null}

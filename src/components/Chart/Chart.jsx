@@ -1,16 +1,24 @@
 import GroupChart from "./GroupChart/GroupChart";
 import PieChart from "./PieChart/PieChart";
 import StackedChart from "./StackedChart/StackedChart";
-
-import "./Chart.scss";
-
 import CandleStickChart from "./CandleStickChart/CandleStickChart";
 import IndiaMapChart from "./MapChart/IndiaMap/IndiaMapChart";
 import SunBrustChart from "./DonutChart/SunBrustChart";
 import { useNavigate } from "react-router";
 
+import "./Chart.scss";
+
+import titles from '../../pageTitle';
+import { useEffect } from "react";
+import CandleStickChart2 from "./CandleStickChart/CandleStickChart2";
+
 function Chart() {
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    document.title = titles.home;
+  },[])
+
   return (
     <>
       <div className="container">
@@ -70,7 +78,7 @@ function Chart() {
               <div className="charts-card d-flex justify-content-center" onClick={() => {
                 navigate('/charts/candlestickchart');
               }}>
-                <CandleStickChart
+                <CandleStickChart2
                   chartId="candle1"
                   parentWidth="350px"
                   parentHeight="250px"

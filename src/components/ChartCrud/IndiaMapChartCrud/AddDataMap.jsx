@@ -94,7 +94,7 @@ const AddDataMap = () => {
           autoComplete="off"
         />
         {addDataFormik.errors.total && addDataFormik.touched.total ? (
-          <p className="text-danger text-center mt-2">
+          <p className="text-danger mt-2">
             {addDataFormik.errors.total}
           </p>
         ) : null}

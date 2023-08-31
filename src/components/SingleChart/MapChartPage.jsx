@@ -1,13 +1,18 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import IndiaMapChart from "../Chart/MapChart/IndiaMap/IndiaMapChart";
 import ViewDataMap from "../ChartCrud/IndiaMapChartCrud/ViewDataMap";
 import { CustomContext } from "../CustomContext";
 import { CrudMapChartModal } from "../ChartModal/ChartModal";
 import CustomToast from "../ToastComponent/CustomToast";
+import titles from '../../pageTitle';
 
 const MapChartPage = () =>{
 
-    const { addDataCrud, setaddDataCrud, showToast } = useContext(CustomContext)
+    const { addDataCrud, setaddDataCrud, showToast } = useContext(CustomContext);
+
+    useEffect(()=>{
+        document.title = titles.mapChart;
+    },[])
 
     return (
         <>

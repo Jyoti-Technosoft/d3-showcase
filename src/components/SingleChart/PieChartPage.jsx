@@ -1,13 +1,18 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import PieChart from "../Chart/PieChart/PieChart";
 import ViewDataPie from "../ChartCrud/PieChartCrud/ViewDataPie";
 import { CustomContext } from "../CustomContext";
 import { CrudPieChartModal } from "../ChartModal/ChartModal";
 import CustomToast from "../ToastComponent/CustomToast";
+import titles from '../../pageTitle';
 
 const PieChartPage = () => {
 
     const { addDataCrud, setaddDataCrud, setIsEdit, showToast } = useContext(CustomContext)
+
+    useEffect(()=>{
+        document.title = titles.pieChart;
+    },[])
 
     return (
         <>

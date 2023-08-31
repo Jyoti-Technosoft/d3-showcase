@@ -1,14 +1,19 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import GroupChart from '../Chart/GroupChart/GroupChart';
 import ViewDataGroup from '../ChartCrud/GroupChartCrud/ViewDataGroup';
 import './ChartPage.scss'
 import { CustomContext } from '../CustomContext';
 import { CrudGroupChartModal } from '../ChartModal/ChartModal';
 import CustomToast from '../ToastComponent/CustomToast';
+import titles from '../../pageTitle';
 
 const GroupChartPage = () => {
 
     const { addDataCrud, setaddDataCrud, setIsEdit, showToast } = useContext(CustomContext)
+
+    useEffect(()=>{
+        document.title = titles.groupChart;
+    },[])
 
     return (
         <>
@@ -21,6 +26,7 @@ const GroupChartPage = () => {
                     parentWidth="100%"
                     parentHeight="100%"
                     borderSize="0"
+                    data-testid="test-chart"
                     isModal={true}
                     tooltipShow={true}
                     showLabels={true}

@@ -1,6 +1,13 @@
+import { useEffect } from 'react';
 import './AboutUS.scss';
+import titles from "../../pageTitle";
 
 const AboutUS = () => {
+
+    useEffect(()=>{
+        document.title = titles.about;
+    },[])
+
     return (
         <>
             <div className="row mb-5">

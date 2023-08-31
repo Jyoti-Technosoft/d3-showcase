@@ -1,13 +1,18 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import StackedChart from "../Chart/StackedChart/StackedChart";
 import ViewDataStacked from "../ChartCrud/StackedChartCrud/ViewDataStacked";
 import { CrudStackedChartModal } from "../ChartModal/ChartModal";
 import { CustomContext } from "../CustomContext";
 import CustomToast from "../ToastComponent/CustomToast";
+import titles from '../../pageTitle';
 
 const StackedChartPage = () => {
 
     const { addDataCrud, setaddDataCrud, setIsEdit, showToast } = useContext(CustomContext);
+
+    useEffect(()=>{
+        document.title = titles.stackedChart;
+    },[])
 
     return (
         <>

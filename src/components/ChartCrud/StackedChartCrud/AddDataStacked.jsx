@@ -120,7 +120,7 @@ const AddDataStacked = () => {
             autoComplete="off"
           />
           {addDataFormik.errors.Month && addDataFormik.touched.Month ? (
-            <p className="text-danger text-center mt-2">
+            <p className="text-danger mt-2">
               {addDataFormik.errors.Month}
             </p>
           ) : null}
@@ -140,7 +140,7 @@ const AddDataStacked = () => {
             autoComplete="off"
           />
           {addDataFormik.errors.US && addDataFormik.touched.US ? (
-            <p className="text-danger text-center mt-2">
+            <p className="text-danger mt-2">
               {addDataFormik.errors.US}
             </p>
           ) : null}
@@ -160,7 +160,7 @@ const AddDataStacked = () => {
             autoComplete="off"
           />
           {addDataFormik.errors.Europe && addDataFormik.touched.Europe ? (
-            <p className="text-danger text-center mt-2">
+            <p className="text-danger mt-2">
               {addDataFormik.errors.Europe}
             </p>
           ) : null}
@@ -180,7 +180,7 @@ const AddDataStacked = () => {
             autoComplete="off"
           />
           {addDataFormik.errors.Asia && addDataFormik.touched.Asia ? (
-            <p className="text-danger text-center mt-2">
+            <p className="text-danger mt-2">
               {addDataFormik.errors.Asia}
             </p>
           ) : null}
@@ -201,7 +201,7 @@ const AddDataStacked = () => {
           />
           {addDataFormik.errors.SouthAmerica &&
             addDataFormik.touched.SouthAmerica ? (
-            <p className="text-danger text-center mt-2">
+            <p className="text-danger mt-2">
               {addDataFormik.errors.SouthAmerica}
             </p>
           ) : null}

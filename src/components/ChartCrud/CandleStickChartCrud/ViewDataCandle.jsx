@@ -12,7 +12,7 @@ const ViewDataCandle = () => {
     showToast,
     setUpdateValue,
     setIsEdit,
-    candleDataSet,
+    newCandle,
     setaddDataCrud,
   } = useContext(CustomContext);
 
@@ -64,6 +64,14 @@ const ViewDataCandle = () => {
     }
   };
 
+  function parseAndFormatDate(dateString) {
+    const originalDate = new Date(dateString);
+    const year = originalDate.getFullYear();
+    const month = (originalDate.getMonth() + 1).toString().padStart(2, '0');
+    const day = originalDate.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
   return (
     <>
       <div className="custom-arrow-scroll-div d-flex justify-content-center">
@@ -102,11 +110,11 @@ const ViewDataCandle = () => {
               </tr>
             </thead>
             <tbody>
-              {candleDataSet?.map((val, index) => {
+              {newCandle?.map((val, index) => {
                 return (
                   <tr key={index}>
                     <td className="p-2 text-center">{index + 1}</td>
-                    <td className="p-2 text-center">{val.date}</td>
+                    <td className="p-2 text-center">{parseAndFormatDate(val.date)}</td>
                     <td className="p-2 text-center">{val.high}</td>
                     <td className="p-2 text-center">{val.low}</td>
                     <td className="p-2 text-center">{val.open}</td>

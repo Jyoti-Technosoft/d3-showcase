@@ -1,13 +1,18 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import SunBrustChart from "../Chart/DonutChart/SunBrustChart";
 import ViewDataSunBrust from "../ChartCrud/SunBrustChartCrud/ViewDataSunBrust";
 import { CrudSunBrustChartModal } from "../ChartModal/ChartModal";
 import { CustomContext } from "../CustomContext";
 import CustomToast from "../ToastComponent/CustomToast";
+import titles from '../../pageTitle';
 
 const SunBurstChartPage = () =>{
 
-    const { addDataCrud, setaddDataCrud, showToast } = useContext(CustomContext)
+    const { addDataCrud, setaddDataCrud, showToast } = useContext(CustomContext);
+
+    useEffect(()=>{
+        document.title = titles.sunburstChart;
+    },[])
 
     return (
         <>
