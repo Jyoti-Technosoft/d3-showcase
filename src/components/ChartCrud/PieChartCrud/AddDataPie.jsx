@@ -149,7 +149,7 @@ const AddDataPie = () => {
             </p>
           ) : null}
 
-          <div className="">
+          <div className="statechart">
             <div className="my-2">
               <label>State1</label>
               <input className="input-style input-state-width p-2 ms-2 border-0" type="text" name="state1" id="state1" placeholder="state1" value={addDataFormik.values.state1} onChange={addDataFormik.handleChange} onBlur={addDataFormik.handleBlur} required />
