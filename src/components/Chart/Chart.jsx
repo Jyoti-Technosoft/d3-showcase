@@ -6,6 +6,7 @@ import IndiaMapChart from "./MapChart/IndiaMap/IndiaMapChart";
 import SunBrustChart from "./DonutChart/SunBrustChart";
 import { useNavigate } from "react-router";
 
+import vpdChartImage from './VpdChart/vpd_chart.png';
 import "./Chart.scss";
 
 import titles from '../../pageTitle';
@@ -28,9 +29,43 @@ function Chart() {
         <div className="row">
           <div className="col-sm my-card mb-4">
             <div className="chart-box">
-              <div className="charts-card d-flex justify-content-center" onClick={() => {
-                navigate('/charts/groupchart');
-              }}>
+              <div
+                className="charts-card d-flex justify-content-center"
+                onClick={() => {
+                  navigate("/charts/vpdchart");
+                }}
+              >
+                <img
+                  src={vpdChartImage}
+                  alt="Chart Image"
+                  style={{
+                    width: "350px",
+                    height: "250px",
+                    objectFit: "cover",
+                    cursor: "pointer",
+                  }}
+                />
+              </div>
+              <div className="chart-description">
+                <h5 className="mb-2">VPD Chart</h5>
+                <p>
+                  Vapour Pressure Deficit (VPD), a metric that combines air
+                  temperature, leaf temperature, and relative humidity to
+                  measure moisture stress in plants. Using React and D3.js, the
+                  chart dynamically displays how VPD fluctuates under different
+                  environmental conditions.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-sm my-card mb-4">
+            <div className="chart-box">
+              <div
+                className="charts-card d-flex justify-content-center"
+                onClick={() => {
+                  navigate("/charts/groupchart");
+                }}
+              >
                 <GroupChart
                   chartId="group1"
                   parentWidth="350px"

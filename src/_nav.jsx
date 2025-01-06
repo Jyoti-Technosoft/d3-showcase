@@ -29,6 +29,11 @@ const _nav = [
     items: [
       {
         component: CNavItem,
+        name: "VPD Chart",
+        to: "/charts/vpdchart",
+      },
+      {
+        component: CNavItem,
         name: "Group Chart",
         to: "/charts/groupchart",
       },
